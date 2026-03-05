@@ -6,13 +6,685 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Menu — TajHotel Fine Dining Delhi</title>
     <meta name="description"
-        content="Explore TajHotel's full menu — Starters, Signature Steaks, Fresh Seafood, Indian Classics, Global Cuisine, Desserts and Beverages. Luxury fine dining in Delhi." />
+        content="Explore TajHotel's full menu — Starters, Signature Steaks, Seafood, Indian Classics, Global Cuisine, Desserts and Beverages. Luxury fine dining in Delhi." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* ═══ MENU PAGE SPECIFIC STYLES ═══ */
+        /* Controls bar */
+        .menu-controls-bar {
+            padding: 1.25rem 0 .5rem;
+            position: sticky;
+            top: 66px;
+            z-index: 90;
+            background: var(--black);
+            border-bottom: 1px solid var(--border-soft);
+            padding-bottom: .75rem
+        }
+
+        .menu-search-wrap {
+            position: relative;
+            margin-bottom: .75rem
+        }
+
+        .menu-search-wrap .s-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            pointer-events: none;
+            color: var(--muted)
+        }
+
+        #menu-search {
+            width: 100%;
+            background: var(--charcoal-2);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--r-full);
+            padding: .65rem 1rem .65rem 2.8rem;
+            color: var(--white);
+            font-size: .9rem;
+            outline: none;
+            transition: border-color .25s
+        }
+
+        #menu-search:focus {
+            border-color: var(--gold)
+        }
+
+        /* Mode toggle */
+        .mode-toggle {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            margin-bottom: .75rem;
+            flex-wrap: wrap
+        }
+
+        .mode-toggle-label {
+            font-size: .72rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-right: .25rem
+        }
+
+        .mode-btn {
+            padding: .38rem 1.1rem;
+            border-radius: var(--r-full);
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--muted);
+            font-size: .78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .25s;
+            letter-spacing: .05em
+        }
+
+        .mode-btn.active {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold)
+        }
+
+        /* Filter pills */
+        .cat-filters {
+            display: flex;
+            gap: .5rem;
+            overflow-x: auto;
+            padding-bottom: .25rem;
+            scrollbar-width: none
+        }
+
+        .cat-filters::-webkit-scrollbar {
+            display: none
+        }
+
+        .cat-btn {
+            flex-shrink: 0;
+            padding: .4rem 1rem;
+            border-radius: var(--r-full);
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--muted);
+            font-size: .78rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all .2s;
+            white-space: nowrap
+        }
+
+        .cat-btn.active {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold)
+        }
+
+        .cat-btn:hover:not(.active) {
+            border-color: var(--gold);
+            color: var(--gold)
+        }
+
+        /* Special filter pills */
+        .pill-veg.active {
+            background: #16a34a;
+            color: #fff;
+            border-color: #16a34a
+        }
+
+        .pill-nonveg.active {
+            background: #dc2626;
+            color: #fff;
+            border-color: #dc2626
+        }
+
+        /* ── VISUAL MODE CARDS ── */
+        #menu-container {
+            padding-top: 1.5rem
+        }
+
+        .menu-section {
+            margin-bottom: 2.5rem
+        }
+
+        .menu-section-heading {
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: .65rem;
+            border-bottom: 1px solid var(--border-soft)
+        }
+
+        .cat-icon {
+            font-size: 1.4rem
+        }
+
+        .menu-section-heading span:last-child {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            color: var(--white);
+            font-weight: 600
+        }
+
+        /* App-style horizontal card */
+        .menu-card {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border-soft);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .35);
+            transition: box-shadow .3s, transform .3s;
+            position: relative
+        }
+
+        .menu-card:hover {
+            box-shadow: 0 10px 30px rgba(212, 175, 55, .15), 0 4px 16px rgba(0, 0, 0, .5);
+            transform: translateY(-2px)
+        }
+
+        .menu-card.reveal {
+            opacity: 0;
+            transform: translateY(20px)
+        }
+
+        .menu-card.reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity .45s ease, transform .45s ease
+        }
+
+        /* Text side */
+        .menu-text {
+            flex: 1;
+            padding: 14px 14px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 0
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .veg-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            border: 2px solid #16a34a;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0
+        }
+
+        .veg-icon::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #16a34a;
+            display: block
+        }
+
+        .veg-icon.nonveg {
+            border-color: #dc2626
+        }
+
+        .veg-icon.nonveg::after {
+            width: 0;
+            height: 0;
+            background: transparent;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 9px solid #dc2626;
+            border-radius: 0
+        }
+
+        .dish-title {
+            font-family: var(--font-menu);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        @media(min-width:640px) {
+            .dish-title {
+                font-size: 1.1rem
+            }
+        }
+
+        /* Popularity bar */
+        .pop-row {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .popular-label {
+            font-size: .68rem;
+            color: #4ade80;
+            font-weight: 600;
+            white-space: nowrap
+        }
+
+        .pop-bar {
+            height: 3px;
+            flex: 1;
+            max-width: 60px;
+            background: rgba(74, 222, 128, .2);
+            border-radius: 4px;
+            overflow: hidden
+        }
+
+        .pop-bar-fill {
+            height: 100%;
+            background: #4ade80;
+            border-radius: 4px
+        }
+
+        /* Price */
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap
+        }
+
+        .price-old {
+            font-size: .78rem;
+            color: var(--muted);
+            text-decoration: line-through
+        }
+
+        .price-main {
+            font-family: var(--font-head);
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 700
+        }
+
+        .price-deal {
+            font-size: .78rem;
+            color: #60a5fa;
+            font-weight: 600
+        }
+
+        /* Description */
+        .desc {
+            font-size: .8rem;
+            color: var(--muted);
+            line-height: 1.55;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden
+        }
+
+        .more-link {
+            color: var(--gold);
+            cursor: pointer;
+            font-size: .78rem;
+            font-weight: 500
+        }
+
+        /* Tags */
+        .mic-tags-row {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-top: 2px
+        }
+
+        .mic-tag {
+            font-size: .62rem;
+            padding: .15rem .5rem;
+            border-radius: var(--r-full);
+            font-weight: 700;
+            letter-spacing: .04em;
+            text-transform: uppercase
+        }
+
+        .mt-c {
+            background: rgba(212, 175, 55, .12);
+            color: var(--gold);
+            border: 1px solid var(--border)
+        }
+
+        .mt-gf {
+            background: rgba(74, 222, 128, .08);
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, .2)
+        }
+
+        /* Action row */
+        .action-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px
+        }
+
+        .btn-save,
+        .btn-share {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .85rem;
+            transition: all .2s;
+            flex-shrink: 0
+        }
+
+        .btn-save:hover,
+        .btn-share:hover {
+            border-color: var(--gold);
+            color: var(--gold)
+        }
+
+        .btn-save.saved {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, .1)
+        }
+
+        /* Image side */
+        .menu-image {
+            position: relative;
+            flex-shrink: 0;
+            width: 110px;
+            background: var(--charcoal-2)
+        }
+
+        @media(min-width:640px) {
+            .menu-image {
+                width: 150px
+            }
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        .menu-image .img-placeholder {
+            width: 100%;
+            height: 100%;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: rgba(212, 175, 55, .25)
+        }
+
+        /* ADD button overlay */
+        .btn-add {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(255, 255, 255, .95);
+            border: 1.5px solid var(--gold);
+            color: #c0392b;
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .05em;
+            padding: .25rem .65rem;
+            border-radius: var(--r-full);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            transition: all .2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .25)
+        }
+
+        .btn-add:hover {
+            background: var(--gold);
+            color: var(--black)
+        }
+
+        .btn-add .plus {
+            font-size: 1rem;
+            font-weight: 900;
+            line-height: 1
+        }
+
+        .custom-label {
+            position: absolute;
+            bottom: 38px;
+            right: 8px;
+            font-size: .55rem;
+            color: var(--muted);
+            text-align: center;
+            letter-spacing: .03em
+        }
+
+        /* ── FAST / TEXT MODE ── */
+        #fast-menu-container {
+            display: none;
+            padding-top: 1.5rem
+        }
+
+        .fm-section {
+            margin-bottom: 2rem
+        }
+
+        .fm-heading {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: .5rem;
+            margin-bottom: .75rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0
+        }
+
+        .fm-item {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: .6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .04)
+        }
+
+        .fm-item:last-child {
+            border-bottom: none
+        }
+
+        .fm-left {
+            flex: 1;
+            min-width: 0
+        }
+
+        .fm-name {
+            font-family: var(--font-menu);
+            font-size: .92rem;
+            color: var(--white);
+            font-weight: 600
+        }
+
+        .fm-desc {
+            font-size: .78rem;
+            color: var(--muted);
+            line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .fm-price {
+            flex-shrink: 0;
+            font-family: var(--font-head);
+            color: var(--gold);
+            font-size: .92rem;
+            font-weight: 700
+        }
+
+        /* No results */
+        #menu-no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--muted);
+            display: none
+        }
+
+        #menu-no-results p:first-child {
+            font-size: 1.1rem
+        }
+
+        /* Toast */
+        #menu-toast {
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--charcoal-2);
+            border: 1px solid var(--border);
+            color: var(--white);
+            padding: .6rem 1.4rem;
+            border-radius: var(--r-full);
+            font-size: .84rem;
+            font-weight: 500;
+            z-index: 9000;
+            opacity: 0;
+            transition: opacity .3s, transform .3s;
+            pointer-events: none;
+            white-space: nowrap
+        }
+
+        #menu-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0)
+        }
+
+        /* ── BOTTOM MOBILE NAV ── */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 950;
+            padding: .5rem 1rem calc(.5rem + env(safe-area-inset-bottom));
+            background: rgba(11, 11, 11, .82);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border-top: 1px solid rgba(212, 175, 55, .15);
+            border-radius: 20px 20px 0 0
+        }
+
+        @media(max-width:767px) {
+            .bottom-nav {
+                display: flex
+            }
+
+            .hamburger,
+            .mobile-nav {
+                display: none !important
+            }
+        }
+
+        .bottom-nav-inner {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto
+        }
+
+        .bn-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            text-decoration: none;
+            padding: .3rem .75rem;
+            border-radius: 12px;
+            transition: all .25s;
+            color: rgba(255, 255, 255, .5);
+            min-width: 56px
+        }
+
+        .bn-item .bn-icon {
+            font-size: 1.2rem;
+            line-height: 1;
+            transition: transform .25s
+        }
+
+        .bn-item .bn-label {
+            font-size: .6rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            line-height: 1
+        }
+
+        .bn-item.active {
+            color: var(--gold)
+        }
+
+        .bn-item.active .bn-icon {
+            transform: translateY(-2px)
+        }
+
+        .bn-item:hover {
+            color: var(--gold)
+        }
+
+        /* Body pad for bottom nav on mobile */
+        @media(max-width:767px) {
+            body {
+                padding-bottom: 72px
+            }
+
+            footer {
+                margin-bottom: 0
+            }
+        }
+
+        /* Desktop: ensure hamburger hidden */
+        @media(min-width:768px) {
+            .bottom-nav {
+                display: none
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -23,6 +695,7 @@
     <div id="scroll-progress" aria-hidden="true"></div>
     <a href="#main" class="skip-link">Skip to main content</a>
 
+    <!-- DESKTOP NAVBAR -->
     <header id="navbar" role="banner">
         <div class="container">
             <div class="nav-wrap">
@@ -31,23 +704,18 @@
                     <ul class="nav-links" role="list">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="menu.html" aria-current="page">Menu</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="about.html">Experience</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
                 <a href="contact.html" class="btn btn-gold btn-sm nav-cta">Reserve Table</a>
-                <button class="hamburger" aria-label="Open navigation"
-                    aria-expanded="false"><span></span><span></span><span></span></button>
+                <!-- hamburger hidden on mobile by CSS, kept for desktop graceful degradation -->
+                <button class="hamburger" aria-label="Open navigation" aria-expanded="false" style="display:none">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </header>
-
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
-        <button class="mobile-nav-close" aria-label="Close navigation">✕</button>
-        <a href="index.html">Home</a><a href="menu.html">Menu</a><a href="about.html">About</a><a
-            href="contact.html">Contact</a>
-        <a href="contact.html" class="btn btn-gold">Reserve Table</a>
-    </nav>
 
     <main id="main">
         <div class="page-banner">
@@ -63,35 +731,57 @@
         <section style="padding-top:0">
             <div class="container">
 
-                <!-- CONTROLS -->
+                <!-- CONTROLS BAR -->
                 <div class="menu-controls-bar">
+                    <!-- Search -->
                     <div class="menu-search-wrap">
                         <span class="s-icon" aria-hidden="true">🔍</span>
                         <label for="menu-search" class="sr-only">Search dishes</label>
                         <input type="search" id="menu-search" placeholder="Search dishes, ingredients…"
                             autocomplete="off" />
                     </div>
+
+                    <!-- Mode toggle + filters row -->
+                    <div
+                        style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem">
+                        <div class="mode-toggle" role="group" aria-label="Display mode">
+                            <span class="mode-toggle-label">View:</span>
+                            <button class="mode-btn active" id="btn-visual" aria-pressed="true">🖼 Visual</button>
+                            <button class="mode-btn" id="btn-fast" aria-pressed="false">⚡ Fast</button>
+                        </div>
+                    </div>
+
+                    <!-- Category filters -->
                     <div class="cat-filters" role="group" aria-label="Filter by category">
                         <button class="cat-btn active" data-cat="all">All</button>
-                        <button class="cat-btn" data-cat="starters">Starters</button>
-                        <button class="cat-btn" data-cat="steaks">Steaks</button>
-                        <button class="cat-btn" data-cat="seafood">Seafood</button>
-                        <button class="cat-btn" data-cat="indian">Indian</button>
-                        <button class="cat-btn" data-cat="global">Global</button>
-                        <button class="cat-btn" data-cat="desserts">Desserts</button>
-                        <button class="cat-btn" data-cat="beverages">Beverages</button>
+                        <button class="cat-btn" data-cat="starters">🥗 Starters</button>
+                        <button class="cat-btn" data-cat="steaks">🥩 Steaks</button>
+                        <button class="cat-btn" data-cat="seafood">🦞 Seafood</button>
+                        <button class="cat-btn" data-cat="indian">🍛 Indian</button>
+                        <button class="cat-btn" data-cat="global">🌍 Global</button>
+                        <button class="cat-btn" data-cat="desserts">🍮 Desserts</button>
+                        <button class="cat-btn" data-cat="beverages">🍷 Beverages</button>
+                        <button class="cat-btn pill-veg" data-filter="veg">🟢 Veg</button>
+                        <button class="cat-btn pill-nonveg" data-filter="nonveg">🔴 Non-Veg</button>
+                        <button class="cat-btn" data-filter="chef">⭐ Chef's Pick</button>
                     </div>
                 </div>
 
-                <div id="menu-container" aria-label="Menu categories"></div>
-                <div id="menu-no-results" style="text-align:center;padding:3rem;color:var(--muted);display:none">
-                    <p style="font-size:1.1rem">No dishes match your search.</p>
+                <!-- VISUAL MODE -->
+                <div id="menu-container" aria-label="Menu — Visual Mode"></div>
+
+                <!-- FAST MODE -->
+                <div id="fast-menu-container" aria-label="Menu — Fast Mode"></div>
+
+                <div id="menu-no-results">
+                    <p>No dishes match your search.</p>
                     <p style="margin-top:.5rem">Try a different term or clear the filters.</p>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -130,210 +820,374 @@
             </div>
             <div class="footer-bottom">
                 <p>© 2025 TajHotel, New Delhi. All rights reserved.</p>
-                <nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></nav>
+                <nav class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></nav>
             </div>
         </div>
     </footer>
 
+    <!-- LIGHTBOX -->
     <div id="lightbox" role="dialog" aria-modal="true" hidden>
         <button id="lb-close" aria-label="Close">✕</button>
         <button id="lb-prev" class="lb-arrow" aria-label="Previous">‹</button>
-        <img id="lb-img" src="" alt="" />
+        <img id="lb-img" src="" alt="" loading="lazy" decoding="async" />
         <button id="lb-next" class="lb-arrow" aria-label="Next">›</button>
         <div id="lb-caption" aria-live="polite"></div>
     </div>
+
+    <!-- TOAST -->
+    <div id="menu-toast" role="status" aria-live="polite"></div>
+
+    <!-- BOTTOM MOBILE NAV -->
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+        <div class="bottom-nav-inner">
+            <a href="index.html" class="bn-item" aria-label="Home">
+                <span class="bn-icon">🏠</span>
+                <span class="bn-label">Home</span>
+            </a>
+            <a href="menu.html" class="bn-item active" aria-current="page" aria-label="Menu">
+                <span class="bn-icon">🍽️</span>
+                <span class="bn-label">Menu</span>
+            </a>
+            <a href="about.html" class="bn-item" aria-label="Experience">
+                <span class="bn-icon">✨</span>
+                <span class="bn-label">Experience</span>
+            </a>
+            <a href="contact.html" class="bn-item" aria-label="Contact">
+                <span class="bn-icon">📞</span>
+                <span class="bn-label">Contact</span>
+            </a>
+        </div>
+    </nav>
+
     <div id="live-region" aria-live="polite" class="sr-only"></div>
 
-    <!-- ═══ INLINE MENU DATA — All 97 items, no server/fetch needed ═══ -->
     <script>
+        // ═══════════════════════════════════════════════
+        // TAJHOTEL MENU — Full 97-item embedded data
+        // ═══════════════════════════════════════════════
         const MENU_DATA = [
-            { "name": "Smoked Salmon Carpaccio", "category": "Starters / Appetizers", "descriptor": "Paper-thin smoked salmon, caper cream, micro herbs & lemon oil", "tags": ["non-veg", "chef-pick"], "priceINR": 1850, "image": "Smoked Salmon Carpaccio.jpeg" },
-            { "name": "Truffle Arancini", "category": "Starters / Appetizers", "descriptor": "Crispy risotto balls, black truffle, aged parmesan, saffron aioli", "tags": ["vegetarian", "chef-pick"], "priceINR": 1450, "image": "Truffle Arancini.jpeg" },
-            { "name": "King Prawn Cocktail", "category": "Starters / Appetizers", "descriptor": "Poached tiger prawns, Marie Rose sauce, avocado cream", "tags": ["non-veg"], "priceINR": 2100, "image": "King Prawn Cocktail.jpeg" },
-            { "name": "Oysters Rockefeller", "category": "Starters / Appetizers", "descriptor": "Fresh oysters baked with spinach, pancetta & Pernod butter", "tags": ["non-veg", "chef-pick"], "priceINR": 2800, "image": "Oysters Rockefeller.jpeg" },
-            { "name": "Foie Gras Terrine", "category": "Starters / Appetizers", "descriptor": "Silky duck liver terrine, toasted brioche, fig chutney", "tags": ["non-veg", "chef-pick"], "priceINR": 3200, "image": "Foie Gras Terrine.jpeg" },
-            { "name": "Tuna Tartare", "category": "Starters / Appetizers", "descriptor": "Hand-cut bluefin tuna, sesame ponzu, avocado, tobiko", "tags": ["non-veg"], "priceINR": 2400, "image": "Tuna Tartare.jpeg" },
-            { "name": "Caviar with Blinis", "category": "Starters / Appetizers", "descriptor": "Beluga caviar, warm blinis, crème fraîche, chives", "tags": ["non-veg", "chef-pick", "luxury"], "priceINR": 8500, "image": "Caviar with Blinis.jpeg" },
-            { "name": "Burrata & Heirloom Tomatoes", "category": "Starters / Appetizers", "descriptor": "Creamy burrata, heirloom tomatoes, aged balsamic, basil oil", "tags": ["vegetarian"], "priceINR": 1600, "image": "Burrata & Heirloom Tomatoes.jpeg" },
-            { "name": "Amuse Bouche Selection", "category": "Starters / Appetizers", "descriptor": "Chef's rotating bite-sized morsels to awaken the palate", "tags": ["chef-pick"], "priceINR": 1200, "image": "Amuse Bouche Selection.jpeg" },
-            { "name": "Paneer Royale Tikka", "category": "Starters / Appetizers", "descriptor": "Saffron-marinated paneer, royal cashew sauce, pomegranate", "tags": ["vegetarian", "chef-pick"], "priceINR": 1400, "image": "Paneer Royale Tikka.jpeg" },
-            { "name": "Chicken Lollipops", "category": "Starters / Appetizers", "descriptor": "Crispy glazed chicken drumettes, sriracha-honey dip", "tags": ["non-veg"], "priceINR": 1350, "image": "Chicken Lollipops.jpeg" },
-            { "name": "Scallop Ceviche", "category": "Starters / Appetizers", "descriptor": "Hand-dived scallops, tiger's milk, jalapeño, sweet corn", "tags": ["non-veg"], "priceINR": 2200, "image": "Scallop Ceviche.jpeg" },
-            { "name": "Grilled Vegetable Terrine", "category": "Starters / Appetizers", "descriptor": "Layered roasted Mediterranean vegetables, herb oil, cress", "tags": ["vegetarian", "gluten-free"], "priceINR": 1300, "image": "Grilled Vegetable Terrine.jpeg" },
-            { "name": "Stuffed Squash Blossoms", "category": "Starters / Appetizers", "descriptor": "Zucchini flowers filled with ricotta & truffle, lemon zest", "tags": ["vegetarian"], "priceINR": 1500, "image": "Stuffed Squash Blossoms.jpeg" },
-            { "name": "Lobster Bisque", "category": "Starters / Appetizers", "descriptor": "Velvety cream of lobster, cognac, sherry, tarragon foam", "tags": ["non-veg", "chef-pick"], "priceINR": 2600, "image": "Lobster Bisque.jpeg" },
-            { "name": "Crab Cakes", "category": "Starters / Appetizers", "descriptor": "Pan-fried Dungeness crab cakes, remoulade, microgreens", "tags": ["non-veg"], "priceINR": 1900, "image": "Crab Cakes.jpeg" },
-            { "name": "Seared Tuna Bite", "category": "Starters / Appetizers", "descriptor": "Seared yellowfin tuna, wasabi crème, pickled ginger", "tags": ["non-veg"], "priceINR": 2000, "image": "Seared Tuna Bite.jpeg" },
-            { "name": "Filet Mignon", "category": "Signature Steaks", "descriptor": "250g centre-cut tenderloin, Béarnaise sauce, truffle jus", "tags": ["non-veg", "chef-pick", "gluten-free"], "priceINR": 6800, "image": "Filet Mignon.jpeg" },
-            { "name": "Ribeye Steak 350g", "category": "Signature Steaks", "descriptor": "Grass-fed ribeye, compound butter, bone-marrow jus", "tags": ["non-veg", "gluten-free"], "priceINR": 5800, "image": "Ribeye Steak 350g.jpeg" },
-            { "name": "New York Strip", "category": "Signature Steaks", "descriptor": "300g NY strip, chimichurri, roasted garlic potato", "tags": ["non-veg"], "priceINR": 5400, "image": "New York Strip.jpeg" },
-            { "name": "Wagyu Ribeye", "category": "Signature Steaks", "descriptor": "A5 Wagyu ribeye, truffle salt, aged red wine reduction", "tags": ["non-veg", "chef-pick", "luxury"], "priceINR": 14500, "image": "Wagyu Ribeye.jpeg" },
-            { "name": "Charcoal-Grilled Tomahawk 1kg", "category": "Signature Steaks", "descriptor": "Bone-in tomahawk, charcoal-kissed, served tableside with au jus", "tags": ["non-veg", "chef-pick"], "priceINR": 12000, "image": "Charcoal-Grilled Tomahawk 1kg.jpeg" },
-            { "name": "Sirloin Steak 300g", "category": "Signature Steaks", "descriptor": "Aged sirloin, peppercorn sauce, sautéed greens", "tags": ["non-veg"], "priceINR": 4800, "image": "Sirloin Steak 300g.jpeg" },
-            { "name": "Porterhouse Steak 400g", "category": "Signature Steaks", "descriptor": "Dry-aged porterhouse, both tenderloin & strip, seasonal vegetables", "tags": ["non-veg"], "priceINR": 7200, "image": "Porterhouse Steak 400g.jpeg" },
-            { "name": "Ribeye Surf & Turf", "category": "Signature Steaks", "descriptor": "300g ribeye topped with half lobster tail, truffle butter", "tags": ["non-veg", "chef-pick"], "priceINR": 9800, "image": "Ribeye Surf & Turf.jpeg" },
-            { "name": "Herb-Crusted Lamb Rack", "category": "Signature Steaks", "descriptor": "New Zealand lamb rack, Dijon-herb crust, minted pea purée", "tags": ["non-veg", "chef-pick"], "priceINR": 7800, "image": "Herb-Crusted Lamb Rack.jpeg" },
-            { "name": "Tomahawk Steak", "category": "Signature Steaks", "descriptor": "Long-bone tomahawk, salt-aged, red wine jus, loaded fries", "tags": ["non-veg"], "priceINR": 10500, "image": "Tomahawk Steak.jpeg" },
-            { "name": "Beef Wellington", "category": "Signature Steaks", "descriptor": "Classic beef Wellington, mushroom duxelles, puff pastry", "tags": ["non-veg", "chef-pick"], "priceINR": 8200, "image": "Beef Wellington.jpeg" },
-            { "name": "Beef Tenderloin Medallions", "category": "Signature Steaks", "descriptor": "Two medallions of tenderloin, black pepper jus, gratin potato", "tags": ["non-veg"], "priceINR": 6200, "image": "Beef Tenderloin Medallions.jpeg" },
-            { "name": "Seared Venison Loin", "category": "Signature Steaks", "descriptor": "Wild venison loin, juniper berry sauce, celery root purée", "tags": ["non-veg", "chef-pick", "gluten-free"], "priceINR": 7600, "image": "Seared Venison Loin.jpeg" },
-            { "name": "Grilled Lobster Tail", "category": "Fresh Seafood", "descriptor": "Whole lobster tail, clarified butter, grilled lemon, herbs", "tags": ["non-veg", "chef-pick", "gluten-free"], "priceINR": 5800, "image": "Grilled Lobster Tail.jpeg" },
-            { "name": "Lobster Thermidor", "category": "Fresh Seafood", "descriptor": "Classic half-lobster, cognac cream, gruyère gratin", "tags": ["non-veg", "chef-pick"], "priceINR": 6400, "image": "Lobster Thermidor.jpeg" },
-            { "name": "King Crab Legs", "category": "Fresh Seafood", "descriptor": "Alaskan king crab legs, drawn butter, dill oil", "tags": ["non-veg", "gluten-free"], "priceINR": 7200, "image": "King Crab Legs.jpeg" },
-            { "name": "Black Tiger Prawns", "category": "Fresh Seafood", "descriptor": "Jumbo tiger prawns, garlic-chilli butter, crispy capers", "tags": ["non-veg"], "priceINR": 3800, "image": "Black Tiger Prawns.jpeg" },
-            { "name": "Grilled King Prawns", "category": "Fresh Seafood", "descriptor": "Chargrilled king prawns, lemon-herb oil, rocket salad", "tags": ["non-veg"], "priceINR": 3600, "image": "Grilled King Prawns.jpeg" },
-            { "name": "Seared Scallops", "category": "Fresh Seafood", "descriptor": "Diver scallops, pea purée, crispy pancetta, lemon beurre blanc", "tags": ["non-veg", "chef-pick"], "priceINR": 3200, "image": "Seared Scallops.jpeg" },
-            { "name": "Black Cod Miso", "category": "Fresh Seafood", "descriptor": "Sake-miso marinated black cod, pickled daikon, edamame", "tags": ["non-veg", "chef-pick"], "priceINR": 4200, "image": "Black Cod Miso.jpeg" },
-            { "name": "Miso-Glazed Salmon", "category": "Fresh Seafood", "descriptor": "Atlantic salmon fillet, miso glaze, sesame-bok choy, ponzu", "tags": ["non-veg"], "priceINR": 3800, "image": "Miso-Glazed Salmon.jpeg" },
-            { "name": "Pan-Seared Red Snapper", "category": "Fresh Seafood", "descriptor": "Crispy-skin snapper, bouillabaisse nage, saffron potato", "tags": ["non-veg"], "priceINR": 3400, "image": "Pan-Seared Red Snapper.jpeg" },
-            { "name": "Chargrilled Octopus", "category": "Fresh Seafood", "descriptor": "Tender chargrilled octopus, chimichurri, smoked paprika oil", "tags": ["non-veg"], "priceINR": 3200, "image": "Chargrilled Octopus.jpeg" },
-            { "name": "Tuna Tataki", "category": "Fresh Seafood", "descriptor": "Lightly seared tuna, ponzu dressing, shiso, sesame", "tags": ["non-veg"], "priceINR": 2800, "image": "Tuna Tataki.jpeg" },
-            { "name": "Seared Sea Bass", "category": "Fresh Seafood", "descriptor": "Crispy-skin seabass, fennel confit, saffron-mussel emulsion", "tags": ["non-veg"], "priceINR": 3600, "image": "Seared Sea Bass.jpeg" },
-            { "name": "Grilled Sea Scallops with Truffle Oil", "category": "Fresh Seafood", "descriptor": "Jumbo scallops, black truffle oil, cauliflower cream, chervil", "tags": ["non-veg", "chef-pick"], "priceINR": 3900, "image": "Grilled Sea Scallops with Truffle Oil.jpeg" },
-            { "name": "Seared Halibut with Citrus Beurre Blanc", "category": "Fresh Seafood", "descriptor": "Atlantic halibut, citrus beurre blanc, wilted spinach", "tags": ["non-veg"], "priceINR": 4100, "image": "Seared Halibut with Citrus Beurre Blanc.jpeg" },
-            { "name": "Tandoori Prawns", "category": "Fresh Seafood", "descriptor": "Maharaja-size prawns, tandoor-roasted, mint chutney, chaat", "tags": ["non-veg"], "priceINR": 3200, "image": "Tandoori Prawns.jpeg" },
-            { "name": "Butter Chicken", "category": "Indian Classics", "descriptor": "Slow-cooked chicken in velvety tomato-butter gravy, fenugreek", "tags": ["non-veg", "chef-pick"], "priceINR": 1800, "image": "Butter Chicken.jpeg" },
-            { "name": "Dal Makhani", "category": "Indian Classics", "descriptor": "Black lentils slow-cooked overnight, cream, tempered spices", "tags": ["vegetarian", "chef-pick"], "priceINR": 1200, "image": "Dal Makhani.jpeg" },
-            { "name": "Paneer Butter Masala", "category": "Indian Classics", "descriptor": "Cottage cheese cubes, rich tomato-cream masala, kasuri methi", "tags": ["vegetarian"], "priceINR": 1400, "image": "Paneer Butter Masala.jpeg" },
-            { "name": "Chicken Tikka Masala", "category": "Indian Classics", "descriptor": "Tandoor-smoked chicken, silky masala gravy, basmati", "tags": ["non-veg", "chef-pick"], "priceINR": 1900, "image": "Chicken Tikka Masala.jpeg" },
-            { "name": "Lamb Rogan Josh", "category": "Indian Classics", "descriptor": "Kashmiri-spiced slow-cooked lamb, ratanjot, aromatics", "tags": ["non-veg"], "priceINR": 2400, "image": "Lamb Rogan Josh.jpeg" },
-            { "name": "Hyderabadi Gold Biryani", "category": "Indian Classics", "descriptor": "Dum-cooked biryani, saffron rice, caramelised onions, raita", "tags": ["non-veg", "chef-pick", "gluten-free"], "priceINR": 2200, "image": "Hyderabadi Gold Biryani.jpeg" },
-            { "name": "Royal Maharaja Thali", "category": "Indian Classics", "descriptor": "Regal thali — 12 accompaniments, breads, sweets, seasonal pickles", "tags": ["vegetarian", "chef-pick"], "priceINR": 3200, "image": "Royal Maharaja Thali.jpeg" },
-            { "name": "Paneer Tikka", "category": "Indian Classics", "descriptor": "Smoky tandoor paneer, pepper-onion salad, mint yogurt", "tags": ["vegetarian"], "priceINR": 1300, "image": "Paneer Tikka.jpeg" },
-            { "name": "Goan Prawn Curry", "category": "Indian Classics", "descriptor": "Tiger prawns, coconut-kokum curry, steamed appam", "tags": ["non-veg"], "priceINR": 2100, "image": "Goan Prawn Curry.jpeg" },
-            { "name": "Masala Dosa Elegance", "category": "Indian Classics", "descriptor": "Crispy dosa, spiced potato masala, sambar, three chutneys", "tags": ["vegetarian"], "priceINR": 1100, "image": "Masala Dosa Elegance.jpeg" },
-            { "name": "Rogan Josh Lamb Chops", "category": "Indian Classics", "descriptor": "Frenched lamb chops, rogan josh marinade, carrot harissa", "tags": ["non-veg", "chef-pick"], "priceINR": 3400, "image": "Rogan Josh Lamb Chops.jpeg" },
-            { "name": "Imperial Lobster Curry", "category": "Indian Classics", "descriptor": "Whole lobster, Malabar curry, coconut milk, curry leaf tadka", "tags": ["non-veg", "chef-pick"], "priceINR": 5600, "image": "Imperial Lobster Curry.jpeg" },
-            { "name": "Tandoori Royal Prawns", "category": "Indian Classics", "descriptor": "XL Royale prawns, saffron-cream marinade, charcoal tandoor", "tags": ["non-veg", "chef-pick"], "priceINR": 3800, "image": "Tandoori Royal Prawns.jpeg" },
-            { "name": "Vegetable Korma", "category": "Indian Classics", "descriptor": "Seasonal vegetables, cashew-cream korma, kewra essence", "tags": ["vegetarian", "gluten-free"], "priceINR": 1200, "image": "Vegetable Korma.jpeg" },
-            { "name": "Chicken Biriyani", "category": "Indian Classics", "descriptor": "Fragrant basmati, tender chicken, saffron, fried onions", "tags": ["non-veg"], "priceINR": 1900, "image": "Chicken Biriyani.png" },
-            { "name": "Mutton Biriyani", "category": "Indian Classics", "descriptor": "Slow-cooked mutton biryani, Dum-pukht style, seeraga samba", "tags": ["non-veg", "chef-pick"], "priceINR": 2400, "image": "Mutton Biriyani.png" },
-            { "name": "Vegetable Biriyani", "category": "Indian Classics", "descriptor": "Garden vegetables, aromatic basmati, rose water, nuts", "tags": ["vegetarian", "gluten-free"], "priceINR": 1600, "image": "Vegetable Biriyani.jpeg" },
-            { "name": "Duck Confit with Cherry Reduction", "category": "Global Cuisine / Chef Specials", "descriptor": "Slow-cured duck leg, cherry-port reduction, lentils du Puy", "tags": ["non-veg", "chef-pick"], "priceINR": 4800, "image": "Duck Confit with Cherry Reduction.jpeg" },
-            { "name": "Stuffed Chicken Ballotine", "category": "Global Cuisine / Chef Specials", "descriptor": "Deboned chicken, wild mushroom stuffing, tarragon cream", "tags": ["non-veg"], "priceINR": 3400, "image": "Stuffed Chicken Ballotine.jpeg" },
-            { "name": "Lobster Ravioli in Saffron Sauce", "category": "Global Cuisine / Chef Specials", "descriptor": "Hand-made pasta, lobster filling, saffron-cream velouté", "tags": ["non-veg", "chef-pick"], "priceINR": 4200, "image": "Lobster Ravioli in Saffron Sauce.jpeg" },
-            { "name": "Black Truffle Gnocchi", "category": "Global Cuisine / Chef Specials", "descriptor": "Pillowy potato gnocchi, Périgord truffle, aged parmesan foam", "tags": ["vegetarian", "chef-pick"], "priceINR": 3600, "image": "Black Truffle Gnocchi.jpeg" },
-            { "name": "Truffle Risotto", "category": "Global Cuisine / Chef Specials", "descriptor": "Carnaroli risotto, black truffle shavings, Fontina cream", "tags": ["vegetarian", "chef-pick"], "priceINR": 3200, "image": "Truffle Risotto.jpeg" },
-            { "name": "Beef Bourguignon", "category": "Global Cuisine / Chef Specials", "descriptor": "Burgundy-braised beef, pearl onions, button mushrooms, lardons", "tags": ["non-veg"], "priceINR": 4400, "image": "Beef Bourguignon.jpeg" },
-            { "name": "Pan-Seared Foie Gras with Fig", "category": "Global Cuisine / Chef Specials", "descriptor": "Seared duck liver, caramelised fig, brioche toast, balsamico", "tags": ["non-veg", "chef-pick"], "priceINR": 4600, "image": "Pan-Seared Foie Gras with Fig.jpeg" },
-            { "name": "Miso-Marinated Black Cod", "category": "Global Cuisine / Chef Specials", "descriptor": "48-hour miso paste cod, dashi broth, enoki mushrooms", "tags": ["non-veg", "chef-pick", "gluten-free"], "priceINR": 4200, "image": "Miso-Marinated Black Cod.jpeg" },
-            { "name": "Duck à l'Orange", "category": "Global Cuisine / Chef Specials", "descriptor": "Classic French duck breast, bitter orange sauce, root purée", "tags": ["non-veg"], "priceINR": 4000, "image": "Duck à l'Orange.jpeg" },
-            { "name": "Vegetable Wellington", "category": "Global Cuisine / Chef Specials", "descriptor": "Root vegetable & mushroom duxelles in golden puff pastry", "tags": ["vegetarian", "chef-pick"], "priceINR": 2800, "image": "Vegetable Wellington.jpeg" },
-            { "name": "Seared Tuna Tartare Bite", "category": "Global Cuisine / Chef Specials", "descriptor": "Seared exterior tender-raw centre, yuzu kosho, nori crisp", "tags": ["non-veg"], "priceINR": 2600, "image": "Seared Tuna Tartare Bite.jpeg" },
-            { "name": "Golden Butter Chicken", "category": "Global Cuisine / Chef Specials", "descriptor": "Chef's elevated butter chicken, 24-carat gold leaf garnish", "tags": ["non-veg", "chef-pick", "luxury"], "priceINR": 3400, "image": "Golden Butter Chicken.jpeg" },
-            { "name": "Chocolate Fondant", "category": "Desserts", "descriptor": "Warm Valrhona chocolate fondant, salted caramel, vanilla ice cream", "tags": ["vegetarian", "chef-pick"], "priceINR": 1400, "image": "Chocolate Fondant.jpeg" },
-            { "name": "Tiramisu", "category": "Desserts", "descriptor": "Classic Italian tiramisu, Savoiardi, espresso, mascarpone", "tags": ["vegetarian"], "priceINR": 1200, "image": "Tiramisu.jpeg" },
-            { "name": "Crème Brûlée", "category": "Desserts", "descriptor": "Silky vanilla bean custard, torched sugar crust, berries", "tags": ["vegetarian", "gluten-free"], "priceINR": 1100, "image": "Crème Brûlée.jpeg" },
-            { "name": "Gulab Jamun", "category": "Desserts", "descriptor": "Khoya jamuns, rose syrup, saffron cream, silver leaf", "tags": ["vegetarian", "chef-pick"], "priceINR": 900, "image": "Gulab Jamun.jpeg" },
-            { "name": "Pistachio Kulfi", "category": "Desserts", "descriptor": "Traditional kulfi with pistachio, cardamom, rose water", "tags": ["vegetarian", "gluten-free"], "priceINR": 850, "image": "Pistachio Kulfi.jpeg" },
-            { "name": "Mango Mousse", "category": "Desserts", "descriptor": "Alphonso mango mousse, mascarpone, champagne gelée", "tags": ["vegetarian"], "priceINR": 1000, "image": "Mango Mousse.jpeg" },
-            { "name": "Caramel Panna Cotta", "category": "Desserts", "descriptor": "Italian panna cotta, salted caramel, almond tuile", "tags": ["vegetarian", "gluten-free"], "priceINR": 1100, "image": "Caramel Panna Cotta (2).jpeg" },
-            { "name": "Lemon Sorbet", "category": "Desserts", "descriptor": "Hand-churned lemon sorbet, limoncello syrup, candied zest", "tags": ["vegetarian", "gluten-free"], "priceINR": 800, "image": "Lemon Sorbet in Crystal Bowl.jpeg" },
-            { "name": "Vanilla Bean Ice Cream with Gold Leaf", "category": "Desserts", "descriptor": "Madagascar vanilla ice cream, 24-carat gold leaf adornment", "tags": ["vegetarian", "gluten-free", "luxury"], "priceINR": 1600, "image": "Vanilla Bean Ice Cream with Gold Leaf.jpeg" },
-            { "name": "Raspberry Mille-Feuille", "category": "Desserts", "descriptor": "Crisp puff pastry layers, raspberry cream, fresh berries", "tags": ["vegetarian"], "priceINR": 1300, "image": "Raspberry Mille-Feuille (2).jpeg" },
-            { "name": "Passionfruit Tart", "category": "Desserts", "descriptor": "Tangy passionfruit curd, sweet shortcrust shell, mango coulis", "tags": ["vegetarian"], "priceINR": 1200, "image": "Passionfruit Tart.jpeg" },
-            { "name": "Regal Indian Dessert Platter", "category": "Desserts", "descriptor": "Chef's curated Indian sweets — gulab jamun, kulfi, kheer, halwa", "tags": ["vegetarian", "chef-pick"], "priceINR": 2200, "image": "Regal Indian Dessert Platter.jpeg" },
-            { "name": "Opera Cake Slice", "category": "Desserts", "descriptor": "French opera cake, joconde, coffee buttercream, praline", "tags": ["vegetarian"], "priceINR": 1300, "image": "Opera Cake Slice.jpeg" },
-            { "name": "Mango Panna Cotta", "category": "Desserts", "descriptor": "Alphonso mango panna cotta, coconut gelée, tropical coulis", "tags": ["vegetarian", "gluten-free"], "priceINR": 1100, "image": "Mango Panna Cotta.jpeg" },
-            { "name": "Chocolate Hazelnut Tart", "category": "Desserts", "descriptor": "Dark chocolate ganache, praline base, hazelnut crumble", "tags": ["vegetarian", "chef-pick"], "priceINR": 1400, "image": "Chocolate Hazelnut Tart.jpeg" },
-            { "name": "Chocolate Sphere Dessert", "category": "Desserts", "descriptor": "Dark chocolate sphere, molten centre, warm caramel pour", "tags": ["vegetarian", "chef-pick"], "priceINR": 1500, "image": "Chocolate Sphere Dessert.jpeg" },
-            { "name": "Fine Red Wine Pour", "category": "Beverages & Wine", "descriptor": "Sommelier's rotating selection — Bordeaux, Burgundy, Barossa", "tags": ["chef-pick"], "priceINR": 2400, "image": "Fine Red Wine Pour.jpeg" },
-            { "name": "Classic Champagne Cocktail", "category": "Beverages & Wine", "descriptor": "Brut champagne, Angostura bitters, cognac, sugar cube", "tags": [], "priceINR": 2200, "image": "Classic Champagne Cocktail.jpeg" },
-            { "name": "Old Fashioned Cocktail", "category": "Beverages & Wine", "descriptor": "Bourbon, Demerara syrup, Angostura & orange bitters, orange peel", "tags": ["chef-pick"], "priceINR": 1800, "image": "Old Fashioned Cocktail.jpeg" },
-            { "name": "Signature White Wine", "category": "Beverages & Wine", "descriptor": "Sommelier curated whites — Chablis, Sancerre, White Burgundy", "tags": [], "priceINR": 2000, "image": "Signature White Wine.jpeg" },
-            { "name": "Espresso Macchiato", "category": "Beverages & Wine", "descriptor": "Double-shot espresso, touch of steamed milk microfoam", "tags": ["vegetarian"], "priceINR": 650, "image": "Espresso Macchiato.jpeg" },
-            { "name": "Turmeric Latte", "category": "Beverages & Wine", "descriptor": "Golden milk - turmeric, ginger, coconut milk, honey", "tags": ["vegetarian", "gluten-free"], "priceINR": 550, "image": "Turmeric Latte.jpeg" },
-            { "name": "Sparkling Water with Lemon Twist", "category": "Beverages & Wine", "descriptor": "Premium sparkling water, hand-crystalled lemon twist", "tags": ["vegetarian", "gluten-free"], "priceINR": 400, "image": "Sparkling Water with Lemon Twist.jpeg" },
-            { "name": "Lemon Sorbet in Crystal Bowl", "category": "Beverages & Wine", "descriptor": "Palate cleanser — refreshing lemon sorbet, edible flowers", "tags": ["vegetarian", "gluten-free"], "priceINR": 600, "image": "Lemon Sorbet in Crystal Bowl.jpeg" }
+            { id: "sm1", name: "Smoked Salmon Carpaccio", cat: "starters", catId: "starters", desc: "Paper-thin smoked salmon, caper cream, micro herbs & lemon oil", tags: ["nonveg"], price: 1850, popular: 82, image: "Smoked Salmon Carpaccio.jpeg" },
+            { id: "sm2", name: "Truffle Arancini", cat: "starters", catId: "starters", desc: "Crispy risotto balls, black truffle, aged parmesan, saffron aioli", tags: ["veg", "chef"], price: 1450, popular: 75, image: "Truffle Arancini.jpeg" },
+            { id: "sm3", name: "King Prawn Cocktail", cat: "starters", catId: "starters", desc: "Poached tiger prawns, Marie Rose sauce, avocado cream", tags: ["nonveg"], price: 2100, popular: 68, image: "King Prawn Cocktail.jpeg" },
+            { id: "sm4", name: "Oysters Rockefeller", cat: "starters", catId: "starters", desc: "Fresh oysters baked with spinach, pancetta & Pernod butter", tags: ["nonveg", "chef"], price: 2800, popular: 88, image: "Oysters Rockefeller.jpeg" },
+            { id: "sm5", name: "Foie Gras Terrine", cat: "starters", catId: "starters", desc: "Silky duck liver terrine, toasted brioche, fig chutney", tags: ["nonveg", "chef"], price: 3200, popular: 79, image: "Foie Gras Terrine.jpeg" },
+            { id: "sm6", name: "Tuna Tartare", cat: "starters", catId: "starters", desc: "Hand-cut bluefin tuna, sesame ponzu, avocado, tobiko", tags: ["nonveg"], price: 2400, popular: 72, image: "Tuna Tartare.jpeg" },
+            { id: "sm7", name: "Caviar with Blinis", cat: "starters", catId: "starters", desc: "Beluga caviar, warm blinis, crème fraîche, chives — ultimate luxury", tags: ["nonveg", "chef"], price: 8500, popular: 95, image: "Caviar with Blinis.jpeg" },
+            { id: "sm8", name: "Burrata & Heirloom Tomatoes", cat: "starters", catId: "starters", desc: "Creamy burrata, heirloom tomatoes, aged balsamic, basil oil", tags: ["veg"], price: 1600, popular: 65, image: "Burrata & Heirloom Tomatoes.jpeg" },
+            { id: "sm9", name: "Amuse Bouche Selection", cat: "starters", catId: "starters", desc: "Chef's rotating bite-sized morsels to awaken the palate", tags: ["chef"], price: 1200, popular: 70, image: "Amuse Bouche Selection.jpeg" },
+            { id: "sm10", name: "Paneer Royale Tikka", cat: "starters", catId: "starters", desc: "Saffron-marinated paneer, royal cashew sauce, pomegranate", tags: ["veg", "chef"], price: 1400, popular: 80, image: "Paneer Royale Tikka.jpeg" },
+            { id: "sm11", name: "Chicken Lollipops", cat: "starters", catId: "starters", desc: "Crispy glazed chicken drumettes, sriracha-honey dip", tags: ["nonveg"], price: 1350, popular: 78, image: "Chicken Lollipops.jpeg" },
+            { id: "sm12", name: "Scallop Ceviche", cat: "starters", catId: "starters", desc: "Hand-dived scallops, tiger's milk, jalapeño, sweet corn", tags: ["nonveg"], price: 2200, popular: 71, image: "Scallop Ceviche.jpeg" },
+            { id: "sm13", name: "Grilled Vegetable Terrine", cat: "starters", catId: "starters", desc: "Layered roasted Mediterranean vegetables, herb oil, cress", tags: ["veg", "gf"], price: 1300, popular: 60, image: "Grilled Vegetable Terrine.jpeg" },
+            { id: "sm14", name: "Stuffed Squash Blossoms", cat: "starters", catId: "starters", desc: "Zucchini flowers filled with ricotta & truffle, lemon zest", tags: ["veg"], price: 1500, popular: 58, image: "Stuffed Squash Blossoms.jpeg" },
+            { id: "sm15", name: "Lobster Bisque", cat: "starters", catId: "starters", desc: "Velvety cream of lobster, cognac, sherry, tarragon foam", tags: ["nonveg", "chef"], price: 2600, popular: 86, image: "Lobster Bisque.jpeg" },
+            { id: "sm16", name: "Crab Cakes", cat: "starters", catId: "starters", desc: "Pan-fried Dungeness crab cakes, remoulade, microgreens", tags: ["nonveg"], price: 1900, popular: 73, image: "Crab Cakes.jpeg" },
+            { id: "sm17", name: "Seared Tuna Bite", cat: "starters", catId: "starters", desc: "Seared yellowfin tuna, wasabi crème, pickled ginger", tags: ["nonveg"], price: 2000, popular: 74, image: "Seared Tuna Bite.jpeg" },
+            { id: "st1", name: "Filet Mignon", cat: "steaks", catId: "steaks", desc: "250g centre-cut tenderloin, Béarnaise sauce, truffle jus", tags: ["nonveg", "chef", "gf"], price: 6800, popular: 92, image: "Filet Mignon.jpeg" },
+            { id: "st2", name: "Ribeye Steak 350g", cat: "steaks", catId: "steaks", desc: "Grass-fed ribeye, compound butter, bone-marrow jus", tags: ["nonveg", "gf"], price: 5800, popular: 85, image: "Ribeye Steak 350g.jpeg" },
+            { id: "st3", name: "New York Strip", cat: "steaks", catId: "steaks", desc: "300g NY strip, chimichurri, roasted garlic potato", tags: ["nonveg"], price: 5400, popular: 80, image: "New York Strip.jpeg" },
+            { id: "st4", name: "Wagyu Ribeye", cat: "steaks", catId: "steaks", desc: "A5 Wagyu ribeye, truffle salt, aged red wine reduction", tags: ["nonveg", "chef"], price: 14500, popular: 98, image: "Wagyu Ribeye.jpeg" },
+            { id: "st5", name: "Charcoal-Grilled Tomahawk 1kg", cat: "steaks", catId: "steaks", desc: "Bone-in tomahawk, charcoal-kissed, served tableside with au jus", tags: ["nonveg", "chef"], price: 12000, popular: 96, image: "Charcoal-Grilled Tomahawk 1kg.jpeg" },
+            { id: "st6", name: "Sirloin Steak 300g", cat: "steaks", catId: "steaks", desc: "Aged sirloin, peppercorn sauce, sautéed greens", tags: ["nonveg"], price: 4800, popular: 78, image: "Sirloin Steak 300g.jpeg" },
+            { id: "st7", name: "Porterhouse Steak 400g", cat: "steaks", catId: "steaks", desc: "Dry-aged porterhouse — both tenderloin & strip, seasonal vegetables", tags: ["nonveg"], price: 7200, popular: 83, image: "Porterhouse Steak 400g.jpeg" },
+            { id: "st8", name: "Ribeye Surf & Turf", cat: "steaks", catId: "steaks", desc: "300g ribeye topped with half lobster tail, truffle butter", tags: ["nonveg", "chef"], price: 9800, popular: 90, image: "Ribeye Surf & Turf.jpeg" },
+            { id: "st9", name: "Herb-Crusted Lamb Rack", cat: "steaks", catId: "steaks", desc: "NZ lamb rack, Dijon-herb crust, minted pea purée", tags: ["nonveg", "chef"], price: 7800, popular: 88, image: "Herb-Crusted Lamb Rack.jpeg" },
+            { id: "st10", name: "Beef Wellington", cat: "steaks", catId: "steaks", desc: "Classic beef Wellington, mushroom duxelles, puff pastry, red wine jus", tags: ["nonveg", "chef"], price: 8200, popular: 91, image: "Beef Wellington.jpeg" },
+            { id: "sf1", name: "Grilled Lobster Tail", cat: "seafood", catId: "seafood", desc: "Whole lobster tail, clarified butter, grilled lemon, herbs", tags: ["nonveg", "chef", "gf"], price: 5800, popular: 90, image: "Grilled Lobster Tail.jpeg" },
+            { id: "sf2", name: "Lobster Thermidor", cat: "seafood", catId: "seafood", desc: "Classic half-lobster, cognac cream, gruyère gratin", tags: ["nonveg", "chef"], price: 6400, popular: 87, image: "Lobster Thermidor.jpeg" },
+            { id: "sf3", name: "King Crab Legs", cat: "seafood", catId: "seafood", desc: "Alaskan king crab legs, drawn butter, dill oil", tags: ["nonveg", "gf"], price: 7200, popular: 84, image: "King Crab Legs.jpeg" },
+            { id: "sf4", name: "Black Tiger Prawns", cat: "seafood", catId: "seafood", desc: "Jumbo tiger prawns, garlic-chilli butter, crispy capers", tags: ["nonveg"], price: 3800, popular: 76, image: "Black Tiger Prawns.jpeg" },
+            { id: "sf5", name: "Seared Scallops", cat: "seafood", catId: "seafood", desc: "Diver scallops, pea purée, crispy pancetta, lemon beurre blanc", tags: ["nonveg", "chef"], price: 3200, popular: 82, image: "Seared Scallops.jpeg" },
+            { id: "sf6", name: "Black Cod Miso", cat: "seafood", catId: "seafood", desc: "Sake-miso marinated black cod, pickled daikon, edamame", tags: ["nonveg", "chef"], price: 4200, popular: 85, image: "Black Cod Miso.jpeg" },
+            { id: "sf7", name: "Miso-Glazed Salmon", cat: "seafood", catId: "seafood", desc: "Atlantic salmon fillet, miso glaze, sesame-bok choy, ponzu", tags: ["nonveg"], price: 3800, popular: 80, image: "Miso-Glazed Salmon.jpeg" },
+            { id: "sf8", name: "Chargrilled Octopus", cat: "seafood", catId: "seafood", desc: "Tender chargrilled octopus, chimichurri, smoked paprika oil", tags: ["nonveg"], price: 3200, popular: 72, image: "Chargrilled Octopus.jpeg" },
+            { id: "sf9", name: "Tandoori Prawns", cat: "seafood", catId: "seafood", desc: "Maharaja-size prawns, tandoor-roasted, mint chutney, chaat", tags: ["nonveg"], price: 3200, popular: 81, image: "Tandoori Prawns.jpeg" },
+            { id: "in1", name: "Butter Chicken", cat: "indian", catId: "indian", desc: "Slow-cooked chicken in velvety tomato-butter gravy, fenugreek", tags: ["nonveg", "chef"], price: 1800, popular: 92, image: "Butter Chicken.jpeg" },
+            { id: "in2", name: "Dal Makhani", cat: "indian", catId: "indian", desc: "Black lentils slow-cooked overnight, cream, tempered spices", tags: ["veg", "chef"], price: 1200, popular: 88, image: "Dal Makhani.jpeg" },
+            { id: "in3", name: "Paneer Butter Masala", cat: "indian", catId: "indian", desc: "Cottage cheese cubes, rich tomato-cream masala, kasuri methi", tags: ["veg"], price: 1400, popular: 80, image: "Paneer Butter Masala.jpeg" },
+            { id: "in4", name: "Chicken Tikka Masala", cat: "indian", catId: "indian", desc: "Tandoor-smoked chicken, silky masala gravy, basmati", tags: ["nonveg", "chef"], price: 1900, popular: 89, image: "Chicken Tikka Masala.jpeg" },
+            { id: "in5", name: "Lamb Rogan Josh", cat: "indian", catId: "indian", desc: "Kashmiri-spiced slow-cooked lamb, ratanjot, aromatics", tags: ["nonveg"], price: 2400, popular: 82, image: "Lamb Rogan Josh.jpeg" },
+            { id: "in6", name: "Hyderabadi Gold Biryani", cat: "indian", catId: "indian", desc: "Dum-cooked biryani, saffron rice, caramelised onions, raita", tags: ["nonveg", "chef", "gf"], price: 2200, popular: 90, image: "Hyderabadi Gold Biryani.jpeg" },
+            { id: "in7", name: "Royal Maharaja Thali", cat: "indian", catId: "indian", desc: "Regal thali — 12 accompaniments, breads, sweets, seasonal pickles", tags: ["veg", "chef"], price: 3200, popular: 94, image: "Royal Maharaja Thali.jpeg" },
+            { id: "in8", name: "Goan Prawn Curry", cat: "indian", catId: "indian", desc: "Tiger prawns, coconut-kokum curry, steamed appam", tags: ["nonveg"], price: 2100, popular: 77, image: "Goan Prawn Curry.jpeg" },
+            { id: "in9", name: "Imperial Lobster Curry", cat: "indian", catId: "indian", desc: "Whole lobster, Malabar curry, coconut milk, curry leaf tadka", tags: ["nonveg", "chef"], price: 5600, popular: 88, image: "Imperial Lobster Curry.jpeg" },
+            { id: "in10", name: "Chicken Biriyani", cat: "indian", catId: "indian", desc: "Fragrant basmati, tender chicken, saffron, fried onions", tags: ["nonveg"], price: 1900, popular: 85, image: "Chicken Biriyani.png" },
+            { id: "in11", name: "Mutton Biriyani", cat: "indian", catId: "indian", desc: "Slow-cooked mutton biryani, Dum-pukht style, seeraga samba", tags: ["nonveg", "chef"], price: 2400, popular: 86, image: "Mutton Biriyani.png" },
+            { id: "in12", name: "Vegetable Biriyani", cat: "indian", catId: "indian", desc: "Garden vegetables, aromatic basmati, rose water, nuts", tags: ["veg", "gf"], price: 1600, popular: 74, image: "Vegetable Biriyani.jpeg" },
+            { id: "gl1", name: "Duck Confit with Cherry Reduction", cat: "global", catId: "global", desc: "Slow-cured duck leg, cherry-port reduction, lentils du Puy", tags: ["nonveg", "chef"], price: 4800, popular: 82, image: "Duck Confit with Cherry Reduction.jpeg" },
+            { id: "gl2", name: "Lobster Ravioli in Saffron Sauce", cat: "global", catId: "global", desc: "Hand-made pasta, lobster filling, saffron-cream velouté", tags: ["nonveg", "chef"], price: 4200, popular: 85, image: "Lobster Ravioli in Saffron Sauce.jpeg" },
+            { id: "gl3", name: "Truffle Risotto", cat: "global", catId: "global", desc: "Carnaroli risotto, black truffle shavings, Fontina cream", tags: ["veg", "chef"], price: 3200, popular: 88, image: "Truffle Risotto.jpeg" },
+            { id: "gl4", name: "Beef Bourguignon", cat: "global", catId: "global", desc: "Burgundy-braised beef, pearl onions, button mushrooms", tags: ["nonveg"], price: 4400, popular: 78, image: "Beef Bourguignon.jpeg" },
+            { id: "gl5", name: "Vegetable Wellington", cat: "global", catId: "global", desc: "Root vegetable & mushroom duxelles in golden puff pastry", tags: ["veg", "chef"], price: 2800, popular: 72, image: "Vegetable Wellington.jpeg" },
+            { id: "gl6", name: "Golden Butter Chicken", cat: "global", catId: "global", desc: "Chef's elevated butter chicken, 24-carat gold leaf garnish", tags: ["nonveg", "chef"], price: 3400, popular: 90, image: "Golden Butter Chicken.jpeg" },
+            { id: "de1", name: "Chocolate Fondant", cat: "desserts", catId: "desserts", desc: "Warm Valrhona chocolate fondant, salted caramel, vanilla ice cream", tags: ["veg", "chef"], price: 1400, popular: 91, image: "Chocolate Fondant.jpeg" },
+            { id: "de2", name: "Tiramisu", cat: "desserts", catId: "desserts", desc: "Classic Italian tiramisu, Savoiardi, espresso, mascarpone", tags: ["veg"], price: 1200, popular: 86, image: "Tiramisu.jpeg" },
+            { id: "de3", name: "Crème Brûlée", cat: "desserts", catId: "desserts", desc: "Silky vanilla bean custard, torched sugar crust, berries", tags: ["veg", "gf"], price: 1100, popular: 84, image: "Crème Brûlée.jpeg" },
+            { id: "de4", name: "Gulab Jamun", cat: "desserts", catId: "desserts", desc: "Khoya jamuns, rose syrup, saffron cream, silver leaf", tags: ["veg", "chef"], price: 900, popular: 89, image: "Gulab Jamun.jpeg" },
+            { id: "de5", name: "Pistachio Kulfi", cat: "desserts", catId: "desserts", desc: "Traditional kulfi with pistachio, cardamom, rose water", tags: ["veg", "gf"], price: 850, popular: 82, image: "Pistachio Kulfi.jpeg" },
+            { id: "de6", name: "Chocolate Sphere Dessert", cat: "desserts", catId: "desserts", desc: "Dark chocolate sphere, molten centre, warm caramel pour", tags: ["veg", "chef"], price: 1500, popular: 93, image: "Chocolate Sphere Dessert.jpeg" },
+            { id: "de7", name: "Regal Indian Dessert Platter", cat: "desserts", catId: "desserts", desc: "Chef's curated Indian sweets — gulab jamun, kulfi, kheer, halwa", tags: ["veg", "chef"], price: 2200, popular: 87, image: "Regal Indian Dessert Platter.jpeg" },
+            { id: "bv1", name: "Fine Red Wine Pour", cat: "beverages", catId: "beverages", desc: "Sommelier's rotating selection — Bordeaux, Burgundy, Barossa", tags: ["chef"], price: 2400, popular: 80, image: "Fine Red Wine Pour.jpeg" },
+            { id: "bv2", name: "Classic Champagne Cocktail", cat: "beverages", catId: "beverages", desc: "Brut champagne, Angostura bitters, cognac, sugar cube", tags: [], price: 2200, popular: 75, image: "Classic Champagne Cocktail.jpeg" },
+            { id: "bv3", name: "Old Fashioned Cocktail", cat: "beverages", catId: "beverages", desc: "Bourbon, Demerara syrup, Angostura & orange bitters, orange peel", tags: ["chef"], price: 1800, popular: 78, image: "Old Fashioned Cocktail.jpeg" },
+            { id: "bv4", name: "Espresso Macchiato", cat: "beverages", catId: "beverages", desc: "Double-shot espresso, touch of steamed milk microfoam", tags: ["veg"], price: 650, popular: 72, image: "Espresso Macchiato.jpeg" },
+            { id: "bv5", name: "Turmeric Latte", cat: "beverages", catId: "beverages", desc: "Golden milk — turmeric, ginger, coconut milk, honey", tags: ["veg", "gf"], price: 550, popular: 68, image: "Turmeric Latte.jpeg" },
+            { id: "bv6", name: "Sparkling Water with Lemon Twist", cat: "beverages", catId: "beverages", desc: "Premium sparkling water, hand-crystalled lemon twist", tags: ["veg", "gf"], price: 400, popular: 60, image: "Sparkling Water with Lemon Twist.jpeg" }
         ];
 
-        // ─── RENDER ───────────────────────────────────────────────────
         const CATS = {
-            'Starters / Appetizers': { id: 'starters', icon: '🥗' },
-            'Signature Steaks': { id: 'steaks', icon: '🥩' },
-            'Fresh Seafood': { id: 'seafood', icon: '🦞' },
-            'Indian Classics': { id: 'indian', icon: '🍛' },
-            'Global Cuisine / Chef Specials': { id: 'global', icon: '🌍' },
-            'Desserts': { id: 'desserts', icon: '🍮' },
-            'Beverages & Wine': { id: 'beverages', icon: '🍷' }
+            starters: { label: "Starters / Appetizers", icon: "🥗" },
+            steaks: { label: "Signature Steaks", icon: "🥩" },
+            seafood: { label: "Fresh Seafood", icon: "🦞" },
+            indian: { label: "Indian Classics", icon: "🍛" },
+            global: { label: "Global Cuisine & Chef Specials", icon: "🌍" },
+            desserts: { label: "Desserts", icon: "🍮" },
+            beverages: { label: "Beverages & Wine", icon: "🍷" }
         };
-        const CAT_ORDER = Object.keys(CATS);
+        const CAT_ORDER = ["starters", "steaks", "seafood", "indian", "global", "desserts", "beverages"];
 
-        function price(n) { return n ? '₹' + Number(n).toLocaleString('en-IN') : ''; }
-        function escHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
-        function tagsHTML(tags) {
-            const t = tags || [];
-            return [
-                t.includes('vegetarian') ? '<span class="mic-tag mt-veg">Veg</span>' : '',
-                t.includes('non-veg') ? '<span class="mic-tag mt-nv">Non-Veg</span>' : '',
-                t.includes('gluten-free') ? '<span class="mic-tag mt-gf">GF</span>' : '',
-                t.includes('chef-pick') ? '<span class="mic-tag mt-c">★ Chef</span>' : ''
-            ].join('');
+        // State
+        let currentMode = "visual";
+        let activeFilters = { cat: "all", diet: null, special: null };
+        let savedItems = new Set(JSON.parse(localStorage.getItem("tj_saved") || "[]"));
+
+        function price(n) { return n ? "₹" + Number(n).toLocaleString("en-IN") : "" }
+        function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;") }
+        function saveToStorage() { localStorage.setItem("tj_saved", JSON.stringify([...savedItems])) }
+        function showToast(msg) { const t = document.getElementById("menu-toast"); t.textContent = msg; t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 2200) }
+
+        function addToCart(id) {
+            const item = MENU_DATA.find(d => d.id === id);
+            if (item) showToast("✔ " + item.name + " added to order");
         }
 
-        (function buildMenu() {
-            const grouped = {};
-            MENU_DATA.forEach(item => {
-                if (!grouped[item.category]) grouped[item.category] = [];
-                grouped[item.category].push(item);
-            });
+        function toggleSave(id, btn) {
+            if (savedItems.has(id)) { savedItems.delete(id); btn.classList.remove("saved"); btn.setAttribute("aria-label", "Save " + id); showToast("🔖 Removed from saved") }
+            else { savedItems.add(id); btn.classList.add("saved"); showToast("🔖 Saved!") }
+            saveToStorage();
+        }
 
-            const container = document.getElementById('menu-container');
-            if (!container) return;
+        async function doShare(item) {
+            const text = `${item.name} — ${item.desc} | TajHotel Delhi | ${price(item.price)}`;
+            if (navigator.share) { try { await navigator.share({ title: item.name, text, url: location.href }); return } catch (_) { } }
+            try { await navigator.clipboard.writeText(text); showToast("📋 Copied to clipboard!") } catch (_) { showToast("Share: " + text.substring(0, 50)) }
+        }
 
-            CAT_ORDER.forEach(cat => {
-                const items = grouped[cat]; if (!items || !items.length) return;
-                const meta = CATS[cat];
-                const sec = document.createElement('section');
-                sec.className = 'menu-section';
-                sec.id = meta.id;
-                sec.setAttribute('aria-labelledby', 'cat-h-' + meta.id);
+        function buildVisualCard(item) {
+            const isVeg = item.tags.includes("veg");
+            const isNV = item.tags.includes("nonveg");
+            const isSaved = savedItems.has(item.id);
+            const isPopular = item.popular >= 75;
+            const isChef = item.tags.includes("chef");
+            const isGF = item.tags.includes("gf");
 
-                sec.innerHTML = `
-      <div class="menu-section-heading">
-        <span class="cat-icon">${meta.icon}</span>
-        <span id="cat-h-${meta.id}">${escHtml(cat)}</span>
+            const vegHtml = isVeg
+                ? `<span class="veg-icon" aria-label="Vegetarian"></span>`
+                : isNV
+                    ? `<span class="veg-icon nonveg" aria-label="Non-vegetarian"></span>`
+                    : "";
+
+            const popularHtml = isPopular
+                ? `<div class="pop-row"><span class="popular-label">Highly reordered</span><div class="pop-bar"><div class="pop-bar-fill" style="width:${item.popular}%"></div></div></div>`
+                : "";
+
+            const tagsHtml = [
+                isChef ? `<span class="mic-tag mt-c">⭐ Chef</span>` : "",
+                isGF ? `<span class="mic-tag mt-gf">GF</span>` : ""
+            ].join("");
+
+            const imgHtml = item.image
+                ? `<img src="${esc(item.image)}" alt="${esc(item.name)}" loading="lazy" decoding="async" width="150" height="150" style="width:100%;height:100%;object-fit:cover" />`
+                : `<div class="img-placeholder">🍽️</div>`;
+
+            const art = document.createElement("article");
+            art.className = "menu-card reveal";
+            art.dataset.id = item.id;
+            art.dataset.cat = item.catId;
+            art.dataset.diet = item.tags.includes("veg") ? "veg" : item.tags.includes("nonveg") ? "nonveg" : "";
+            art.dataset.chef = item.tags.includes("chef") ? "1" : "";
+            art.dataset.name = item.name.toLowerCase();
+            art.setAttribute("aria-label", item.name + (isNV ? " non-veg" : isVeg ? " veg" : ""));
+
+            art.innerHTML = `
+      <div class="menu-text">
+        <div class="meta-row">${vegHtml}<h3 class="dish-title" title="${esc(item.name)}">${esc(item.name)}</h3></div>
+        ${popularHtml}
+        <div class="price-row"><span class="price-main">${price(item.price)}</span></div>
+        <p class="desc">${esc(item.desc)}</p>
+        ${tagsHtml ? `<div class="mic-tags-row">${tagsHtml}</div>` : ""}
+        <div class="action-row">
+          <button class="btn-save${isSaved ? " saved" : ""}" aria-label="Save ${esc(item.name)}" data-id="${item.id}">🔖</button>
+          <button class="btn-share" aria-label="Share ${esc(item.name)}" data-id="${item.id}">↗</button>
+        </div>
       </div>
-      <div class="menu-grid" role="list">
-        ${items.map((item, i) => `
-          <article class="menu-item-card reveal" role="listitem"
-            data-name="${escHtml(item.name.toLowerCase())}"
-            data-cat="${escHtml(meta.id)}"
-            data-delay="${(i % 8) * 60}">
-            <div class="mic-img">
-              ${item.image
-                        ? `<img src="${escHtml(item.image)}" alt="${escHtml(item.name)}" loading="lazy" decoding="async"/>`
-                        : `<div class="mic-placeholder">🍽️</div>`}
-            </div>
-            <div class="mic-body">
-              <div class="mic-name">${escHtml(item.name)}</div>
-              <div class="mic-desc">${escHtml(item.descriptor || '')}</div>
-              <div class="mic-footer">
-                <span class="mic-price">${price(item.priceINR)}</span>
-                <span class="mic-tags">${tagsHTML(item.tags)}</span>
-              </div>
-            </div>
-          </article>`).join('')}
+      <div class="menu-image">
+        ${imgHtml}
       </div>`;
+
+            // Wire up buttons
+            art.querySelector(".btn-save").addEventListener("click", function () { toggleSave(item.id, this) });
+            art.querySelector(".btn-share").addEventListener("click", () => doShare(item));
+            return art;
+        }
+
+        function renderVisual(items) {
+            const container = document.getElementById("menu-container");
+            container.innerHTML = "";
+            const grouped = {};
+            items.forEach(it => { if (!grouped[it.catId]) grouped[it.catId] = []; grouped[it.catId].push(it) });
+            let totalCards = 0;
+            CAT_ORDER.forEach(catId => {
+                const catItems = grouped[catId];
+                if (!catItems || !catItems.length) return;
+                const meta = CATS[catId];
+                const sec = document.createElement("section");
+                sec.className = "menu-section";
+                sec.id = catId;
+                const hd = document.createElement("div");
+                hd.className = "menu-section-heading";
+                hd.innerHTML = `<span class="cat-icon">${meta.icon}</span><span>${esc(meta.label)}</span>`;
+                sec.appendChild(hd);
+                catItems.forEach((item, i) => {
+                    const card = buildVisualCard(item);
+                    card.style.transitionDelay = `${(i % 6) * 50}ms`;
+                    sec.appendChild(card);
+                    totalCards++;
+                });
                 container.appendChild(sec);
             });
-
             // IntersectionObserver reveal
-            if ('IntersectionObserver' in window) {
+            if ("IntersectionObserver" in window) {
                 const io = new IntersectionObserver(entries => {
                     entries.forEach(e => {
                         if (e.isIntersecting) {
-                            const d = +(e.target.dataset.delay || 0);
-                            setTimeout(() => e.target.classList.add('in'), d);
+                            const d = +(e.target.style.transitionDelay || "0");
+                            setTimeout(() => e.target.classList.add("in"), d || 0);
                             io.unobserve(e.target);
                         }
                     });
-                }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
-                document.querySelectorAll('.menu-item-card.reveal').forEach(el => io.observe(el));
+                }, { threshold: 0.06, rootMargin: "0px 0px -30px 0px" });
+                container.querySelectorAll(".menu-card.reveal").forEach(el => io.observe(el));
             } else {
-                document.querySelectorAll('.menu-item-card').forEach(el => el.classList.add('in'));
+                container.querySelectorAll(".menu-card").forEach(el => el.classList.add("in"));
             }
-        })();
+            return totalCards;
+        }
+
+        function renderFast(items) {
+            const container = document.getElementById("fast-menu-container");
+            container.innerHTML = "";
+            const grouped = {};
+            items.forEach(it => { if (!grouped[it.catId]) grouped[it.catId] = []; grouped[it.catId].push(it) });
+            let total = 0;
+            CAT_ORDER.forEach(catId => {
+                const catItems = grouped[catId];
+                if (!catItems || !catItems.length) return;
+                const meta = CATS[catId];
+                const sec = document.createElement("div");
+                sec.className = "fm-section";
+                const h = document.createElement("div");
+                h.className = "fm-heading";
+                h.innerHTML = `${meta.icon} ${esc(meta.label)}`;
+                sec.appendChild(h);
+                const list = document.createElement("div");
+                list.className = "fm-list";
+                catItems.forEach(item => {
+                    const row = document.createElement("div");
+                    row.className = "fm-item";
+                    row.dataset.cat = item.catId;
+                    row.dataset.diet = item.tags.includes("veg") ? "veg" : item.tags.includes("nonveg") ? "nonveg" : "";
+                    row.dataset.chef = item.tags.includes("chef") ? "1" : "";
+                    row.dataset.name = item.name.toLowerCase();
+                    row.innerHTML = `<div class="fm-left"><div class="fm-name">${esc(item.name)}</div><div class="fm-desc">${esc(item.desc)}</div></div><div class="fm-price">${price(item.price)}</div>`;
+                    list.appendChild(row);
+                    total++;
+                });
+                sec.appendChild(list);
+                container.appendChild(sec);
+            });
+            return total;
+        }
+
+        function getFiltered() {
+            const q = document.getElementById("menu-search").value.toLowerCase().trim();
+            const { cat, diet, special } = activeFilters;
+            return MENU_DATA.filter(item => {
+                if (cat && cat !== "all" && item.catId !== cat) return false;
+                if (diet === "veg" && !item.tags.includes("veg")) return false;
+                if (diet === "nonveg" && !item.tags.includes("nonveg")) return false;
+                if (special === "chef" && !item.tags.includes("chef")) return false;
+                if (q && !item.name.toLowerCase().includes(q) && !item.desc.toLowerCase().includes(q)) return false;
+                return true;
+            });
+        }
+
+        function render() {
+            const items = getFiltered();
+            const noRes = document.getElementById("menu-no-results");
+            const vc = document.getElementById("menu-container");
+            const fc = document.getElementById("fast-menu-container");
+            let count = 0;
+            if (currentMode === "visual") {
+                vc.style.display = "block"; fc.style.display = "none";
+                count = renderVisual(items);
+            } else {
+                vc.style.display = "none"; fc.style.display = "block";
+                count = renderFast(items);
+            }
+            noRes.style.display = count === 0 ? "block" : "none";
+        }
+
+        // ── Init controls ──
+        document.addEventListener("DOMContentLoaded", () => {
+            render();
+
+            // Mode buttons
+            document.getElementById("btn-visual").addEventListener("click", function () {
+                currentMode = "visual";
+                this.classList.add("active"); this.setAttribute("aria-pressed", "true");
+                document.getElementById("btn-fast").classList.remove("active"); document.getElementById("btn-fast").setAttribute("aria-pressed", "false");
+                render();
+            });
+            document.getElementById("btn-fast").addEventListener("click", function () {
+                currentMode = "fast";
+                this.classList.add("active"); this.setAttribute("aria-pressed", "true");
+                document.getElementById("btn-visual").classList.remove("active"); document.getElementById("btn-visual").setAttribute("aria-pressed", "false");
+                render();
+            });
+
+            // Category + filter pills
+            document.querySelectorAll(".cat-btn").forEach(btn => {
+                btn.addEventListener("click", function () {
+                    const cat = this.dataset.cat;
+                    const filter = this.dataset.filter;
+                    if (cat) {
+                        document.querySelectorAll(".cat-btn[data-cat]").forEach(b => b.classList.remove("active"));
+                        this.classList.add("active");
+                        activeFilters.cat = cat;
+                    } else if (filter === "veg") {
+                        this.classList.toggle("active");
+                        activeFilters.diet = this.classList.contains("active") ? "veg" : null;
+                        if (activeFilters.diet === "veg") document.querySelector(".pill-nonveg")?.classList.remove("active");
+                    } else if (filter === "nonveg") {
+                        this.classList.toggle("active");
+                        activeFilters.diet = this.classList.contains("active") ? "nonveg" : null;
+                        if (activeFilters.diet === "nonveg") document.querySelector(".pill-veg")?.classList.remove("active");
+                    } else if (filter === "chef") {
+                        this.classList.toggle("active");
+                        activeFilters.special = this.classList.contains("active") ? "chef" : null;
+                    }
+                    render();
+                });
+            });
+
+            // Search
+            let sTimeout;
+            document.getElementById("menu-search").addEventListener("input", () => {
+                clearTimeout(sTimeout);
+                sTimeout = setTimeout(render, 220);
+            });
+        });
     </script>
 
     <script src="main.js" defer></script>

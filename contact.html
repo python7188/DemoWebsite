@@ -35,15 +35,21 @@
                         <li><a href="contact.html" aria-current="page">Contact</a></li>
                     </ul>
                 </nav>
-                <button class="hamburger" aria-label="Open navigation"
-                    aria-expanded="false"><span></span><span></span><span></span></button>
+                <!-- hamburger removed — bottom nav used -->
             </div>
         </div>
     </header>
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
-        <button class="mobile-nav-close" aria-label="Close">✕</button>
-        <a href="index.html">Home</a><a href="menu.html">Menu</a><a href="about.html">About</a><a
-            href="contact.html">Contact</a>
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+        <div class="bottom-nav-inner">
+            <a href="index.html" class="bn-item" aria-label="Home"><span class="bn-icon">🏠</span><span
+                    class="bn-label">Home</span></a>
+            <a href="menu.html" class="bn-item" aria-label="Menu"><span class="bn-icon">🍽️</span><span
+                    class="bn-label">Menu</span></a>
+            <a href="about.html" class="bn-item" aria-label="Experience"><span class="bn-icon">✨</span><span
+                    class="bn-label">Experience</span></a>
+            <a href="contact.html" class="bn-item active" aria-current="page" aria-label="Contact"><span
+                    class="bn-icon">📞</span><span class="bn-label">Contact</span></a>
+        </div>
     </nav>
 
     <main id="main">
@@ -209,7 +215,7 @@
                         <!-- MAP -->
                         <div class="map-wrap reveal mt-3" data-delay="160">
                             <img src="Interior.jpeg" alt="TajHotel — Connaught Place, New Delhi" loading="lazy"
-                                decoding="async" />
+                                decoding="async" width="800" height="600" />
                             <div class="map-overlay">
                                 <a href="https://maps.google.com/?q=Connaught+Place,New+Delhi" target="_blank"
                                     rel="noopener noreferrer">📍 Open in Google Maps</a>
@@ -325,12 +331,89 @@
     <div id="lightbox" role="dialog" aria-modal="true" hidden>
         <button id="lb-close" aria-label="Close">✕</button>
         <button id="lb-prev" class="lb-arrow" aria-label="Previous">‹</button>
-        <img id="lb-img" src="" alt="" />
+        <img id="lb-img" src="" alt="" loading="lazy" decoding="async" />
         <button id="lb-next" class="lb-arrow" aria-label="Next">›</button>
         <div id="lb-caption" aria-live="polite"></div>
     </div>
 
     <script src="main.js" defer></script>
+    <style>
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 950;
+            padding: .5rem 1rem calc(.5rem + env(safe-area-inset-bottom));
+            background: rgba(11, 11, 11, .82);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border-top: 1px solid rgba(212, 175, 55, .15);
+            border-radius: 20px 20px 0 0
+        }
+
+        @media(max-width:767px) {
+            .bottom-nav {
+                display: flex
+            }
+
+            .hamburger {
+                display: none !important
+            }
+
+            body {
+                padding-bottom: 72px
+            }
+        }
+
+        .bottom-nav-inner {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto
+        }
+
+        .bn-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            text-decoration: none;
+            padding: .3rem .75rem;
+            border-radius: 12px;
+            transition: all .25s;
+            color: rgba(255, 255, 255, .5);
+            min-width: 56px
+        }
+
+        .bn-item .bn-icon {
+            font-size: 1.2rem;
+            line-height: 1;
+            transition: transform .25s
+        }
+
+        .bn-item .bn-label {
+            font-size: .6rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .bn-item.active {
+            color: var(--gold)
+        }
+
+        .bn-item.active .bn-icon {
+            transform: translateY(-2px)
+        }
+
+        .bn-item:hover {
+            color: var(--gold)
+        }
+    </style>
 </body>
 
 </html>

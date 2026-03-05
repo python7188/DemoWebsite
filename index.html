@@ -39,21 +39,23 @@
           </ul>
         </nav>
         <button class="btn btn-gold btn-sm nav-cta" data-reserve aria-haspopup="dialog">Reserve Table</button>
-        <button class="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
-          <span></span><span></span><span></span>
-        </button>
+        <!-- hamburger removed — bottom mobile nav used instead -->
       </div>
     </div>
   </header>
 
-  <!-- MOBILE NAV -->
-  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
-    <button class="mobile-nav-close" aria-label="Close navigation">✕</button>
-    <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <button class="btn btn-gold" data-reserve>Reserve Table</button>
+  <!-- BOTTOM MOBILE NAV -->
+  <nav class="bottom-nav" aria-label="Mobile navigation">
+    <div class="bottom-nav-inner">
+      <a href="index.html" class="bn-item active" aria-current="page" aria-label="Home"><span
+          class="bn-icon">🏠</span><span class="bn-label">Home</span></a>
+      <a href="menu.html" class="bn-item" aria-label="Menu"><span class="bn-icon">🍽️</span><span
+          class="bn-label">Menu</span></a>
+      <a href="about.html" class="bn-item" aria-label="Experience"><span class="bn-icon">✨</span><span
+          class="bn-label">Experience</span></a>
+      <a href="contact.html" class="bn-item" aria-label="Contact"><span class="bn-icon">📞</span><span
+          class="bn-label">Contact</span></a>
+    </div>
   </nav>
 
   <main id="main">
@@ -61,7 +63,7 @@
     <!-- ── HERO ── -->
     <section class="hero" aria-label="Welcome to TajHotel">
       <div class="hero-parallax">
-        <img src="Interior.jpeg" alt="" fetchpriority="high" decoding="async" />
+        <img src="Interior.jpeg" alt="" fetchpriority="high" decoding="async" width="1600" height="900" />
       </div>
       <div class="hero-overlay"></div>
       <div class="container">
@@ -84,129 +86,88 @@
       </div>
     </section>
 
-    <!-- ── SIGNATURE DISHES ── -->
+    <!-- ── SIGNATURE DISH STORY ── -->
     <section aria-labelledby="sig-heading" style="background:var(--charcoal)">
       <div class="container">
         <div class="section-header center">
-          <span class="section-eyebrow">Chef's Selection</span>
-          <h2 id="sig-heading" class="section-title">Signature <span class="gold">Dishes</span></h2>
+          <span class="section-eyebrow">Dish Stories</span>
+          <h2 id="sig-heading" class="section-title">The Story Behind Our <span class="gold">Signatures</span></h2>
           <div class="gold-line center"></div>
-          <p>Each creation is a canvas — where classical technique meets the finest seasonal ingredients.</p>
         </div>
-        <div class="dishes-grid">
+        <div class="dish-story-grid">
 
-          <article class="dish-card reveal" data-delay="0">
-            <div class="dish-card-img"><img src="Wagyu Ribeye.jpeg" alt="Wagyu Ribeye" loading="lazy"
-                decoding="async" /></div>
-            <div class="dish-card-body">
-              <div class="dish-card-name">A5 Wagyu Ribeye</div>
-              <div class="dish-card-desc">Japanese A5 Wagyu, truffle salt, aged red wine reduction, seasonal sides.
+          <!-- STORY 1: Butter Chicken -->
+          <article class="story-card reveal" data-delay="0">
+            <div class="story-img">
+              <img src="Butter Chicken.jpeg" alt="Butter Chicken — TajHotel" loading="lazy" decoding="async" width="600"
+                height="500" />
+            </div>
+            <div class="story-text">
+              <span class="section-eyebrow">Indian Classic</span>
+              <h3 class="story-title">The Story Behind <span class="gold">Butter Chicken</span></h3>
+              <div class="gold-line"></div>
+              <p class="story-para">This legendary dish was born in the kitchens of Delhi in the 1950s, when chefs
+                experimented with leftover tandoori chicken and a rich tomato butter gravy. Today at TajHotel, we honour
+                that origin with slow-cooked chicken, house-churned cultured butter, and a velvety gravy simmered for
+                six hours — making it one of the most celebrated dishes in Indian cuisine.</p>
+              <div class="story-meta">
+                <span class="story-price">₹1,800</span>
+                <span class="story-stars" aria-label="4.9 out of 5">★★★★★</span>
+                <span class="story-rating-val">4.9</span>
               </div>
-              <div class="dish-card-footer">
-                <span class="dish-card-price">₹14,500</span>
-                <span class="tag-chef">⭐ Chef's Pick</span>
-              </div>
+
             </div>
           </article>
 
-          <article class="dish-card reveal" data-delay="60">
-            <div class="dish-card-img"><img src="Grilled Lobster Tail.jpeg" alt="Grilled Lobster Tail" loading="lazy"
-                decoding="async" /></div>
-            <div class="dish-card-body">
-              <div class="dish-card-name">Grilled Lobster Tail</div>
-              <div class="dish-card-desc">Whole lobster tail, clarified butter, grilled lemon, fresh herbs.</div>
-              <div class="dish-card-footer">
-                <span class="dish-card-price">₹5,800</span>
-                <span class="tag-chef">⭐ Chef's Pick</span>
+          <!-- STORY 2: Wagyu -->
+          <article class="story-card story-card-flip reveal" data-delay="80">
+            <div class="story-img">
+              <img src="Wagyu Ribeye.jpeg" alt="Wagyu Ribeye — TajHotel" loading="lazy" decoding="async" width="600"
+                height="500" />
+            </div>
+            <div class="story-text">
+              <span class="section-eyebrow">Signature Steak</span>
+              <h3 class="story-title">The <span class="gold">A5 Wagyu</span> Story</h3>
+              <div class="gold-line"></div>
+              <p class="story-para">Born on certified Japanese ranches at the foot of the Japanese Alps, our A5 Wagyu is
+                flown in weekly. Its extraordinary marbling — a consequence of a meticulous 30-month raising process —
+                delivers a butter-soft texture that dissolves on the palate. Seasoned only with truffle salt and served
+                with aged red wine reduction, it is the pinnacle of our steak programme.</p>
+              <div class="story-meta">
+                <span class="story-price">₹14,500</span>
+                <span class="story-stars" aria-label="5 out of 5">★★★★★</span>
+                <span class="story-rating-val">5.0</span>
               </div>
+
             </div>
           </article>
 
-          <article class="dish-card reveal" data-delay="120">
-            <div class="dish-card-img"><img src="Royal Maharaja Thali.jpeg" alt="Royal Maharaja Thali" loading="lazy"
-                decoding="async" /></div>
-            <div class="dish-card-body">
-              <div class="dish-card-name">Royal Maharaja Thali</div>
-              <div class="dish-card-desc">Regal 12-accompaniment thali — breads, curries, sweets, seasonal pickles.
-              </div>
-              <div class="dish-card-footer">
-                <span class="dish-card-price">₹3,200</span>
-                <span class="tag-chef">⭐ Chef's Pick</span>
-              </div>
+          <!-- STORY 3: Hyderabadi Biryani -->
+          <article class="story-card reveal" data-delay="160">
+            <div class="story-img">
+              <img src="Hyderabadi Gold Biryani.jpeg" alt="Hyderabadi Gold Biryani" loading="lazy" decoding="async"
+                width="600" height="500" />
             </div>
-          </article>
+            <div class="story-text">
+              <span class="section-eyebrow">Royal Heritage</span>
+              <h3 class="story-title"><span class="gold">Hyderabadi Gold</span> Biryani</h3>
+              <div class="gold-line"></div>
+              <p class="story-para">A dish that carries the legacy of the Nizams of Hyderabad — the royal dum-pukht
+                method seals fragrant saffron-laced basmati rice and tender meat together in a sealed vessel, allowing
+                the steam and spices to meld into one extraordinary experience. At TajHotel, we finish each serving with
+                a whisper of gold leaf — a tribute to its regal origin.</p>
+              <div class="story-meta">
+                <span class="story-price">₹2,200</span>
+                <span class="story-stars" aria-label="4.8 out of 5">★★★★★</span>
+                <span class="story-rating-val">4.8</span>
+              </div>
 
-          <article class="dish-card reveal" data-delay="180">
-            <div class="dish-card-img"><img src="Beef Wellington.jpeg" alt="Beef Wellington" loading="lazy"
-                decoding="async" /></div>
-            <div class="dish-card-body">
-              <div class="dish-card-name">Beef Wellington</div>
-              <div class="dish-card-desc">Classic beef Wellington, mushroom duxelles, golden puff pastry, red wine jus.
-              </div>
-              <div class="dish-card-footer">
-                <span class="dish-card-price">₹8,200</span>
-                <span class="tag-chef">⭐ Chef's Pick</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="dish-card reveal" data-delay="240">
-            <div class="dish-card-img"><img src="Caviar with Blinis.jpeg" alt="Caviar with Blinis" loading="lazy"
-                decoding="async" /></div>
-            <div class="dish-card-body">
-              <div class="dish-card-name">Beluga Caviar & Blinis</div>
-              <div class="dish-card-desc">Beluga caviar, warm blinis, crème fraîche, chives — the ultimate luxury
-                starter.</div>
-              <div class="dish-card-footer">
-                <span class="dish-card-price">₹8,500</span>
-                <span class="tag-chef">✦ Luxury</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="dish-card reveal" data-delay="300">
-            <div class="dish-card-img"><img src="Hyderabadi Gold Biryani.jpeg" alt="Hyderabadi Gold Biryani"
-                loading="lazy" decoding="async" /></div>
-            <div class="dish-card-body">
-              <div class="dish-card-name">Hyderabadi Gold Biryani</div>
-              <div class="dish-card-desc">Dum-cooked saffron biryani, caramelised onions, raita, mint salad.</div>
-              <div class="dish-card-footer">
-                <span class="dish-card-price">₹2,200</span>
-                <span class="tag-chef">⭐ Chef's Pick</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="dish-card reveal" data-delay="360">
-            <div class="dish-card-img"><img src="Chocolate Fondant.jpeg" alt="Chocolate Fondant" loading="lazy"
-                decoding="async" /></div>
-            <div class="dish-card-body">
-              <div class="dish-card-name">Valrhona Chocolate Fondant</div>
-              <div class="dish-card-desc">Warm dark chocolate fondant, salted caramel, Madagascar vanilla ice cream.
-              </div>
-              <div class="dish-card-footer">
-                <span class="dish-card-price">₹1,400</span>
-                <span class="tag-chef">⭐ Chef's Pick</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="dish-card reveal" data-delay="420">
-            <div class="dish-card-img"><img src="Truffle Risotto.jpeg" alt="Truffle Risotto" loading="lazy"
-                decoding="async" /></div>
-            <div class="dish-card-body">
-              <div class="dish-card-name">Black Truffle Risotto</div>
-              <div class="dish-card-desc">Carnaroli risotto, Périgord black truffle, aged parmesan foam.</div>
-              <div class="dish-card-footer">
-                <span class="dish-card-price">₹3,200</span>
-                <span class="tag-chef">⭐ Chef's Pick</span>
-              </div>
             </div>
           </article>
 
         </div>
         <div class="text-center mt-4">
-          <a href="menu.html" class="btn btn-outline">View Full Menu →</a>
+          <a href="menu.html" class="btn btn-outline">Explore Full Menu →</a>
         </div>
       </div>
     </section>
@@ -218,14 +179,15 @@
           <div class="ingredients-imgs reveal">
             <div class="ing-img">
               <img src="Organic Vegetables.jpeg" alt="Fresh organic vegetables sourced for TajHotel" loading="lazy"
-                decoding="async" />
+                decoding="async" width="800" height="500" />
             </div>
             <div class="ing-img">
-              <img src="Organic veggies.jpeg" alt="Seasonal organic produce" loading="lazy" decoding="async" />
+              <img src="Organic veggies.jpeg" alt="Seasonal organic produce" loading="lazy" decoding="async" width="400"
+                height="400" />
             </div>
             <div class="ing-img">
               <img src="Grilled Vegetable Terrine.jpeg" alt="Farm-fresh vegetable preparation" loading="lazy"
-                decoding="async" />
+                decoding="async" width="400" height="400" />
             </div>
           </div>
           <div class="reveal" data-delay="120">
@@ -264,39 +226,43 @@
 
           <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Interior.jpeg"
             data-lb-alt="Main dining hall" data-lb-caption="Main Dining Hall — TajHotel">
-            <img src="Interior.jpeg" alt="TajHotel main dining hall" loading="lazy" decoding="async" />
+            <img src="Interior.jpeg" alt="TajHotel main dining hall" loading="lazy" decoding="async" width="800"
+              height="600" />
             <div class="gallery-item-overlay"><span>🔍</span></div>
             <div class="gallery-caption">Main Dining Hall</div>
           </a>
           <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Caviar with Blinis.jpeg"
             data-lb-alt="Caviar service" data-lb-caption="Beluga Caviar Service">
-            <img src="Caviar with Blinis.jpeg" alt="Caviar service at TajHotel" loading="lazy" decoding="async" />
+            <img src="Caviar with Blinis.jpeg" alt="Caviar service at TajHotel" loading="lazy" decoding="async"
+              width="800" height="600" />
             <div class="gallery-item-overlay"><span>🔍</span></div>
             <div class="gallery-caption">Caviar Service</div>
           </a>
           <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Fine Red Wine Pour.jpeg"
             data-lb-alt="Sommelier wine service" data-lb-caption="Wine & Sommelier Service">
-            <img src="Fine Red Wine Pour.jpeg" alt="Sommelier pouring fine red wine" loading="lazy" decoding="async" />
+            <img src="Fine Red Wine Pour.jpeg" alt="Sommelier pouring fine red wine" loading="lazy" decoding="async"
+              width="800" height="600" />
             <div class="gallery-item-overlay"><span>🔍</span></div>
             <div class="gallery-caption">Sommelier's Selection</div>
           </a>
           <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Charcoal-Grilled Tomahawk 1kg.jpeg"
             data-lb-alt="Tomahawk steak tableside" data-lb-caption="Tomahawk — Tableside Service">
             <img src="Charcoal-Grilled Tomahawk 1kg.jpeg" alt="Tableside tomahawk steak presentation" loading="lazy"
-              decoding="async" />
+              decoding="async" width="800" height="600" />
             <div class="gallery-item-overlay"><span>🔍</span></div>
             <div class="gallery-caption">Tableside Tomahawk</div>
           </a>
           <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Chocolate Sphere Dessert.jpeg"
             data-lb-alt="Chocolate sphere dessert" data-lb-caption="Chocolate Sphere — Caramel Pour">
             <img src="Chocolate Sphere Dessert.jpeg" alt="Chocolate sphere dessert with molten caramel" loading="lazy"
-              decoding="async" />
+              decoding="async" width="800" height="600" />
             <div class="gallery-item-overlay"><span>🔍</span></div>
             <div class="gallery-caption">Dessert Theatrics</div>
           </a>
           <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Royal Maharaja Thali.jpeg"
             data-lb-alt="Royal Maharaja Thali" data-lb-caption="Royal Maharaja Thali">
-            <img src="Royal Maharaja Thali.jpeg" alt="Royal Maharaja Thali plating" loading="lazy" decoding="async" />
+            <img src="Royal Maharaja Thali.jpeg" alt="Royal Maharaja Thali plating" loading="lazy" decoding="async"
+              width="800" height="600" />
             <div class="gallery-item-overlay"><span>🔍</span></div>
             <div class="gallery-caption">Maharaja Thali Presentation</div>
           </a>
@@ -452,13 +418,187 @@
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
     <button id="lb-close" aria-label="Close">✕</button>
     <button id="lb-prev" class="lb-arrow" aria-label="Previous">‹</button>
-    <img id="lb-img" src="" alt="" />
+    <img id="lb-img" src="" alt="" loading="lazy" decoding="async" />
     <button id="lb-next" class="lb-arrow" aria-label="Next">›</button>
     <div id="lb-caption" aria-live="polite"></div>
   </div>
 
   <div id="live-region" aria-live="polite" aria-atomic="true" class="sr-only"></div>
   <script src="main.js" defer></script>
+  <style>
+    /* Bottom nav for index page */
+    .bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 950;
+      padding: .5rem 1rem calc(.5rem + env(safe-area-inset-bottom));
+      background: rgba(11, 11, 11, .82);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border-top: 1px solid rgba(212, 175, 55, .15);
+      border-radius: 20px 20px 0 0
+    }
+
+    @media(max-width:767px) {
+      .bottom-nav {
+        display: flex
+      }
+
+      .hamburger {
+        display: none !important
+      }
+
+      body {
+        padding-bottom: 72px
+      }
+    }
+
+    .bottom-nav-inner {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto
+    }
+
+    .bn-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      text-decoration: none;
+      padding: .3rem .75rem;
+      border-radius: 12px;
+      transition: all .25s;
+      color: rgba(255, 255, 255, .5);
+      min-width: 56px
+    }
+
+    .bn-item .bn-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+      transition: transform .25s
+    }
+
+    .bn-item .bn-label {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      line-height: 1
+    }
+
+    .bn-item.active {
+      color: var(--gold)
+    }
+
+    .bn-item.active .bn-icon {
+      transform: translateY(-2px)
+    }
+
+    .bn-item:hover {
+      color: var(--gold)
+    }
+
+    /* Dish Story section */
+    .dish-story-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem
+    }
+
+    .story-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center
+    }
+
+    @media(max-width:768px) {
+      .story-card {
+        grid-template-columns: 1fr;
+        gap: 1.75rem
+      }
+    }
+
+    .story-card-flip .story-img {
+      order: 2
+    }
+
+    .story-card-flip .story-text {
+      order: 1
+    }
+
+    @media(max-width:768px) {
+
+      .story-card-flip .story-img,
+      .story-card-flip .story-text {
+        order: unset
+      }
+    }
+
+    .story-img {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative
+    }
+
+    .story-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform .7s var(--ease)
+    }
+
+    .story-img:hover img {
+      transform: scale(1.05)
+    }
+
+    .story-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: .5rem
+    }
+
+    .story-para {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: .95rem;
+      margin-bottom: 1rem
+    }
+
+    .story-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap
+    }
+
+    .story-price {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      color: var(--gold);
+      font-weight: 700
+    }
+
+    .story-stars {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 2px
+    }
+
+    .story-rating-val {
+      font-size: .88rem;
+      color: var(--muted);
+      font-weight: 600
+    }
+  </style>
 </body>
 
 </html>

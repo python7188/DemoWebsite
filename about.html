@@ -36,16 +36,21 @@
                     </ul>
                 </nav>
                 <a href="contact.html" class="btn btn-gold btn-sm nav-cta">Reserve Table</a>
-                <button class="hamburger" aria-label="Open navigation"
-                    aria-expanded="false"><span></span><span></span><span></span></button>
+                <!-- hamburger removed — bottom nav used -->
             </div>
         </div>
     </header>
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
-        <button class="mobile-nav-close" aria-label="Close">✕</button>
-        <a href="index.html">Home</a><a href="menu.html">Menu</a><a href="about.html">About</a><a
-            href="contact.html">Contact</a>
-        <a href="contact.html" class="btn btn-gold">Reserve Table</a>
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+        <div class="bottom-nav-inner">
+            <a href="index.html" class="bn-item" aria-label="Home"><span class="bn-icon">🏠</span><span
+                    class="bn-label">Home</span></a>
+            <a href="menu.html" class="bn-item" aria-label="Menu"><span class="bn-icon">🍽️</span><span
+                    class="bn-label">Menu</span></a>
+            <a href="about.html" class="bn-item active" aria-current="page" aria-label="Experience"><span
+                    class="bn-icon">✨</span><span class="bn-label">Experience</span></a>
+            <a href="contact.html" class="bn-item" aria-label="Contact"><span class="bn-icon">📞</span><span
+                    class="bn-label">Contact</span></a>
+        </div>
     </nav>
 
     <main id="main">
@@ -67,7 +72,7 @@
                 <div class="about-split reveal">
                     <div class="about-img">
                         <img src="Interior.jpeg" alt="TajHotel elegant interior — main dining hall" loading="lazy"
-                            decoding="async" />
+                            decoding="async" width="800" height="600" />
                     </div>
                     <div>
                         <span class="section-eyebrow">Our Story</span>
@@ -101,7 +106,7 @@
                 <div class="chef-profile reveal">
                     <div class="chef-img">
                         <img src="CHIEF.jpeg" alt="Executive Chef Arjun Sharma — TajHotel Delhi" loading="lazy"
-                            decoding="async" />
+                            decoding="async" width="600" height="600" />
                     </div>
                     <div>
                         <span class="section-eyebrow">Executive Chef</span>
@@ -186,15 +191,15 @@
                     <div class="ingredients-imgs reveal" data-delay="100">
                         <div class="ing-img">
                             <img src="Organic Vegetables.jpeg" alt="Organic vegetables sourced for TajHotel"
-                                loading="lazy" decoding="async" />
+                                loading="lazy" decoding="async" width="800" height="500" />
                         </div>
                         <div class="ing-img">
                             <img src="Organic veggies.jpeg" alt="Seasonal organic produce" loading="lazy"
-                                decoding="async" />
+                                decoding="async" width="400" height="400" />
                         </div>
                         <div class="ing-img">
                             <img src="Grilled Vegetable Terrine.jpeg" alt="Farm-fresh vegetable preparation"
-                                loading="lazy" decoding="async" />
+                                loading="lazy" decoding="async" width="400" height="400" />
                         </div>
                     </div>
                 </div>
@@ -214,7 +219,7 @@
                 <div class="dishes-grid">
                     <article class="dish-card reveal" data-delay="0">
                         <div class="dish-card-img"><img src="Fine Red Wine Pour.jpeg" alt="Sommelier wine service"
-                                loading="lazy" decoding="async" /></div>
+                                loading="lazy" decoding="async" width="400" height="300" /></div>
                         <div class="dish-card-body">
                             <div class="dish-card-name">Sommelier's Wine Cellar</div>
                             <div class="dish-card-desc">Over 400 labels — Burgundy, Barolo, Napa Valley, and rare Indian
@@ -223,7 +228,7 @@
                     </article>
                     <article class="dish-card reveal" data-delay="80">
                         <div class="dish-card-img"><img src="Interior.jpeg" alt="Private dining room" loading="lazy"
-                                decoding="async" /></div>
+                                decoding="async" width="400" height="300" /></div>
                         <div class="dish-card-body">
                             <div class="dish-card-name">Private Dining Rooms</div>
                             <div class="dish-card-desc">Three bespoke private dining rooms for 8–40 guests — ideal for
@@ -232,7 +237,7 @@
                     </article>
                     <article class="dish-card reveal" data-delay="160">
                         <div class="dish-card-img"><img src="Charcoal-Grilled Tomahawk 1kg.jpeg" alt="Tableside service"
-                                loading="lazy" decoding="async" /></div>
+                                loading="lazy" decoding="async" width="400" height="300" /></div>
                         <div class="dish-card-body">
                             <div class="dish-card-name">Tableside Theatre</div>
                             <div class="dish-card-desc">Certain dishes — from the Tomahawk carve to the Chocolate Sphere
@@ -255,27 +260,29 @@
                 <div class="gallery-masonry" role="list">
                     <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Interior.jpeg"
                         data-lb-alt="Main Dining Hall" data-lb-caption="Main Dining Hall">
-                        <img src="Interior.jpeg" alt="TajHotel main dining hall" loading="lazy" decoding="async" />
+                        <img src="Interior.jpeg" alt="TajHotel main dining hall" loading="lazy" decoding="async"
+                            width="800" height="600" />
                         <div class="gallery-item-overlay"><span>🔍</span></div>
                         <div class="gallery-caption">Main Dining Hall</div>
                     </a>
                     <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Wagyu Ribeye.jpeg"
                         data-lb-alt="Wagyu service" data-lb-caption="Wagyu Ribeye Presentation">
-                        <img src="Wagyu Ribeye.jpeg" alt="Wagyu ribeye plating" loading="lazy" decoding="async" />
+                        <img src="Wagyu Ribeye.jpeg" alt="Wagyu ribeye plating" loading="lazy" decoding="async"
+                            width="800" height="600" />
                         <div class="gallery-item-overlay"><span>🔍</span></div>
                         <div class="gallery-caption">Signature Wagyu</div>
                     </a>
                     <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Caviar with Blinis.jpeg"
                         data-lb-alt="Caviar service" data-lb-caption="Beluga Caviar Service">
-                        <img src="Caviar with Blinis.jpeg" alt="Beluga caviar service" loading="lazy"
-                            decoding="async" />
+                        <img src="Caviar with Blinis.jpeg" alt="Beluga caviar service" loading="lazy" decoding="async"
+                            width="800" height="600" />
                         <div class="gallery-item-overlay"><span>🔍</span></div>
                         <div class="gallery-caption">Caviar Service</div>
                     </a>
                     <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Fine Red Wine Pour.jpeg"
                         data-lb-alt="Wine service" data-lb-caption="Sommelier Service">
                         <img src="Fine Red Wine Pour.jpeg" alt="Fine wine service at TajHotel" loading="lazy"
-                            decoding="async" />
+                            decoding="async" width="800" height="600" />
                         <div class="gallery-item-overlay"><span>🔍</span></div>
                         <div class="gallery-caption">Sommelier Selection</div>
                     </a>
@@ -283,14 +290,14 @@
                         data-lb-src="Chocolate Sphere Dessert.jpeg" data-lb-alt="Chocolate Sphere"
                         data-lb-caption="Chocolate Sphere — Tableside pour">
                         <img src="Chocolate Sphere Dessert.jpeg" alt="Chocolate sphere dessert" loading="lazy"
-                            decoding="async" />
+                            decoding="async" width="800" height="600" />
                         <div class="gallery-item-overlay"><span>🔍</span></div>
                         <div class="gallery-caption">Dessert Theatrics</div>
                     </a>
                     <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Royal Maharaja Thali.jpeg"
                         data-lb-alt="Royal Maharaja Thali" data-lb-caption="Royal Maharaja Thali">
-                        <img src="Royal Maharaja Thali.jpeg" alt="Royal Maharaja Thali" loading="lazy"
-                            decoding="async" />
+                        <img src="Royal Maharaja Thali.jpeg" alt="Royal Maharaja Thali" loading="lazy" decoding="async"
+                            width="800" height="600" />
                         <div class="gallery-item-overlay"><span>🔍</span></div>
                         <div class="gallery-caption">Maharaja Thali</div>
                     </a>
@@ -345,11 +352,88 @@
     <div id="lightbox" role="dialog" aria-modal="true" hidden>
         <button id="lb-close" aria-label="Close">✕</button>
         <button id="lb-prev" class="lb-arrow" aria-label="Previous">‹</button>
-        <img id="lb-img" src="" alt="" />
+        <img id="lb-img" src="" alt="" loading="lazy" decoding="async" />
         <button id="lb-next" class="lb-arrow" aria-label="Next">›</button>
         <div id="lb-caption" aria-live="polite"></div>
     </div>
     <script src="main.js" defer></script>
+    <style>
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 950;
+            padding: .5rem 1rem calc(.5rem + env(safe-area-inset-bottom));
+            background: rgba(11, 11, 11, .82);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border-top: 1px solid rgba(212, 175, 55, .15);
+            border-radius: 20px 20px 0 0
+        }
+
+        @media(max-width:767px) {
+            .bottom-nav {
+                display: flex
+            }
+
+            .hamburger {
+                display: none !important
+            }
+
+            body {
+                padding-bottom: 72px
+            }
+        }
+
+        .bottom-nav-inner {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto
+        }
+
+        .bn-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            text-decoration: none;
+            padding: .3rem .75rem;
+            border-radius: 12px;
+            transition: all .25s;
+            color: rgba(255, 255, 255, .5);
+            min-width: 56px
+        }
+
+        .bn-item .bn-icon {
+            font-size: 1.2rem;
+            line-height: 1;
+            transition: transform .25s
+        }
+
+        .bn-item .bn-label {
+            font-size: .6rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .bn-item.active {
+            color: var(--gold)
+        }
+
+        .bn-item.active .bn-icon {
+            transform: translateY(-2px)
+        }
+
+        .bn-item:hover {
+            color: var(--gold)
+        }
+    </style>
 </body>
 
 </html>
