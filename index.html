@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>TajHotel — Luxury Dining Experience in Delhi</title>
+  <meta name="description"
+    content="TajHotel Delhi — Where culinary excellence meets timeless elegance. Reserve your table at Delhi's premier luxury fine dining destination." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script
+    type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"TajHotel","description":"Luxury fine-dining in Delhi","address":{"@type":"PostalAddress","addressLocality":"New Delhi","addressCountry":"IN"},"servesCuisine":["Indian","Seafood","Steakhouse","Global"],"priceRange":"$$$$","telephone":"+91-11-XXXX-XXXX"}</script>
+</head>
+
+<body>
+  <div id="loader" aria-hidden="true">
+    <div class="loader-logo">TajHotel</div>
+    <div class="loader-bar"></div>
+  </div>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <header id="navbar" role="banner">
+    <div class="container">
+      <div class="nav-wrap">
+        <a href="index.html" class="nav-logo">Taj<span>Hotel</span></a>
+        <nav aria-label="Primary navigation">
+          <ul class="nav-links" role="list">
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="btn btn-gold btn-sm nav-cta" data-reserve aria-haspopup="dialog">Reserve Table</button>
+        <button class="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" aria-label="Close navigation">✕</button>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <button class="btn btn-gold" data-reserve>Reserve Table</button>
+  </nav>
+
+  <main id="main">
+
+    <!-- ── HERO ── -->
+    <section class="hero" aria-label="Welcome to TajHotel">
+      <div class="hero-parallax">
+        <img src="Interior.jpeg" alt="" fetchpriority="high" decoding="async" />
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">Fine Dining · Delhi, India</div>
+          <h1>
+            <span class="brand">TajHotel</span>
+            Luxury Dining<br />Experience in Delhi
+          </h1>
+          <p class="hero-sub">Where culinary excellence meets timeless elegance.</p>
+          <div class="hero-btns">
+            <a href="menu.html" class="btn btn-gold">Explore Menu</a>
+            <button class="btn btn-outline" data-reserve aria-haspopup="dialog">Reserve Table</button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="hero-scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ── SIGNATURE DISHES ── -->
+    <section aria-labelledby="sig-heading" style="background:var(--charcoal)">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-eyebrow">Chef's Selection</span>
+          <h2 id="sig-heading" class="section-title">Signature <span class="gold">Dishes</span></h2>
+          <div class="gold-line center"></div>
+          <p>Each creation is a canvas — where classical technique meets the finest seasonal ingredients.</p>
+        </div>
+        <div class="dishes-grid">
+
+          <article class="dish-card reveal" data-delay="0">
+            <div class="dish-card-img"><img src="Wagyu Ribeye.jpeg" alt="Wagyu Ribeye" loading="lazy"
+                decoding="async" /></div>
+            <div class="dish-card-body">
+              <div class="dish-card-name">A5 Wagyu Ribeye</div>
+              <div class="dish-card-desc">Japanese A5 Wagyu, truffle salt, aged red wine reduction, seasonal sides.
+              </div>
+              <div class="dish-card-footer">
+                <span class="dish-card-price">₹14,500</span>
+                <span class="tag-chef">⭐ Chef's Pick</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="dish-card reveal" data-delay="60">
+            <div class="dish-card-img"><img src="Grilled Lobster Tail.jpeg" alt="Grilled Lobster Tail" loading="lazy"
+                decoding="async" /></div>
+            <div class="dish-card-body">
+              <div class="dish-card-name">Grilled Lobster Tail</div>
+              <div class="dish-card-desc">Whole lobster tail, clarified butter, grilled lemon, fresh herbs.</div>
+              <div class="dish-card-footer">
+                <span class="dish-card-price">₹5,800</span>
+                <span class="tag-chef">⭐ Chef's Pick</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="dish-card reveal" data-delay="120">
+            <div class="dish-card-img"><img src="Royal Maharaja Thali.jpeg" alt="Royal Maharaja Thali" loading="lazy"
+                decoding="async" /></div>
+            <div class="dish-card-body">
+              <div class="dish-card-name">Royal Maharaja Thali</div>
+              <div class="dish-card-desc">Regal 12-accompaniment thali — breads, curries, sweets, seasonal pickles.
+              </div>
+              <div class="dish-card-footer">
+                <span class="dish-card-price">₹3,200</span>
+                <span class="tag-chef">⭐ Chef's Pick</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="dish-card reveal" data-delay="180">
+            <div class="dish-card-img"><img src="Beef Wellington.jpeg" alt="Beef Wellington" loading="lazy"
+                decoding="async" /></div>
+            <div class="dish-card-body">
+              <div class="dish-card-name">Beef Wellington</div>
+              <div class="dish-card-desc">Classic beef Wellington, mushroom duxelles, golden puff pastry, red wine jus.
+              </div>
+              <div class="dish-card-footer">
+                <span class="dish-card-price">₹8,200</span>
+                <span class="tag-chef">⭐ Chef's Pick</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="dish-card reveal" data-delay="240">
+            <div class="dish-card-img"><img src="Caviar with Blinis.jpeg" alt="Caviar with Blinis" loading="lazy"
+                decoding="async" /></div>
+            <div class="dish-card-body">
+              <div class="dish-card-name">Beluga Caviar & Blinis</div>
+              <div class="dish-card-desc">Beluga caviar, warm blinis, crème fraîche, chives — the ultimate luxury
+                starter.</div>
+              <div class="dish-card-footer">
+                <span class="dish-card-price">₹8,500</span>
+                <span class="tag-chef">✦ Luxury</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="dish-card reveal" data-delay="300">
+            <div class="dish-card-img"><img src="Hyderabadi Gold Biryani.jpeg" alt="Hyderabadi Gold Biryani"
+                loading="lazy" decoding="async" /></div>
+            <div class="dish-card-body">
+              <div class="dish-card-name">Hyderabadi Gold Biryani</div>
+              <div class="dish-card-desc">Dum-cooked saffron biryani, caramelised onions, raita, mint salad.</div>
+              <div class="dish-card-footer">
+                <span class="dish-card-price">₹2,200</span>
+                <span class="tag-chef">⭐ Chef's Pick</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="dish-card reveal" data-delay="360">
+            <div class="dish-card-img"><img src="Chocolate Fondant.jpeg" alt="Chocolate Fondant" loading="lazy"
+                decoding="async" /></div>
+            <div class="dish-card-body">
+              <div class="dish-card-name">Valrhona Chocolate Fondant</div>
+              <div class="dish-card-desc">Warm dark chocolate fondant, salted caramel, Madagascar vanilla ice cream.
+              </div>
+              <div class="dish-card-footer">
+                <span class="dish-card-price">₹1,400</span>
+                <span class="tag-chef">⭐ Chef's Pick</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="dish-card reveal" data-delay="420">
+            <div class="dish-card-img"><img src="Truffle Risotto.jpeg" alt="Truffle Risotto" loading="lazy"
+                decoding="async" /></div>
+            <div class="dish-card-body">
+              <div class="dish-card-name">Black Truffle Risotto</div>
+              <div class="dish-card-desc">Carnaroli risotto, Périgord black truffle, aged parmesan foam.</div>
+              <div class="dish-card-footer">
+                <span class="dish-card-price">₹3,200</span>
+                <span class="tag-chef">⭐ Chef's Pick</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        <div class="text-center mt-4">
+          <a href="menu.html" class="btn btn-outline">View Full Menu →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ORGANIC INGREDIENTS ── -->
+    <section aria-labelledby="organic-heading">
+      <div class="container">
+        <div class="ingredients-layout">
+          <div class="ingredients-imgs reveal">
+            <div class="ing-img">
+              <img src="Organic Vegetables.jpeg" alt="Fresh organic vegetables sourced for TajHotel" loading="lazy"
+                decoding="async" />
+            </div>
+            <div class="ing-img">
+              <img src="Organic veggies.jpeg" alt="Seasonal organic produce" loading="lazy" decoding="async" />
+            </div>
+            <div class="ing-img">
+              <img src="Grilled Vegetable Terrine.jpeg" alt="Farm-fresh vegetable preparation" loading="lazy"
+                decoding="async" />
+            </div>
+          </div>
+          <div class="reveal" data-delay="120">
+            <span class="section-eyebrow">Farm to Table</span>
+            <h2 id="organic-heading" class="section-title">Organic &amp; <span class="gold">Premium</span> Ingredients
+            </h2>
+            <div class="gold-line"></div>
+            <p style="margin-bottom:1.25rem">Every ingredient that enters our kitchen is chosen with unwavering care. We
+              partner with certified organic farms across India and source specialty produce from global artisan
+              suppliers.</p>
+            <p>Our commitment to quality begins long before the stove — in the soil, the sea, and the hands of the
+              farmers we trust.</p>
+            <div class="origin-pills" style="margin-top:1.5rem">
+              <span class="origin-pill">🌾 Rajasthan Organic Farms</span>
+              <span class="origin-pill">🐟 Malabar Coast Seafood</span>
+              <span class="origin-pill">🥩 Certified Global Meats</span>
+              <span class="origin-pill">🌿 Himalayan Herbs</span>
+              <span class="origin-pill">🇫🇷 Périgord Truffles</span>
+            </div>
+            <a href="about.html" class="btn btn-gold" style="margin-top:2rem">Our Sourcing Story</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── INTERIOR GALLERY ── -->
+    <section aria-labelledby="gallery-heading" style="background:var(--charcoal)">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-eyebrow">Our Spaces</span>
+          <h2 id="gallery-heading" class="section-title">Step Inside <span class="gold">TajHotel</span></h2>
+          <div class="gold-line center"></div>
+          <p>Every corner is a considered composition of warm light, curated art, and unmatched atmosphere.</p>
+        </div>
+        <div class="gallery-masonry" role="list">
+
+          <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Interior.jpeg"
+            data-lb-alt="Main dining hall" data-lb-caption="Main Dining Hall — TajHotel">
+            <img src="Interior.jpeg" alt="TajHotel main dining hall" loading="lazy" decoding="async" />
+            <div class="gallery-item-overlay"><span>🔍</span></div>
+            <div class="gallery-caption">Main Dining Hall</div>
+          </a>
+          <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Caviar with Blinis.jpeg"
+            data-lb-alt="Caviar service" data-lb-caption="Beluga Caviar Service">
+            <img src="Caviar with Blinis.jpeg" alt="Caviar service at TajHotel" loading="lazy" decoding="async" />
+            <div class="gallery-item-overlay"><span>🔍</span></div>
+            <div class="gallery-caption">Caviar Service</div>
+          </a>
+          <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Fine Red Wine Pour.jpeg"
+            data-lb-alt="Sommelier wine service" data-lb-caption="Wine & Sommelier Service">
+            <img src="Fine Red Wine Pour.jpeg" alt="Sommelier pouring fine red wine" loading="lazy" decoding="async" />
+            <div class="gallery-item-overlay"><span>🔍</span></div>
+            <div class="gallery-caption">Sommelier's Selection</div>
+          </a>
+          <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Charcoal-Grilled Tomahawk 1kg.jpeg"
+            data-lb-alt="Tomahawk steak tableside" data-lb-caption="Tomahawk — Tableside Service">
+            <img src="Charcoal-Grilled Tomahawk 1kg.jpeg" alt="Tableside tomahawk steak presentation" loading="lazy"
+              decoding="async" />
+            <div class="gallery-item-overlay"><span>🔍</span></div>
+            <div class="gallery-caption">Tableside Tomahawk</div>
+          </a>
+          <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Chocolate Sphere Dessert.jpeg"
+            data-lb-alt="Chocolate sphere dessert" data-lb-caption="Chocolate Sphere — Caramel Pour">
+            <img src="Chocolate Sphere Dessert.jpeg" alt="Chocolate sphere dessert with molten caramel" loading="lazy"
+              decoding="async" />
+            <div class="gallery-item-overlay"><span>🔍</span></div>
+            <div class="gallery-caption">Dessert Theatrics</div>
+          </a>
+          <a class="gallery-item reveal" role="listitem" tabindex="0" data-lb-src="Royal Maharaja Thali.jpeg"
+            data-lb-alt="Royal Maharaja Thali" data-lb-caption="Royal Maharaja Thali">
+            <img src="Royal Maharaja Thali.jpeg" alt="Royal Maharaja Thali plating" loading="lazy" decoding="async" />
+            <div class="gallery-item-overlay"><span>🔍</span></div>
+            <div class="gallery-caption">Maharaja Thali Presentation</div>
+          </a>
+
+        </div>
+        <div class="text-center mt-4">
+          <a href="about.html" class="btn btn-outline">View Full Gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section aria-labelledby="test-heading">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-eyebrow">Guest Voices</span>
+          <h2 id="test-heading" class="section-title">What Our Guests <span class="gold">Say</span></h2>
+          <div class="gold-line center"></div>
+        </div>
+        <div class="testimonials-grid">
+          <article class="testimonial-card reveal" data-delay="0">
+            <div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="t-text">"TajHotel is an experience beyond dining. The Wagyu Ribeye was transcendent, and the
+              service — utterly impeccable. This is Delhi's finest table, without question."</p>
+            <div class="t-author">Aryan Mehta</div>
+            <div class="t-role">Business Executive, Mumbai</div>
+          </article>
+          <article class="testimonial-card reveal" data-delay="80">
+            <div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="t-text">"The Royal Maharaja Thali alone is worth the visit. Every element felt thoughtfully
+              composed. The ambiance, the service, the flavours — all world-class. We will return."</p>
+            <div class="t-author">Priya Sharma</div>
+            <div class="t-role">Culinary Journalist, Delhi</div>
+          </article>
+          <article class="testimonial-card reveal" data-delay="160">
+            <div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="t-text">"I've dined across Paris, Tokyo, and New York — TajHotel rivals them all. The Lobster
+              Thermidor and truffle risotto are unforgettable. A true luxury destination."</p>
+            <div class="t-author">James Whitfield</div>
+            <div class="t-role">International Food Critic</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <div class="container" style="position:relative;z-index:1">
+        <span class="section-eyebrow">Your Table Awaits</span>
+        <h2 id="cta-heading" class="section-title">Reserve Your <span class="gold">Table</span> Today</h2>
+        <p style="max-width:480px;margin:0 auto 2rem">Experience culinary artistry in one of Delhi's most celebrated
+          fine-dining destinations. Reservations recommended.</p>
+        <button class="btn btn-gold" data-reserve>Book a Table</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-logo">Taj<span>Hotel</span></a>
+          <p class="footer-tagline">A fine-dining legacy in the heart of Delhi, India.</p>
+          <div class="social-row">
+            <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+            <a href="#" class="social-btn" aria-label="Facebook">📘</a>
+            <a href="#" class="social-btn" aria-label="Twitter">🐦</a>
+            <a href="#" class="social-btn" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html#reservations">Reservations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Opening Hours</h5>
+          <ul>
+            <li style="color:var(--muted-2);font-size:.84rem">Mon – Fri: 12:00 – 23:00</li>
+            <li style="color:var(--muted-2);font-size:.84rem">Sat – Sun: 11:00 – 23:30</li>
+            <li style="color:var(--muted-2);font-size:.82rem;margin-top:.5rem">Kitchen closes 30 min before</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p style="font-size:.82rem;color:var(--muted-2);margin-bottom:.75rem">Seasonal menus, events & exclusive
+            offers.</p>
+          <form class="nl-form" action="#" method="post">
+            <label for="nl-email" class="sr-only">Email address</label>
+            <input type="email" id="nl-email" name="email" placeholder="your@email.com" required />
+            <button type="submit" aria-label="Subscribe">→</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 TajHotel, New Delhi. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+          <a href="#">Accessibility</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- RESERVE MODAL -->
+  <div id="reserve-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="res-title" hidden>
+    <div class="modal">
+      <button class="modal-x" aria-label="Close">✕</button>
+      <span class="section-eyebrow">Table Reservation</span>
+      <h2 id="res-title" style="margin-bottom:.5rem;font-size:1.75rem">Reserve Your Table</h2>
+      <p style="margin-bottom:1.5rem;font-size:.88rem">Our team will confirm within 2 hours.</p>
+      <div class="form-row" style="margin-bottom:1rem">
+        <div class="form-group"><label for="rm-name">Name *</label><input id="rm-name" type="text" required
+            placeholder="Your name" /></div>
+        <div class="form-group"><label for="rm-phone">Phone *</label><input id="rm-phone" type="tel" required
+            placeholder="+91 XXXXX XXXXX" /></div>
+      </div>
+      <a href="contact.html" class="btn btn-gold"
+        style="width:100%;justify-content:center;display:flex;text-decoration:none;">Continue Full Booking →</a>
+    </div>
+  </div>
+
+  <!-- CONFIRM MODAL -->
+  <div id="confirm-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="conf-title" hidden>
+    <div class="modal">
+      <button class="modal-x" aria-label="Close">✕</button>
+      <div style="text-align:center;font-size:2.5rem;margin-bottom:1rem">✅</div>
+      <h2 id="conf-title" style="text-align:center;margin-bottom:.25rem;font-size:1.6rem">Reservation Submitted!</h2>
+      <p style="text-align:center;font-size:.88rem;margin-bottom:1rem">We'll confirm within 2 hours.</p>
+      <div class="confirm-details">
+        <div class="conf-row"><span>Name</span><span id="conf-name">—</span></div>
+        <div class="conf-row"><span>Date</span><span id="conf-date">—</span></div>
+        <div class="conf-row"><span>Time</span><span id="conf-time">—</span></div>
+        <div class="conf-row"><span>Guests</span><span id="conf-party">—</span></div>
+      </div>
+      <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap">
+        <button id="conf-ics" class="btn btn-outline btn-sm">📅 Add to Calendar</button>
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Dinner+at+TajHotel" target="_blank"
+          rel="noopener" class="btn btn-outline btn-sm">📆 Google Calendar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <button id="lb-close" aria-label="Close">✕</button>
+    <button id="lb-prev" class="lb-arrow" aria-label="Previous">‹</button>
+    <img id="lb-img" src="" alt="" />
+    <button id="lb-next" class="lb-arrow" aria-label="Next">›</button>
+    <div id="lb-caption" aria-live="polite"></div>
+  </div>
+
+  <div id="live-region" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+  <script src="main.js" defer></script>
+</body>
+
+</html>

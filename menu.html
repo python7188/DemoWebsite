@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Menu — TajHotel Fine Dining Delhi</title>
+    <meta name="description"
+        content="Explore TajHotel's full menu — Starters, Signature Steaks, Fresh Seafood, Indian Classics, Global Cuisine, Desserts and Beverages. Luxury fine dining in Delhi." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div id="loader" aria-hidden="true">
+        <div class="loader-logo">TajHotel</div>
+        <div class="loader-bar"></div>
+    </div>
+    <div id="scroll-progress" aria-hidden="true"></div>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header id="navbar" role="banner">
+        <div class="container">
+            <div class="nav-wrap">
+                <a href="index.html" class="nav-logo">Taj<span>Hotel</span></a>
+                <nav aria-label="Primary navigation">
+                    <ul class="nav-links" role="list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html" aria-current="page">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="contact.html" class="btn btn-gold btn-sm nav-cta">Reserve Table</a>
+                <button class="hamburger" aria-label="Open navigation"
+                    aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+        <button class="mobile-nav-close" aria-label="Close navigation">✕</button>
+        <a href="index.html">Home</a><a href="menu.html">Menu</a><a href="about.html">About</a><a
+            href="contact.html">Contact</a>
+        <a href="contact.html" class="btn btn-gold">Reserve Table</a>
+    </nav>
+
+    <main id="main">
+        <div class="page-banner">
+            <div class="container">
+                <span class="section-eyebrow">Culinary Journey</span>
+                <h1>The TajHotel <span class="gold">Menu</span></h1>
+                <div class="gold-line center"></div>
+                <p style="max-width:500px;margin:0 auto;font-style:italic;font-family:var(--font-menu)">From
+                    tandoor-kissed classics to global fine-dining signatures — a curated journey of flavour.</p>
+            </div>
+        </div>
+
+        <section style="padding-top:0">
+            <div class="container">
+
+                <!-- CONTROLS -->
+                <div class="menu-controls-bar">
+                    <div class="menu-search-wrap">
+                        <span class="s-icon" aria-hidden="true">🔍</span>
+                        <label for="menu-search" class="sr-only">Search dishes</label>
+                        <input type="search" id="menu-search" placeholder="Search dishes, ingredients…"
+                            autocomplete="off" />
+                    </div>
+                    <div class="cat-filters" role="group" aria-label="Filter by category">
+                        <button class="cat-btn active" data-cat="all">All</button>
+                        <button class="cat-btn" data-cat="starters">Starters</button>
+                        <button class="cat-btn" data-cat="steaks">Steaks</button>
+                        <button class="cat-btn" data-cat="seafood">Seafood</button>
+                        <button class="cat-btn" data-cat="indian">Indian</button>
+                        <button class="cat-btn" data-cat="global">Global</button>
+                        <button class="cat-btn" data-cat="desserts">Desserts</button>
+                        <button class="cat-btn" data-cat="beverages">Beverages</button>
+                    </div>
+                </div>
+
+                <div id="menu-container" aria-label="Menu categories"></div>
+                <div id="menu-no-results" style="text-align:center;padding:3rem;color:var(--muted);display:none">
+                    <p style="font-size:1.1rem">No dishes match your search.</p>
+                    <p style="margin-top:.5rem">Try a different term or clear the filters.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="footer-logo">Taj<span>Hotel</span></a>
+                    <p class="footer-tagline">A fine-dining legacy in Delhi, India.</p>
+                    <div class="social-row">
+                        <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-btn" aria-label="Facebook">📘</a>
+                        <a href="#" class="social-btn" aria-label="Twitter">🐦</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Navigate</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Hours</h5>
+                    <ul>
+                        <li style="color:var(--muted-2);font-size:.84rem">Mon–Fri: 12:00–23:00</li>
+                        <li style="color:var(--muted-2);font-size:.84rem">Sat–Sun: 11:00–23:30</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Visit</h5>
+                    <ul>
+                        <li style="color:var(--muted-2);font-size:.84rem">Connaught Place, New Delhi</li>
+                        <li><a href="contact.html">Make a Reservation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 TajHotel, New Delhi. All rights reserved.</p>
+                <nav class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></nav>
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox" role="dialog" aria-modal="true" hidden>
+        <button id="lb-close" aria-label="Close">✕</button>
+        <button id="lb-prev" class="lb-arrow" aria-label="Previous">‹</button>
+        <img id="lb-img" src="" alt="" />
+        <button id="lb-next" class="lb-arrow" aria-label="Next">›</button>
+        <div id="lb-caption" aria-live="polite"></div>
+    </div>
+    <div id="live-region" aria-live="polite" class="sr-only"></div>
+
+    <!-- ═══ INLINE MENU DATA — All 97 items, no server/fetch needed ═══ -->
+    <script>
+        const MENU_DATA = [
+            { "name": "Smoked Salmon Carpaccio", "category": "Starters / Appetizers", "descriptor": "Paper-thin smoked salmon, caper cream, micro herbs & lemon oil", "tags": ["non-veg", "chef-pick"], "priceINR": 1850, "image": "Smoked Salmon Carpaccio.jpeg" },
+            { "name": "Truffle Arancini", "category": "Starters / Appetizers", "descriptor": "Crispy risotto balls, black truffle, aged parmesan, saffron aioli", "tags": ["vegetarian", "chef-pick"], "priceINR": 1450, "image": "Truffle Arancini.jpeg" },
+            { "name": "King Prawn Cocktail", "category": "Starters / Appetizers", "descriptor": "Poached tiger prawns, Marie Rose sauce, avocado cream", "tags": ["non-veg"], "priceINR": 2100, "image": "King Prawn Cocktail.jpeg" },
+            { "name": "Oysters Rockefeller", "category": "Starters / Appetizers", "descriptor": "Fresh oysters baked with spinach, pancetta & Pernod butter", "tags": ["non-veg", "chef-pick"], "priceINR": 2800, "image": "Oysters Rockefeller.jpeg" },
+            { "name": "Foie Gras Terrine", "category": "Starters / Appetizers", "descriptor": "Silky duck liver terrine, toasted brioche, fig chutney", "tags": ["non-veg", "chef-pick"], "priceINR": 3200, "image": "Foie Gras Terrine.jpeg" },
+            { "name": "Tuna Tartare", "category": "Starters / Appetizers", "descriptor": "Hand-cut bluefin tuna, sesame ponzu, avocado, tobiko", "tags": ["non-veg"], "priceINR": 2400, "image": "Tuna Tartare.jpeg" },
+            { "name": "Caviar with Blinis", "category": "Starters / Appetizers", "descriptor": "Beluga caviar, warm blinis, crème fraîche, chives", "tags": ["non-veg", "chef-pick", "luxury"], "priceINR": 8500, "image": "Caviar with Blinis.jpeg" },
+            { "name": "Burrata & Heirloom Tomatoes", "category": "Starters / Appetizers", "descriptor": "Creamy burrata, heirloom tomatoes, aged balsamic, basil oil", "tags": ["vegetarian"], "priceINR": 1600, "image": "Burrata & Heirloom Tomatoes.jpeg" },
+            { "name": "Amuse Bouche Selection", "category": "Starters / Appetizers", "descriptor": "Chef's rotating bite-sized morsels to awaken the palate", "tags": ["chef-pick"], "priceINR": 1200, "image": "Amuse Bouche Selection.jpeg" },
+            { "name": "Paneer Royale Tikka", "category": "Starters / Appetizers", "descriptor": "Saffron-marinated paneer, royal cashew sauce, pomegranate", "tags": ["vegetarian", "chef-pick"], "priceINR": 1400, "image": "Paneer Royale Tikka.jpeg" },
+            { "name": "Chicken Lollipops", "category": "Starters / Appetizers", "descriptor": "Crispy glazed chicken drumettes, sriracha-honey dip", "tags": ["non-veg"], "priceINR": 1350, "image": "Chicken Lollipops.jpeg" },
+            { "name": "Scallop Ceviche", "category": "Starters / Appetizers", "descriptor": "Hand-dived scallops, tiger's milk, jalapeño, sweet corn", "tags": ["non-veg"], "priceINR": 2200, "image": "Scallop Ceviche.jpeg" },
+            { "name": "Grilled Vegetable Terrine", "category": "Starters / Appetizers", "descriptor": "Layered roasted Mediterranean vegetables, herb oil, cress", "tags": ["vegetarian", "gluten-free"], "priceINR": 1300, "image": "Grilled Vegetable Terrine.jpeg" },
+            { "name": "Stuffed Squash Blossoms", "category": "Starters / Appetizers", "descriptor": "Zucchini flowers filled with ricotta & truffle, lemon zest", "tags": ["vegetarian"], "priceINR": 1500, "image": "Stuffed Squash Blossoms.jpeg" },
+            { "name": "Lobster Bisque", "category": "Starters / Appetizers", "descriptor": "Velvety cream of lobster, cognac, sherry, tarragon foam", "tags": ["non-veg", "chef-pick"], "priceINR": 2600, "image": "Lobster Bisque.jpeg" },
+            { "name": "Crab Cakes", "category": "Starters / Appetizers", "descriptor": "Pan-fried Dungeness crab cakes, remoulade, microgreens", "tags": ["non-veg"], "priceINR": 1900, "image": "Crab Cakes.jpeg" },
+            { "name": "Seared Tuna Bite", "category": "Starters / Appetizers", "descriptor": "Seared yellowfin tuna, wasabi crème, pickled ginger", "tags": ["non-veg"], "priceINR": 2000, "image": "Seared Tuna Bite.jpeg" },
+            { "name": "Filet Mignon", "category": "Signature Steaks", "descriptor": "250g centre-cut tenderloin, Béarnaise sauce, truffle jus", "tags": ["non-veg", "chef-pick", "gluten-free"], "priceINR": 6800, "image": "Filet Mignon.jpeg" },
+            { "name": "Ribeye Steak 350g", "category": "Signature Steaks", "descriptor": "Grass-fed ribeye, compound butter, bone-marrow jus", "tags": ["non-veg", "gluten-free"], "priceINR": 5800, "image": "Ribeye Steak 350g.jpeg" },
+            { "name": "New York Strip", "category": "Signature Steaks", "descriptor": "300g NY strip, chimichurri, roasted garlic potato", "tags": ["non-veg"], "priceINR": 5400, "image": "New York Strip.jpeg" },
+            { "name": "Wagyu Ribeye", "category": "Signature Steaks", "descriptor": "A5 Wagyu ribeye, truffle salt, aged red wine reduction", "tags": ["non-veg", "chef-pick", "luxury"], "priceINR": 14500, "image": "Wagyu Ribeye.jpeg" },
+            { "name": "Charcoal-Grilled Tomahawk 1kg", "category": "Signature Steaks", "descriptor": "Bone-in tomahawk, charcoal-kissed, served tableside with au jus", "tags": ["non-veg", "chef-pick"], "priceINR": 12000, "image": "Charcoal-Grilled Tomahawk 1kg.jpeg" },
+            { "name": "Sirloin Steak 300g", "category": "Signature Steaks", "descriptor": "Aged sirloin, peppercorn sauce, sautéed greens", "tags": ["non-veg"], "priceINR": 4800, "image": "Sirloin Steak 300g.jpeg" },
+            { "name": "Porterhouse Steak 400g", "category": "Signature Steaks", "descriptor": "Dry-aged porterhouse, both tenderloin & strip, seasonal vegetables", "tags": ["non-veg"], "priceINR": 7200, "image": "Porterhouse Steak 400g.jpeg" },
+            { "name": "Ribeye Surf & Turf", "category": "Signature Steaks", "descriptor": "300g ribeye topped with half lobster tail, truffle butter", "tags": ["non-veg", "chef-pick"], "priceINR": 9800, "image": "Ribeye Surf & Turf.jpeg" },
+            { "name": "Herb-Crusted Lamb Rack", "category": "Signature Steaks", "descriptor": "New Zealand lamb rack, Dijon-herb crust, minted pea purée", "tags": ["non-veg", "chef-pick"], "priceINR": 7800, "image": "Herb-Crusted Lamb Rack.jpeg" },
+            { "name": "Tomahawk Steak", "category": "Signature Steaks", "descriptor": "Long-bone tomahawk, salt-aged, red wine jus, loaded fries", "tags": ["non-veg"], "priceINR": 10500, "image": "Tomahawk Steak.jpeg" },
+            { "name": "Beef Wellington", "category": "Signature Steaks", "descriptor": "Classic beef Wellington, mushroom duxelles, puff pastry", "tags": ["non-veg", "chef-pick"], "priceINR": 8200, "image": "Beef Wellington.jpeg" },
+            { "name": "Beef Tenderloin Medallions", "category": "Signature Steaks", "descriptor": "Two medallions of tenderloin, black pepper jus, gratin potato", "tags": ["non-veg"], "priceINR": 6200, "image": "Beef Tenderloin Medallions.jpeg" },
+            { "name": "Seared Venison Loin", "category": "Signature Steaks", "descriptor": "Wild venison loin, juniper berry sauce, celery root purée", "tags": ["non-veg", "chef-pick", "gluten-free"], "priceINR": 7600, "image": "Seared Venison Loin.jpeg" },
+            { "name": "Grilled Lobster Tail", "category": "Fresh Seafood", "descriptor": "Whole lobster tail, clarified butter, grilled lemon, herbs", "tags": ["non-veg", "chef-pick", "gluten-free"], "priceINR": 5800, "image": "Grilled Lobster Tail.jpeg" },
+            { "name": "Lobster Thermidor", "category": "Fresh Seafood", "descriptor": "Classic half-lobster, cognac cream, gruyère gratin", "tags": ["non-veg", "chef-pick"], "priceINR": 6400, "image": "Lobster Thermidor.jpeg" },
+            { "name": "King Crab Legs", "category": "Fresh Seafood", "descriptor": "Alaskan king crab legs, drawn butter, dill oil", "tags": ["non-veg", "gluten-free"], "priceINR": 7200, "image": "King Crab Legs.jpeg" },
+            { "name": "Black Tiger Prawns", "category": "Fresh Seafood", "descriptor": "Jumbo tiger prawns, garlic-chilli butter, crispy capers", "tags": ["non-veg"], "priceINR": 3800, "image": "Black Tiger Prawns.jpeg" },
+            { "name": "Grilled King Prawns", "category": "Fresh Seafood", "descriptor": "Chargrilled king prawns, lemon-herb oil, rocket salad", "tags": ["non-veg"], "priceINR": 3600, "image": "Grilled King Prawns.jpeg" },
+            { "name": "Seared Scallops", "category": "Fresh Seafood", "descriptor": "Diver scallops, pea purée, crispy pancetta, lemon beurre blanc", "tags": ["non-veg", "chef-pick"], "priceINR": 3200, "image": "Seared Scallops.jpeg" },
+            { "name": "Black Cod Miso", "category": "Fresh Seafood", "descriptor": "Sake-miso marinated black cod, pickled daikon, edamame", "tags": ["non-veg", "chef-pick"], "priceINR": 4200, "image": "Black Cod Miso.jpeg" },
+            { "name": "Miso-Glazed Salmon", "category": "Fresh Seafood", "descriptor": "Atlantic salmon fillet, miso glaze, sesame-bok choy, ponzu", "tags": ["non-veg"], "priceINR": 3800, "image": "Miso-Glazed Salmon.jpeg" },
+            { "name": "Pan-Seared Red Snapper", "category": "Fresh Seafood", "descriptor": "Crispy-skin snapper, bouillabaisse nage, saffron potato", "tags": ["non-veg"], "priceINR": 3400, "image": "Pan-Seared Red Snapper.jpeg" },
+            { "name": "Chargrilled Octopus", "category": "Fresh Seafood", "descriptor": "Tender chargrilled octopus, chimichurri, smoked paprika oil", "tags": ["non-veg"], "priceINR": 3200, "image": "Chargrilled Octopus.jpeg" },
+            { "name": "Tuna Tataki", "category": "Fresh Seafood", "descriptor": "Lightly seared tuna, ponzu dressing, shiso, sesame", "tags": ["non-veg"], "priceINR": 2800, "image": "Tuna Tataki.jpeg" },
+            { "name": "Seared Sea Bass", "category": "Fresh Seafood", "descriptor": "Crispy-skin seabass, fennel confit, saffron-mussel emulsion", "tags": ["non-veg"], "priceINR": 3600, "image": "Seared Sea Bass.jpeg" },
+            { "name": "Grilled Sea Scallops with Truffle Oil", "category": "Fresh Seafood", "descriptor": "Jumbo scallops, black truffle oil, cauliflower cream, chervil", "tags": ["non-veg", "chef-pick"], "priceINR": 3900, "image": "Grilled Sea Scallops with Truffle Oil.jpeg" },
+            { "name": "Seared Halibut with Citrus Beurre Blanc", "category": "Fresh Seafood", "descriptor": "Atlantic halibut, citrus beurre blanc, wilted spinach", "tags": ["non-veg"], "priceINR": 4100, "image": "Seared Halibut with Citrus Beurre Blanc.jpeg" },
+            { "name": "Tandoori Prawns", "category": "Fresh Seafood", "descriptor": "Maharaja-size prawns, tandoor-roasted, mint chutney, chaat", "tags": ["non-veg"], "priceINR": 3200, "image": "Tandoori Prawns.jpeg" },
+            { "name": "Butter Chicken", "category": "Indian Classics", "descriptor": "Slow-cooked chicken in velvety tomato-butter gravy, fenugreek", "tags": ["non-veg", "chef-pick"], "priceINR": 1800, "image": "Butter Chicken.jpeg" },
+            { "name": "Dal Makhani", "category": "Indian Classics", "descriptor": "Black lentils slow-cooked overnight, cream, tempered spices", "tags": ["vegetarian", "chef-pick"], "priceINR": 1200, "image": "Dal Makhani.jpeg" },
+            { "name": "Paneer Butter Masala", "category": "Indian Classics", "descriptor": "Cottage cheese cubes, rich tomato-cream masala, kasuri methi", "tags": ["vegetarian"], "priceINR": 1400, "image": "Paneer Butter Masala.jpeg" },
+            { "name": "Chicken Tikka Masala", "category": "Indian Classics", "descriptor": "Tandoor-smoked chicken, silky masala gravy, basmati", "tags": ["non-veg", "chef-pick"], "priceINR": 1900, "image": "Chicken Tikka Masala.jpeg" },
+            { "name": "Lamb Rogan Josh", "category": "Indian Classics", "descriptor": "Kashmiri-spiced slow-cooked lamb, ratanjot, aromatics", "tags": ["non-veg"], "priceINR": 2400, "image": "Lamb Rogan Josh.jpeg" },
+            { "name": "Hyderabadi Gold Biryani", "category": "Indian Classics", "descriptor": "Dum-cooked biryani, saffron rice, caramelised onions, raita", "tags": ["non-veg", "chef-pick", "gluten-free"], "priceINR": 2200, "image": "Hyderabadi Gold Biryani.jpeg" },
+            { "name": "Royal Maharaja Thali", "category": "Indian Classics", "descriptor": "Regal thali — 12 accompaniments, breads, sweets, seasonal pickles", "tags": ["vegetarian", "chef-pick"], "priceINR": 3200, "image": "Royal Maharaja Thali.jpeg" },
+            { "name": "Paneer Tikka", "category": "Indian Classics", "descriptor": "Smoky tandoor paneer, pepper-onion salad, mint yogurt", "tags": ["vegetarian"], "priceINR": 1300, "image": "Paneer Tikka.jpeg" },
+            { "name": "Goan Prawn Curry", "category": "Indian Classics", "descriptor": "Tiger prawns, coconut-kokum curry, steamed appam", "tags": ["non-veg"], "priceINR": 2100, "image": "Goan Prawn Curry.jpeg" },
+            { "name": "Masala Dosa Elegance", "category": "Indian Classics", "descriptor": "Crispy dosa, spiced potato masala, sambar, three chutneys", "tags": ["vegetarian"], "priceINR": 1100, "image": "Masala Dosa Elegance.jpeg" },
+            { "name": "Rogan Josh Lamb Chops", "category": "Indian Classics", "descriptor": "Frenched lamb chops, rogan josh marinade, carrot harissa", "tags": ["non-veg", "chef-pick"], "priceINR": 3400, "image": "Rogan Josh Lamb Chops.jpeg" },
+            { "name": "Imperial Lobster Curry", "category": "Indian Classics", "descriptor": "Whole lobster, Malabar curry, coconut milk, curry leaf tadka", "tags": ["non-veg", "chef-pick"], "priceINR": 5600, "image": "Imperial Lobster Curry.jpeg" },
+            { "name": "Tandoori Royal Prawns", "category": "Indian Classics", "descriptor": "XL Royale prawns, saffron-cream marinade, charcoal tandoor", "tags": ["non-veg", "chef-pick"], "priceINR": 3800, "image": "Tandoori Royal Prawns.jpeg" },
+            { "name": "Vegetable Korma", "category": "Indian Classics", "descriptor": "Seasonal vegetables, cashew-cream korma, kewra essence", "tags": ["vegetarian", "gluten-free"], "priceINR": 1200, "image": "Vegetable Korma.jpeg" },
+            { "name": "Chicken Biriyani", "category": "Indian Classics", "descriptor": "Fragrant basmati, tender chicken, saffron, fried onions", "tags": ["non-veg"], "priceINR": 1900, "image": "Chicken Biriyani.png" },
+            { "name": "Mutton Biriyani", "category": "Indian Classics", "descriptor": "Slow-cooked mutton biryani, Dum-pukht style, seeraga samba", "tags": ["non-veg", "chef-pick"], "priceINR": 2400, "image": "Mutton Biriyani.png" },
+            { "name": "Vegetable Biriyani", "category": "Indian Classics", "descriptor": "Garden vegetables, aromatic basmati, rose water, nuts", "tags": ["vegetarian", "gluten-free"], "priceINR": 1600, "image": "Vegetable Biriyani.jpeg" },
+            { "name": "Duck Confit with Cherry Reduction", "category": "Global Cuisine / Chef Specials", "descriptor": "Slow-cured duck leg, cherry-port reduction, lentils du Puy", "tags": ["non-veg", "chef-pick"], "priceINR": 4800, "image": "Duck Confit with Cherry Reduction.jpeg" },
+            { "name": "Stuffed Chicken Ballotine", "category": "Global Cuisine / Chef Specials", "descriptor": "Deboned chicken, wild mushroom stuffing, tarragon cream", "tags": ["non-veg"], "priceINR": 3400, "image": "Stuffed Chicken Ballotine.jpeg" },
+            { "name": "Lobster Ravioli in Saffron Sauce", "category": "Global Cuisine / Chef Specials", "descriptor": "Hand-made pasta, lobster filling, saffron-cream velouté", "tags": ["non-veg", "chef-pick"], "priceINR": 4200, "image": "Lobster Ravioli in Saffron Sauce.jpeg" },
+            { "name": "Black Truffle Gnocchi", "category": "Global Cuisine / Chef Specials", "descriptor": "Pillowy potato gnocchi, Périgord truffle, aged parmesan foam", "tags": ["vegetarian", "chef-pick"], "priceINR": 3600, "image": "Black Truffle Gnocchi.jpeg" },
+            { "name": "Truffle Risotto", "category": "Global Cuisine / Chef Specials", "descriptor": "Carnaroli risotto, black truffle shavings, Fontina cream", "tags": ["vegetarian", "chef-pick"], "priceINR": 3200, "image": "Truffle Risotto.jpeg" },
+            { "name": "Beef Bourguignon", "category": "Global Cuisine / Chef Specials", "descriptor": "Burgundy-braised beef, pearl onions, button mushrooms, lardons", "tags": ["non-veg"], "priceINR": 4400, "image": "Beef Bourguignon.jpeg" },
+            { "name": "Pan-Seared Foie Gras with Fig", "category": "Global Cuisine / Chef Specials", "descriptor": "Seared duck liver, caramelised fig, brioche toast, balsamico", "tags": ["non-veg", "chef-pick"], "priceINR": 4600, "image": "Pan-Seared Foie Gras with Fig.jpeg" },
+            { "name": "Miso-Marinated Black Cod", "category": "Global Cuisine / Chef Specials", "descriptor": "48-hour miso paste cod, dashi broth, enoki mushrooms", "tags": ["non-veg", "chef-pick", "gluten-free"], "priceINR": 4200, "image": "Miso-Marinated Black Cod.jpeg" },
+            { "name": "Duck à l'Orange", "category": "Global Cuisine / Chef Specials", "descriptor": "Classic French duck breast, bitter orange sauce, root purée", "tags": ["non-veg"], "priceINR": 4000, "image": "Duck à l'Orange.jpeg" },
+            { "name": "Vegetable Wellington", "category": "Global Cuisine / Chef Specials", "descriptor": "Root vegetable & mushroom duxelles in golden puff pastry", "tags": ["vegetarian", "chef-pick"], "priceINR": 2800, "image": "Vegetable Wellington.jpeg" },
+            { "name": "Seared Tuna Tartare Bite", "category": "Global Cuisine / Chef Specials", "descriptor": "Seared exterior tender-raw centre, yuzu kosho, nori crisp", "tags": ["non-veg"], "priceINR": 2600, "image": "Seared Tuna Tartare Bite.jpeg" },
+            { "name": "Golden Butter Chicken", "category": "Global Cuisine / Chef Specials", "descriptor": "Chef's elevated butter chicken, 24-carat gold leaf garnish", "tags": ["non-veg", "chef-pick", "luxury"], "priceINR": 3400, "image": "Golden Butter Chicken.jpeg" },
+            { "name": "Chocolate Fondant", "category": "Desserts", "descriptor": "Warm Valrhona chocolate fondant, salted caramel, vanilla ice cream", "tags": ["vegetarian", "chef-pick"], "priceINR": 1400, "image": "Chocolate Fondant.jpeg" },
+            { "name": "Tiramisu", "category": "Desserts", "descriptor": "Classic Italian tiramisu, Savoiardi, espresso, mascarpone", "tags": ["vegetarian"], "priceINR": 1200, "image": "Tiramisu.jpeg" },
+            { "name": "Crème Brûlée", "category": "Desserts", "descriptor": "Silky vanilla bean custard, torched sugar crust, berries", "tags": ["vegetarian", "gluten-free"], "priceINR": 1100, "image": "Crème Brûlée.jpeg" },
+            { "name": "Gulab Jamun", "category": "Desserts", "descriptor": "Khoya jamuns, rose syrup, saffron cream, silver leaf", "tags": ["vegetarian", "chef-pick"], "priceINR": 900, "image": "Gulab Jamun.jpeg" },
+            { "name": "Pistachio Kulfi", "category": "Desserts", "descriptor": "Traditional kulfi with pistachio, cardamom, rose water", "tags": ["vegetarian", "gluten-free"], "priceINR": 850, "image": "Pistachio Kulfi.jpeg" },
+            { "name": "Mango Mousse", "category": "Desserts", "descriptor": "Alphonso mango mousse, mascarpone, champagne gelée", "tags": ["vegetarian"], "priceINR": 1000, "image": "Mango Mousse.jpeg" },
+            { "name": "Caramel Panna Cotta", "category": "Desserts", "descriptor": "Italian panna cotta, salted caramel, almond tuile", "tags": ["vegetarian", "gluten-free"], "priceINR": 1100, "image": "Caramel Panna Cotta (2).jpeg" },
+            { "name": "Lemon Sorbet", "category": "Desserts", "descriptor": "Hand-churned lemon sorbet, limoncello syrup, candied zest", "tags": ["vegetarian", "gluten-free"], "priceINR": 800, "image": "Lemon Sorbet in Crystal Bowl.jpeg" },
+            { "name": "Vanilla Bean Ice Cream with Gold Leaf", "category": "Desserts", "descriptor": "Madagascar vanilla ice cream, 24-carat gold leaf adornment", "tags": ["vegetarian", "gluten-free", "luxury"], "priceINR": 1600, "image": "Vanilla Bean Ice Cream with Gold Leaf.jpeg" },
+            { "name": "Raspberry Mille-Feuille", "category": "Desserts", "descriptor": "Crisp puff pastry layers, raspberry cream, fresh berries", "tags": ["vegetarian"], "priceINR": 1300, "image": "Raspberry Mille-Feuille (2).jpeg" },
+            { "name": "Passionfruit Tart", "category": "Desserts", "descriptor": "Tangy passionfruit curd, sweet shortcrust shell, mango coulis", "tags": ["vegetarian"], "priceINR": 1200, "image": "Passionfruit Tart.jpeg" },
+            { "name": "Regal Indian Dessert Platter", "category": "Desserts", "descriptor": "Chef's curated Indian sweets — gulab jamun, kulfi, kheer, halwa", "tags": ["vegetarian", "chef-pick"], "priceINR": 2200, "image": "Regal Indian Dessert Platter.jpeg" },
+            { "name": "Opera Cake Slice", "category": "Desserts", "descriptor": "French opera cake, joconde, coffee buttercream, praline", "tags": ["vegetarian"], "priceINR": 1300, "image": "Opera Cake Slice.jpeg" },
+            { "name": "Mango Panna Cotta", "category": "Desserts", "descriptor": "Alphonso mango panna cotta, coconut gelée, tropical coulis", "tags": ["vegetarian", "gluten-free"], "priceINR": 1100, "image": "Mango Panna Cotta.jpeg" },
+            { "name": "Chocolate Hazelnut Tart", "category": "Desserts", "descriptor": "Dark chocolate ganache, praline base, hazelnut crumble", "tags": ["vegetarian", "chef-pick"], "priceINR": 1400, "image": "Chocolate Hazelnut Tart.jpeg" },
+            { "name": "Chocolate Sphere Dessert", "category": "Desserts", "descriptor": "Dark chocolate sphere, molten centre, warm caramel pour", "tags": ["vegetarian", "chef-pick"], "priceINR": 1500, "image": "Chocolate Sphere Dessert.jpeg" },
+            { "name": "Fine Red Wine Pour", "category": "Beverages & Wine", "descriptor": "Sommelier's rotating selection — Bordeaux, Burgundy, Barossa", "tags": ["chef-pick"], "priceINR": 2400, "image": "Fine Red Wine Pour.jpeg" },
+            { "name": "Classic Champagne Cocktail", "category": "Beverages & Wine", "descriptor": "Brut champagne, Angostura bitters, cognac, sugar cube", "tags": [], "priceINR": 2200, "image": "Classic Champagne Cocktail.jpeg" },
+            { "name": "Old Fashioned Cocktail", "category": "Beverages & Wine", "descriptor": "Bourbon, Demerara syrup, Angostura & orange bitters, orange peel", "tags": ["chef-pick"], "priceINR": 1800, "image": "Old Fashioned Cocktail.jpeg" },
+            { "name": "Signature White Wine", "category": "Beverages & Wine", "descriptor": "Sommelier curated whites — Chablis, Sancerre, White Burgundy", "tags": [], "priceINR": 2000, "image": "Signature White Wine.jpeg" },
+            { "name": "Espresso Macchiato", "category": "Beverages & Wine", "descriptor": "Double-shot espresso, touch of steamed milk microfoam", "tags": ["vegetarian"], "priceINR": 650, "image": "Espresso Macchiato.jpeg" },
+            { "name": "Turmeric Latte", "category": "Beverages & Wine", "descriptor": "Golden milk - turmeric, ginger, coconut milk, honey", "tags": ["vegetarian", "gluten-free"], "priceINR": 550, "image": "Turmeric Latte.jpeg" },
+            { "name": "Sparkling Water with Lemon Twist", "category": "Beverages & Wine", "descriptor": "Premium sparkling water, hand-crystalled lemon twist", "tags": ["vegetarian", "gluten-free"], "priceINR": 400, "image": "Sparkling Water with Lemon Twist.jpeg" },
+            { "name": "Lemon Sorbet in Crystal Bowl", "category": "Beverages & Wine", "descriptor": "Palate cleanser — refreshing lemon sorbet, edible flowers", "tags": ["vegetarian", "gluten-free"], "priceINR": 600, "image": "Lemon Sorbet in Crystal Bowl.jpeg" }
+        ];
+
+        // ─── RENDER ───────────────────────────────────────────────────
+        const CATS = {
+            'Starters / Appetizers': { id: 'starters', icon: '🥗' },
+            'Signature Steaks': { id: 'steaks', icon: '🥩' },
+            'Fresh Seafood': { id: 'seafood', icon: '🦞' },
+            'Indian Classics': { id: 'indian', icon: '🍛' },
+            'Global Cuisine / Chef Specials': { id: 'global', icon: '🌍' },
+            'Desserts': { id: 'desserts', icon: '🍮' },
+            'Beverages & Wine': { id: 'beverages', icon: '🍷' }
+        };
+        const CAT_ORDER = Object.keys(CATS);
+
+        function price(n) { return n ? '₹' + Number(n).toLocaleString('en-IN') : ''; }
+        function escHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+        function tagsHTML(tags) {
+            const t = tags || [];
+            return [
+                t.includes('vegetarian') ? '<span class="mic-tag mt-veg">Veg</span>' : '',
+                t.includes('non-veg') ? '<span class="mic-tag mt-nv">Non-Veg</span>' : '',
+                t.includes('gluten-free') ? '<span class="mic-tag mt-gf">GF</span>' : '',
+                t.includes('chef-pick') ? '<span class="mic-tag mt-c">★ Chef</span>' : ''
+            ].join('');
+        }
+
+        (function buildMenu() {
+            const grouped = {};
+            MENU_DATA.forEach(item => {
+                if (!grouped[item.category]) grouped[item.category] = [];
+                grouped[item.category].push(item);
+            });
+
+            const container = document.getElementById('menu-container');
+            if (!container) return;
+
+            CAT_ORDER.forEach(cat => {
+                const items = grouped[cat]; if (!items || !items.length) return;
+                const meta = CATS[cat];
+                const sec = document.createElement('section');
+                sec.className = 'menu-section';
+                sec.id = meta.id;
+                sec.setAttribute('aria-labelledby', 'cat-h-' + meta.id);
+
+                sec.innerHTML = `
+      <div class="menu-section-heading">
+        <span class="cat-icon">${meta.icon}</span>
+        <span id="cat-h-${meta.id}">${escHtml(cat)}</span>
+      </div>
+      <div class="menu-grid" role="list">
+        ${items.map((item, i) => `
+          <article class="menu-item-card reveal" role="listitem"
+            data-name="${escHtml(item.name.toLowerCase())}"
+            data-cat="${escHtml(meta.id)}"
+            data-delay="${(i % 8) * 60}">
+            <div class="mic-img">
+              ${item.image
+                        ? `<img src="${escHtml(item.image)}" alt="${escHtml(item.name)}" loading="lazy" decoding="async"/>`
+                        : `<div class="mic-placeholder">🍽️</div>`}
+            </div>
+            <div class="mic-body">
+              <div class="mic-name">${escHtml(item.name)}</div>
+              <div class="mic-desc">${escHtml(item.descriptor || '')}</div>
+              <div class="mic-footer">
+                <span class="mic-price">${price(item.priceINR)}</span>
+                <span class="mic-tags">${tagsHTML(item.tags)}</span>
+              </div>
+            </div>
+          </article>`).join('')}
+      </div>`;
+                container.appendChild(sec);
+            });
+
+            // IntersectionObserver reveal
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            const d = +(e.target.dataset.delay || 0);
+                            setTimeout(() => e.target.classList.add('in'), d);
+                            io.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+                document.querySelectorAll('.menu-item-card.reveal').forEach(el => io.observe(el));
+            } else {
+                document.querySelectorAll('.menu-item-card').forEach(el => el.classList.add('in'));
+            }
+        })();
+    </script>
+
+    <script src="main.js" defer></script>
+</body>
+
+</html>

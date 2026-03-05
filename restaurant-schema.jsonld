@@ -1,0 +1,56 @@
+{
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "TajHotel",
+    "alternateName": "Taj Fine Dining Delhi",
+    "description": "A fine-dining legacy in the heart of Delhi — blending Indian culinary heritage with global gastronomic excellence.",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Connaught Place",
+        "addressLocality": "New Delhi",
+        "addressRegion": "Delhi",
+        "postalCode": "110001",
+        "addressCountry": "IN"
+    },
+    "priceRange": "$$$$",
+    "servesCuisine": [
+        "Indian",
+        "Seafood",
+        "Steakhouse",
+        "French",
+        "Global"
+    ],
+    "telephone": "+91-11-XXXX-XXXX",
+    "email": "reservations@tajhotel-delhi.com",
+    "url": "https://www.tajhotel-delhi.com",
+    "image": "Interior.jpeg",
+    "openingHoursSpecification": [
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ],
+            "opens": "12:00",
+            "closes": "23:00"
+        },
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Saturday",
+                "Sunday"
+            ],
+            "opens": "11:00",
+            "closes": "23:30"
+        }
+    ],
+    "starRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+    },
+    "paymentAccepted": "Cash, Credit Card, UPI",
+    "currenciesAccepted": "INR"
+}
