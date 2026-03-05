@@ -1062,7 +1062,7 @@
                             io.unobserve(e.target);
                         }
                     });
-                }, { threshold: 0.06, rootMargin: "0px 0px -30px 0px" });
+                }, { threshold: 0.05, rootMargin: "0px 0px 50px 0px" });
                 container.querySelectorAll(".menu-card.reveal").forEach(el => io.observe(el));
             } else {
                 container.querySelectorAll(".menu-card").forEach(el => el.classList.add("in"));
