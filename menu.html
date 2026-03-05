@@ -1135,7 +1135,7 @@
         }
 
         // ── Init controls ──
-        document.addEventListener("DOMContentLoaded", () => {
+        (function initMenu() {
             render();
 
             // Mode buttons
@@ -1183,7 +1183,7 @@
                 clearTimeout(sTimeout);
                 sTimeout = setTimeout(render, 220);
             });
-        });
+        })();
     </script>
 
     <script src="main.js" defer></script>
