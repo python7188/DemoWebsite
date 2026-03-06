@@ -5,7 +5,7 @@
     "descriptor": "Paper-thin smoked salmon, caper cream, micro herbs & lemon oil",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 1850,
-    "image": "Smoked Salmon Carpaccio.jpeg"
+    "image": "Smoked Salmon Carpaccio.webp"
   },
   {
     "name": "Truffle Arancini",
@@ -13,7 +13,7 @@
     "descriptor": "Crispy risotto balls, black truffle, aged parmesan, saffron aioli",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 1450,
-    "image": "Truffle Arancini.jpeg"
+    "image": "Truffle Arancini.webp"
   },
   {
     "name": "King Prawn Cocktail",
@@ -21,7 +21,7 @@
     "descriptor": "Poached tiger prawns, Marie Rose sauce, avocado cream",
     "tags": ["non-veg"],
     "priceINR": 2100,
-    "image": "King Prawn Cocktail.jpeg"
+    "image": "King Prawn Cocktail.webp"
   },
   {
     "name": "Oysters Rockefeller",
@@ -29,7 +29,7 @@
     "descriptor": "Fresh oysters baked with spinach, pancetta & Pernod butter",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 2800,
-    "image": "Oysters Rockefeller.jpeg"
+    "image": "Oysters Rockefeller.webp"
   },
   {
     "name": "Foie Gras Terrine",
@@ -37,7 +37,7 @@
     "descriptor": "Silky duck liver terrine, toasted brioche, fig chutney",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 3200,
-    "image": "Foie Gras Terrine.jpeg"
+    "image": "Foie Gras Terrine.webp"
   },
   {
     "name": "Tuna Tartare",
@@ -45,7 +45,7 @@
     "descriptor": "Hand-cut bluefin tuna, sesame ponzu, avocado, tobiko",
     "tags": ["non-veg"],
     "priceINR": 2400,
-    "image": "Tuna Tartare.jpeg"
+    "image": "Tuna Tartare.webp"
   },
   {
     "name": "Caviar with Blinis",
@@ -53,7 +53,7 @@
     "descriptor": "Beluga caviar, warm blinis, crème fraîche, chives",
     "tags": ["non-veg", "chef-pick", "luxury"],
     "priceINR": 8500,
-    "image": "Caviar with Blinis.jpeg"
+    "image": "Caviar with Blinis.webp"
   },
   {
     "name": "Burrata & Heirloom Tomatoes",
@@ -61,7 +61,7 @@
     "descriptor": "Creamy burrata, heirloom tomatoes, aged balsamic, basil oil",
     "tags": ["vegetarian"],
     "priceINR": 1600,
-    "image": "Burrata & Heirloom Tomatoes.jpeg"
+    "image": "Burrata & Heirloom Tomatoes.webp"
   },
   {
     "name": "Amuse Bouche Selection",
@@ -69,7 +69,7 @@
     "descriptor": "Chef's rotating bite-sized morsels to awaken the palate",
     "tags": ["chef-pick"],
     "priceINR": 1200,
-    "image": "Amuse Bouche Selection.jpeg"
+    "image": "Amuse Bouche Selection.webp"
   },
   {
     "name": "Paneer Royale Tikka",
@@ -77,7 +77,7 @@
     "descriptor": "Saffron-marinated paneer, royal cashew sauce, pomegranate",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 1400,
-    "image": "Paneer Royale Tikka.jpeg"
+    "image": "Paneer Royale Tikka.webp"
   },
   {
     "name": "Chicken Lollipops",
@@ -85,7 +85,7 @@
     "descriptor": "Crispy glazed chicken drumettes, sriracha-honey dip",
     "tags": ["non-veg"],
     "priceINR": 1350,
-    "image": "Chicken Lollipops.jpeg"
+    "image": "Chicken Lollipops.webp"
   },
   {
     "name": "Scallop Ceviche",
@@ -93,7 +93,7 @@
     "descriptor": "Hand-dived scallops, tiger's milk, jalapeño, sweet corn",
     "tags": ["non-veg"],
     "priceINR": 2200,
-    "image": "Scallop Ceviche.jpeg"
+    "image": "Scallop Ceviche.webp"
   },
   {
     "name": "Grilled Vegetable Terrine",
@@ -101,7 +101,7 @@
     "descriptor": "Layered roasted Mediterranean vegetables, herb oil, cress",
     "tags": ["vegetarian", "gluten-free"],
     "priceINR": 1300,
-    "image": "Grilled Vegetable Terrine.jpeg"
+    "image": "Grilled Vegetable Terrine.webp"
   },
   {
     "name": "Stuffed Squash Blossoms",
@@ -109,7 +109,7 @@
     "descriptor": "Zucchini flowers filled with ricotta & truffle, lemon zest",
     "tags": ["vegetarian"],
     "priceINR": 1500,
-    "image": "Stuffed Squash Blossoms.jpeg"
+    "image": "Stuffed Squash Blossoms.webp"
   },
   {
     "name": "Lobster Bisque",
@@ -117,7 +117,7 @@
     "descriptor": "Velvety cream of lobster, cognac, sherry, tarragon foam",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 2600,
-    "image": "Lobster Bisque.jpeg"
+    "image": "Lobster Bisque.webp"
   },
   {
     "name": "Crab Cakes",
@@ -125,7 +125,7 @@
     "descriptor": "Pan-fried Dungeness crab cakes, remoulade, microgreens",
     "tags": ["non-veg"],
     "priceINR": 1900,
-    "image": "Crab Cakes.jpeg"
+    "image": "Crab Cakes.webp"
   },
   {
     "name": "Seared Tuna Bite",
@@ -133,7 +133,7 @@
     "descriptor": "Seared yellowfin tuna, wasabi crème, pickled ginger",
     "tags": ["non-veg"],
     "priceINR": 2000,
-    "image": "Seared Tuna Bite.jpeg"
+    "image": "Seared Tuna Bite.webp"
   },
   {
     "name": "Filet Mignon",
@@ -141,7 +141,7 @@
     "descriptor": "250g centre-cut tenderloin, Béarnaise sauce, truffle jus",
     "tags": ["non-veg", "chef-pick", "gluten-free"],
     "priceINR": 6800,
-    "image": "Filet Mignon.jpeg"
+    "image": "Filet Mignon.webp"
   },
   {
     "name": "Ribeye Steak 350g",
@@ -149,7 +149,7 @@
     "descriptor": "Grass-fed ribeye, compound butter, bone-marrow jus",
     "tags": ["non-veg", "gluten-free"],
     "priceINR": 5800,
-    "image": "Ribeye Steak 350g.jpeg"
+    "image": "Ribeye Steak 350g.webp"
   },
   {
     "name": "New York Strip",
@@ -157,7 +157,7 @@
     "descriptor": "300g NY strip, chimichurri, roasted garlic potato",
     "tags": ["non-veg"],
     "priceINR": 5400,
-    "image": "New York Strip.jpeg"
+    "image": "New York Strip.webp"
   },
   {
     "name": "Wagyu Ribeye",
@@ -165,7 +165,7 @@
     "descriptor": "A5 Wagyu ribeye, truffle salt, aged red wine reduction",
     "tags": ["non-veg", "chef-pick", "luxury"],
     "priceINR": 14500,
-    "image": "Wagyu Ribeye.jpeg"
+    "image": "Wagyu Ribeye.webp"
   },
   {
     "name": "Charcoal-Grilled Tomahawk 1kg",
@@ -173,7 +173,7 @@
     "descriptor": "Bone-in tomahawk, charcoal-kissed, served tableside with au jus",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 12000,
-    "image": "Charcoal-Grilled Tomahawk 1kg.jpeg"
+    "image": "Charcoal-Grilled Tomahawk 1kg.webp"
   },
   {
     "name": "Sirloin Steak 300g",
@@ -181,7 +181,7 @@
     "descriptor": "Aged sirloin, peppercorn sauce, sautéed greens",
     "tags": ["non-veg"],
     "priceINR": 4800,
-    "image": "Sirloin Steak 300g.jpeg"
+    "image": "Sirloin Steak 300g.webp"
   },
   {
     "name": "Porterhouse Steak 400g",
@@ -189,7 +189,7 @@
     "descriptor": "Dry-aged porterhouse, both tenderloin & strip, seasonal vegetables",
     "tags": ["non-veg"],
     "priceINR": 7200,
-    "image": "Porterhouse Steak 400g.jpeg"
+    "image": "Porterhouse Steak 400g.webp"
   },
   {
     "name": "Ribeye Surf & Turf",
@@ -197,7 +197,7 @@
     "descriptor": "300g ribeye topped with half lobster tail, truffle butter",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 9800,
-    "image": "Ribeye Surf & Turf.jpeg"
+    "image": "Ribeye Surf & Turf.webp"
   },
   {
     "name": "Herb-Crusted Lamb Rack",
@@ -205,7 +205,7 @@
     "descriptor": "New Zealand lamb rack, Dijon-herb crust, minted pea purée",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 7800,
-    "image": "Herb-Crusted Lamb Rack.jpeg"
+    "image": "Herb-Crusted Lamb Rack.webp"
   },
   {
     "name": "Tomahawk Steak",
@@ -213,7 +213,7 @@
     "descriptor": "Long-bone tomahawk, salt-aged, red wine jus, loaded fries",
     "tags": ["non-veg"],
     "priceINR": 10500,
-    "image": "Tomahawk Steak.jpeg"
+    "image": "Tomahawk Steak.webp"
   },
   {
     "name": "Beef Wellington",
@@ -221,7 +221,7 @@
     "descriptor": "Classic beef Wellington, mushroom duxelles, puff pastry",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 8200,
-    "image": "Beef Wellington.jpeg"
+    "image": "Beef Wellington.webp"
   },
   {
     "name": "Beef Tenderloin Medallions",
@@ -229,7 +229,7 @@
     "descriptor": "Two medallions of tenderloin, black pepper jus, gratin potato",
     "tags": ["non-veg"],
     "priceINR": 6200,
-    "image": "Beef Tenderloin Medallions.jpeg"
+    "image": "Beef Tenderloin Medallions.webp"
   },
   {
     "name": "Seared Venison Loin",
@@ -237,7 +237,7 @@
     "descriptor": "Wild venison loin, juniper berry sauce, celery root purée",
     "tags": ["non-veg", "chef-pick", "gluten-free"],
     "priceINR": 7600,
-    "image": "Seared Venison Loin.jpeg"
+    "image": "Seared Venison Loin.webp"
   },
   {
     "name": "Grilled Lobster Tail",
@@ -245,7 +245,7 @@
     "descriptor": "Whole lobster tail, clarified butter, grilled lemon, herbs",
     "tags": ["non-veg", "chef-pick", "gluten-free"],
     "priceINR": 5800,
-    "image": "Grilled Lobster Tail.jpeg"
+    "image": "Grilled Lobster Tail.webp"
   },
   {
     "name": "Lobster Thermidor",
@@ -253,7 +253,7 @@
     "descriptor": "Classic half-lobster, cognac cream, gruyère gratin",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 6400,
-    "image": "Lobster Thermidor.jpeg"
+    "image": "Lobster Thermidor.webp"
   },
   {
     "name": "King Crab Legs",
@@ -261,7 +261,7 @@
     "descriptor": "Alaskan king crab legs, drawn butter, dill oil",
     "tags": ["non-veg", "gluten-free"],
     "priceINR": 7200,
-    "image": "King Crab Legs.jpeg"
+    "image": "King Crab Legs.webp"
   },
   {
     "name": "Black Tiger Prawns",
@@ -269,7 +269,7 @@
     "descriptor": "Jumbo tiger prawns, garlic-chilli butter, crispy capers",
     "tags": ["non-veg"],
     "priceINR": 3800,
-    "image": "Black Tiger Prawns.jpeg"
+    "image": "Black Tiger Prawns.webp"
   },
   {
     "name": "Grilled King Prawns",
@@ -277,7 +277,7 @@
     "descriptor": "Chargrilled king prawns, lemon-herb oil, rocket salad",
     "tags": ["non-veg"],
     "priceINR": 3600,
-    "image": "Grilled King Prawns.jpeg"
+    "image": "Grilled King Prawns.webp"
   },
   {
     "name": "Seared Scallops",
@@ -285,7 +285,7 @@
     "descriptor": "Diver scallops, pea purée, crispy pancetta, lemon beurre blanc",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 3200,
-    "image": "Seared Scallops.jpeg"
+    "image": "Seared Scallops.webp"
   },
   {
     "name": "Black Cod Miso",
@@ -293,7 +293,7 @@
     "descriptor": "Sake-miso marinated black cod, pickled daikon, edamame",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 4200,
-    "image": "Black Cod Miso.jpeg"
+    "image": "Black Cod Miso.webp"
   },
   {
     "name": "Miso-Glazed Salmon",
@@ -301,7 +301,7 @@
     "descriptor": "Atlantic salmon fillet, miso glaze, sesame-bok choy, ponzu",
     "tags": ["non-veg"],
     "priceINR": 3800,
-    "image": "Miso-Glazed Salmon.jpeg"
+    "image": "Miso-Glazed Salmon.webp"
   },
   {
     "name": "Pan-Seared Red Snapper",
@@ -309,7 +309,7 @@
     "descriptor": "Crispy-skin snapper, bouillabaisse nage, saffron potato",
     "tags": ["non-veg"],
     "priceINR": 3400,
-    "image": "Pan-Seared Red Snapper.jpeg"
+    "image": "Pan-Seared Red Snapper.webp"
   },
   {
     "name": "Chargrilled Octopus",
@@ -317,7 +317,7 @@
     "descriptor": "Tender chargrilled octopus, chimichurri, smoked paprika oil",
     "tags": ["non-veg"],
     "priceINR": 3200,
-    "image": "Chargrilled Octopus.jpeg"
+    "image": "Chargrilled Octopus.webp"
   },
   {
     "name": "Tuna Tataki",
@@ -325,7 +325,7 @@
     "descriptor": "Lightly seared tuna, ponzu dressing, shiso, sesame",
     "tags": ["non-veg"],
     "priceINR": 2800,
-    "image": "Tuna Tataki.jpeg"
+    "image": "Tuna Tataki.webp"
   },
   {
     "name": "Seared Sea Bass",
@@ -333,7 +333,7 @@
     "descriptor": "Crispy-skin seabass, fennel confit, saffron-mussel emulsion",
     "tags": ["non-veg"],
     "priceINR": 3600,
-    "image": "Seared Sea Bass.jpeg"
+    "image": "Seared Sea Bass.webp"
   },
   {
     "name": "Grilled Sea Scallops with Truffle Oil",
@@ -341,7 +341,7 @@
     "descriptor": "Jumbo scallops, black truffle oil, cauliflower cream, chervil",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 3900,
-    "image": "Grilled Sea Scallops with Truffle Oil.jpeg"
+    "image": "Grilled Sea Scallops with Truffle Oil.webp"
   },
   {
     "name": "Seared Halibut with Citrus Beurre Blanc",
@@ -349,7 +349,7 @@
     "descriptor": "Atlantic halibut, citrus beurre blanc, wilted spinach",
     "tags": ["non-veg"],
     "priceINR": 4100,
-    "image": "Seared Halibut with Citrus Beurre Blanc.jpeg"
+    "image": "Seared Halibut with Citrus Beurre Blanc.webp"
   },
   {
     "name": "Tandoori Prawns",
@@ -357,7 +357,7 @@
     "descriptor": "Maharaja-size prawns, tandoor-roasted, mint chutney, chaat",
     "tags": ["non-veg"],
     "priceINR": 3200,
-    "image": "Tandoori Prawns.jpeg"
+    "image": "Tandoori Prawns.webp"
   },
   {
     "name": "Butter Chicken",
@@ -365,7 +365,7 @@
     "descriptor": "Slow-cooked chicken in velvety tomato-butter gravy, fenugreek",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 1800,
-    "image": "Butter Chicken.jpeg"
+    "image": "Butter Chicken.webp"
   },
   {
     "name": "Dal Makhani",
@@ -373,7 +373,7 @@
     "descriptor": "Black lentils slow-cooked overnight, cream, tempered spices",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 1200,
-    "image": "Dal Makhani.jpeg"
+    "image": "Dal Makhani.webp"
   },
   {
     "name": "Paneer Butter Masala",
@@ -381,7 +381,7 @@
     "descriptor": "Cottage cheese cubes, rich tomato-cream masala, kasuri methi",
     "tags": ["vegetarian"],
     "priceINR": 1400,
-    "image": "Paneer Butter Masala.jpeg"
+    "image": "Paneer Butter Masala.webp"
   },
   {
     "name": "Chicken Tikka Masala",
@@ -389,7 +389,7 @@
     "descriptor": "Tandoor-smoked chicken, silky masala gravy, basmati",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 1900,
-    "image": "Chicken Tikka Masala.jpeg"
+    "image": "Chicken Tikka Masala.webp"
   },
   {
     "name": "Lamb Rogan Josh",
@@ -397,7 +397,7 @@
     "descriptor": "Kashmiri-spiced slow-cooked lamb, ratanjot, aromatics",
     "tags": ["non-veg"],
     "priceINR": 2400,
-    "image": "Lamb Rogan Josh.jpeg"
+    "image": "Lamb Rogan Josh.webp"
   },
   {
     "name": "Hyderabadi Gold Biryani",
@@ -405,7 +405,7 @@
     "descriptor": "Dum-cooked biryani, saffron rice, caramelised onions, raita",
     "tags": ["non-veg", "chef-pick", "gluten-free"],
     "priceINR": 2200,
-    "image": "Hyderabadi Gold Biryani.jpeg"
+    "image": "Hyderabadi Gold Biryani.webp"
   },
   {
     "name": "Royal Maharaja Thali",
@@ -413,7 +413,7 @@
     "descriptor": "Regal thali — 12 accompaniments, breads, sweets, seasonal pickles",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 3200,
-    "image": "Royal Maharaja Thali.jpeg"
+    "image": "Royal Maharaja Thali.webp"
   },
   {
     "name": "Paneer Tikka",
@@ -421,7 +421,7 @@
     "descriptor": "Smoky tandoor paneer, pepper-onion salad, mint yogurt",
     "tags": ["vegetarian"],
     "priceINR": 1300,
-    "image": "Paneer Tikka.jpeg"
+    "image": "Paneer Tikka.webp"
   },
   {
     "name": "Goan Prawn Curry",
@@ -429,7 +429,7 @@
     "descriptor": "Tiger prawns, coconut-kokum curry, steamed appam",
     "tags": ["non-veg"],
     "priceINR": 2100,
-    "image": "Goan Prawn Curry.jpeg"
+    "image": "Goan Prawn Curry.webp"
   },
   {
     "name": "Masala Dosa Elegance",
@@ -437,7 +437,7 @@
     "descriptor": "Crispy dosa, spiced potato masala, sambar, three chutneys",
     "tags": ["vegetarian"],
     "priceINR": 1100,
-    "image": "Masala Dosa Elegance.jpeg"
+    "image": "Masala Dosa Elegance.webp"
   },
   {
     "name": "Rogan Josh Lamb Chops",
@@ -445,7 +445,7 @@
     "descriptor": "Frenched lamb chops, rogan josh marinade, carrot harisaa",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 3400,
-    "image": "Rogan Josh Lamb Chops.jpeg"
+    "image": "Rogan Josh Lamb Chops.webp"
   },
   {
     "name": "Imperial Lobster Curry",
@@ -453,7 +453,7 @@
     "descriptor": "Whole lobster, Malabar curry, coconut milk, curry leaf tadka",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 5600,
-    "image": "Imperial Lobster Curry.jpeg"
+    "image": "Imperial Lobster Curry.webp"
   },
   {
     "name": "Tandoori Royal Prawns",
@@ -461,7 +461,7 @@
     "descriptor": "XL Royale prawns, saffron-cream marinade, charcoal tandoor",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 3800,
-    "image": "Tandoori Royal Prawns.jpeg"
+    "image": "Tandoori Royal Prawns.webp"
   },
   {
     "name": "Vegetable Korma",
@@ -469,7 +469,7 @@
     "descriptor": "Seasonal vegetables, cashew-cream korma, kewra essence",
     "tags": ["vegetarian", "gluten-free"],
     "priceINR": 1200,
-    "image": "Vegetable Korma.jpeg"
+    "image": "Vegetable Korma.webp"
   },
   {
     "name": "Chicken Biriyani",
@@ -477,7 +477,7 @@
     "descriptor": "Fragrant basmati, tender chicken, saffron, fried onions",
     "tags": ["non-veg"],
     "priceINR": 1900,
-    "image": "Chicken Biriyani.png"
+    "image": "Chicken Biriyani.webp"
   },
   {
     "name": "Mutton Biriyani",
@@ -485,7 +485,7 @@
     "descriptor": "Slow-cooked mutton biryani, Dum-pukht style, seeraga samba",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 2400,
-    "image": "Mutton Biriyani.png"
+    "image": "Mutton Biriyani.webp"
   },
   {
     "name": "Vegetable Biriyani",
@@ -493,7 +493,7 @@
     "descriptor": "Garden vegetables, aromatic basmati, rose water, nuts",
     "tags": ["vegetarian", "gluten-free"],
     "priceINR": 1600,
-    "image": "Vegetable Biriyani.jpeg"
+    "image": "Vegetable Biriyani.webp"
   },
   {
     "name": "Duck Confit with Cherry Reduction",
@@ -501,7 +501,7 @@
     "descriptor": "Slow-cured duck leg, cherry-port reduction, lentils du Puy",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 4800,
-    "image": "Duck Confit with Cherry Reduction.jpeg"
+    "image": "Duck Confit with Cherry Reduction.webp"
   },
   {
     "name": "Stuffed Chicken Ballotine",
@@ -509,7 +509,7 @@
     "descriptor": "Deboned chicken, wild mushroom stuffing, tarragon cream",
     "tags": ["non-veg"],
     "priceINR": 3400,
-    "image": "Stuffed Chicken Ballotine.jpeg"
+    "image": "Stuffed Chicken Ballotine.webp"
   },
   {
     "name": "Lobster Ravioli in Saffron Sauce",
@@ -517,7 +517,7 @@
     "descriptor": "Hand-made pasta, lobster filling, saffron-cream velouté",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 4200,
-    "image": "Lobster Ravioli in Saffron Sauce.jpeg"
+    "image": "Lobster Ravioli in Saffron Sauce.webp"
   },
   {
     "name": "Black Truffle Gnocchi",
@@ -525,7 +525,7 @@
     "descriptor": "Pillowy potato gnocchi, Périgord truffle, aged parmesan foam",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 3600,
-    "image": "Black Truffle Gnocchi.jpeg"
+    "image": "Black Truffle Gnocchi.webp"
   },
   {
     "name": "Truffle Risotto",
@@ -533,7 +533,7 @@
     "descriptor": "Carnaroli risotto, black truffle shavings, Fontina cream",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 3200,
-    "image": "Truffle Risotto.jpeg"
+    "image": "Truffle Risotto.webp"
   },
   {
     "name": "Beef Bourguignon",
@@ -541,7 +541,7 @@
     "descriptor": "Burgundy-braised beef, pearl onions, button mushrooms, lardons",
     "tags": ["non-veg"],
     "priceINR": 4400,
-    "image": "Beef Bourguignon.jpeg"
+    "image": "Beef Bourguignon.webp"
   },
   {
     "name": "Pan-Seared Foie Gras with Fig",
@@ -549,7 +549,7 @@
     "descriptor": "Seared duck liver, caramelised fig, brioche toast, balsamico",
     "tags": ["non-veg", "chef-pick"],
     "priceINR": 4600,
-    "image": "Pan-Seared Foie Gras with Fig.jpeg"
+    "image": "Pan-Seared Foie Gras with Fig.webp"
   },
   {
     "name": "Miso-Marinated Black Cod",
@@ -557,7 +557,7 @@
     "descriptor": "48-hour miso paste cod, dashi broth, enoki mushrooms",
     "tags": ["non-veg", "chef-pick", "gluten-free"],
     "priceINR": 4200,
-    "image": "Miso-Marinated Black Cod.jpeg"
+    "image": "Miso-Marinated Black Cod.webp"
   },
   {
     "name": "Duck à l'Orange",
@@ -565,7 +565,7 @@
     "descriptor": "Classic French duck breast, bitter orange sauce, root purée",
     "tags": ["non-veg"],
     "priceINR": 4000,
-    "image": "Duck à l'Orange.jpeg"
+    "image": "Duck à l'Orange.webp"
   },
   {
     "name": "Vegetable Wellington",
@@ -573,7 +573,7 @@
     "descriptor": "Root vegetable & mushroom duxelles in golden puff pastry",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 2800,
-    "image": "Vegetable Wellington.jpeg"
+    "image": "Vegetable Wellington.webp"
   },
   {
     "name": "Seared Tuna Tartare Bite",
@@ -581,7 +581,7 @@
     "descriptor": "Seared exterior tender-raw centre, yuzu kosho, nori crisp",
     "tags": ["non-veg"],
     "priceINR": 2600,
-    "image": "Seared Tuna Tartare Bite.jpeg"
+    "image": "Seared Tuna Tartare Bite.webp"
   },
   {
     "name": "Golden Butter Chicken",
@@ -589,7 +589,7 @@
     "descriptor": "Chef's elevated butter chicken, 24-carat gold leaf garnish",
     "tags": ["non-veg", "chef-pick", "luxury"],
     "priceINR": 3400,
-    "image": "Golden Butter Chicken.jpeg"
+    "image": "Golden Butter Chicken.webp"
   },
   {
     "name": "Chocolate Fondant",
@@ -597,7 +597,7 @@
     "descriptor": "Warm Valrhona chocolate fondant, salted caramel, vanilla ice cream",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 1400,
-    "image": "Chocolate Fondant.jpeg"
+    "image": "Chocolate Fondant.webp"
   },
   {
     "name": "Tiramisu",
@@ -605,7 +605,7 @@
     "descriptor": "Classic Italian tiramisu, Savoiardi, espresso, mascarpone",
     "tags": ["vegetarian"],
     "priceINR": 1200,
-    "image": "Tiramisu.jpeg"
+    "image": "Tiramisu.webp"
   },
   {
     "name": "Crème Brûlée",
@@ -613,7 +613,7 @@
     "descriptor": "Silky vanilla bean custard, torched sugar crust, berries",
     "tags": ["vegetarian", "gluten-free"],
     "priceINR": 1100,
-    "image": "Crème Brûlée.jpeg"
+    "image": "Crème Brûlée.webp"
   },
   {
     "name": "Gulab Jamun",
@@ -621,7 +621,7 @@
     "descriptor": "Khoya jamuns, rose syrup, saffron cream, silver leaf",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 900,
-    "image": "Gulab Jamun.jpeg"
+    "image": "Gulab Jamun.webp"
   },
   {
     "name": "Pistachio Kulfi",
@@ -629,7 +629,7 @@
     "descriptor": "Traditional kulfi with pistachio, cardamom, rose water",
     "tags": ["vegetarian", "gluten-free"],
     "priceINR": 850,
-    "image": "Pistachio Kulfi.jpeg"
+    "image": "Pistachio Kulfi.webp"
   },
   {
     "name": "Mango Mousse",
@@ -637,7 +637,7 @@
     "descriptor": "Alphonso mango mousse, mascarpone, champagne gelée",
     "tags": ["vegetarian"],
     "priceINR": 1000,
-    "image": "Mango Mousse.jpeg"
+    "image": "Mango Mousse.webp"
   },
   {
     "name": "Caramel Panna Cotta",
@@ -645,7 +645,7 @@
     "descriptor": "Italian panna cotta, salted caramel, almond tuile",
     "tags": ["vegetarian", "gluten-free"],
     "priceINR": 1100,
-    "image": "Caramel Panna Cotta (2).jpeg"
+    "image": "Caramel Panna Cotta (2).webp"
   },
   {
     "name": "Lemon Sorbet",
@@ -653,7 +653,7 @@
     "descriptor": "Hand-churned lemon sorbet, limoncello syrup, candied zest",
     "tags": ["vegetarian", "gluten-free"],
     "priceINR": 800,
-    "image": "Lemon Sorbet in Crystal Bowl.jpeg"
+    "image": "Lemon Sorbet in Crystal Bowl.webp"
   },
   {
     "name": "Vanilla Bean Ice Cream with Gold Leaf",
@@ -661,7 +661,7 @@
     "descriptor": "Madagascar vanilla ice cream, 24-carat gold leaf adornment",
     "tags": ["vegetarian", "gluten-free", "luxury"],
     "priceINR": 1600,
-    "image": "Vanilla Bean Ice Cream with Gold Leaf.jpeg"
+    "image": "Vanilla Bean Ice Cream with Gold Leaf.webp"
   },
   {
     "name": "Raspberry Mille-Feuille",
@@ -669,7 +669,7 @@
     "descriptor": "Crisp puff pastry layers, raspberry cream, fresh berries",
     "tags": ["vegetarian"],
     "priceINR": 1300,
-    "image": "Raspberry Mille-Feuille (2).jpeg"
+    "image": "Raspberry Mille-Feuille (2).webp"
   },
   {
     "name": "Passionfruit Tart",
@@ -677,7 +677,7 @@
     "descriptor": "Tangy passionfruit curd, sweet shortcrust shell, mango coulis",
     "tags": ["vegetarian"],
     "priceINR": 1200,
-    "image": "Passionfruit Tart.jpeg"
+    "image": "Passionfruit Tart.webp"
   },
   {
     "name": "Regal Indian Dessert Platter",
@@ -685,7 +685,7 @@
     "descriptor": "Chef's curated Indian sweets — gulab jamun, kulfi, kheer, halwa",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 2200,
-    "image": "Regal Indian Dessert Platter.jpeg"
+    "image": "Regal Indian Dessert Platter.webp"
   },
   {
     "name": "Opera Cake Slice",
@@ -693,7 +693,7 @@
     "descriptor": "French opera cake, joconde, coffee buttercream, praline",
     "tags": ["vegetarian"],
     "priceINR": 1300,
-    "image": "Opera Cake Slice.jpeg"
+    "image": "Opera Cake Slice.webp"
   },
   {
     "name": "Mango Panna Cotta",
@@ -701,7 +701,7 @@
     "descriptor": "Alphonso mango panna cotta, coconut gelée, tropical coulis",
     "tags": ["vegetarian", "gluten-free"],
     "priceINR": 1100,
-    "image": "Mango Panna Cotta.jpeg"
+    "image": "Mango Panna Cotta.webp"
   },
   {
     "name": "Chocolate Hazelnut Tart",
@@ -709,7 +709,7 @@
     "descriptor": "Dark chocolate ganache, praline base, hazelnut crumble",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 1400,
-    "image": "Chocolate Hazelnut Tart.jpeg"
+    "image": "Chocolate Hazelnut Tart.webp"
   },
   {
     "name": "Chocolate Sphere Dessert",
@@ -717,7 +717,7 @@
     "descriptor": "Dark chocolate sphere, molten centre, warm caramel pour",
     "tags": ["vegetarian", "chef-pick"],
     "priceINR": 1500,
-    "image": "Chocolate Sphere Dessert.jpeg"
+    "image": "Chocolate Sphere Dessert.webp"
   },
   {
     "name": "Fine Red Wine Pour",
@@ -725,7 +725,7 @@
     "descriptor": "Sommelier's rotating selection — Bordeaux, Burgundy, Barossa",
     "tags": ["chef-pick"],
     "priceINR": 2400,
-    "image": "Fine Red Wine Pour.jpeg"
+    "image": "Fine Red Wine Pour.webp"
   },
   {
     "name": "Classic Champagne Cocktail",
@@ -733,7 +733,7 @@
     "descriptor": "Brut champagne, Angostura bitters, cognac, sugar cube",
     "tags": [],
     "priceINR": 2200,
-    "image": "Classic Champagne Cocktail.jpeg"
+    "image": "Classic Champagne Cocktail.webp"
   },
   {
     "name": "Old Fashioned Cocktail",
@@ -741,7 +741,7 @@
     "descriptor": "Bourbon, Demerara syrup, Angostura & orange bitters, orange peel",
     "tags": ["chef-pick"],
     "priceINR": 1800,
-    "image": "Old Fashioned Cocktail.jpeg"
+    "image": "Old Fashioned Cocktail.webp"
   },
   {
     "name": "Signature White Wine",
@@ -749,7 +749,7 @@
     "descriptor": "Sommelier curated whites — Chablis, Sancerre, White Burgundy",
     "tags": [],
     "priceINR": 2000,
-    "image": "Signature White Wine.jpeg"
+    "image": "Signature White Wine.webp"
   },
   {
     "name": "Espresso Macchiato",
@@ -757,7 +757,7 @@
     "descriptor": "Double-shot espresso, touch of steamed milk microfoam",
     "tags": ["vegetarian"],
     "priceINR": 650,
-    "image": "Espresso Macchiato.jpeg"
+    "image": "Espresso Macchiato.webp"
   },
   {
     "name": "Turmeric Latte",
@@ -765,7 +765,7 @@
     "descriptor": "Golden milk - turmeric, ginger, coconut milk, honey",
     "tags": ["vegetarian", "gluten-free"],
     "priceINR": 550,
-    "image": "Turmeric Latte.jpeg"
+    "image": "Turmeric Latte.webp"
   },
   {
     "name": "Sparkling Water with Lemon Twist",
@@ -773,7 +773,7 @@
     "descriptor": "Premium sparkling water, hand-crystalled lemon twist",
     "tags": ["vegetarian", "gluten-free"],
     "priceINR": 400,
-    "image": "Sparkling Water with Lemon Twist.jpeg"
+    "image": "Sparkling Water with Lemon Twist.webp"
   },
   {
     "name": "Lemon Sorbet in Crystal Bowl",
@@ -781,6 +781,7 @@
     "descriptor": "Palate cleanser — refreshing lemon sorbet, edible flowers",
     "tags": ["vegetarian", "gluten-free"],
     "priceINR": 600,
-    "image": "Lemon Sorbet in Crystal Bowl.jpeg"
+    "image": "Lemon Sorbet in Crystal Bowl.webp"
   }
 ]
+
