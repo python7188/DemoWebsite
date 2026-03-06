@@ -733,6 +733,7 @@ MOBILE MENU FULL FIX
             border: none;
             transition: transform .3s, box-shadow .3s;
             -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .fab-fast-menu:hover {
@@ -750,17 +751,17 @@ MOBILE MENU FULL FIX
         .fp-backdrop {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, .55);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, .6);
             z-index: 1501;
+            display: none;
+            /* hidden by default – no rendering cost */
             opacity: 0;
-            pointer-events: none;
-            transition: opacity .35s;
+            transition: opacity .3s;
         }
 
         .fp-backdrop.open {
+            display: block;
             opacity: 1;
-            pointer-events: auto;
         }
 
         .fp-panel {
@@ -770,21 +771,22 @@ MOBILE MENU FULL FIX
             right: 0;
             height: 68vh;
             max-height: 780px;
-            background: rgba(13, 13, 13, .97);
-            backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
-            border-top: 1px solid rgba(212, 175, 55, .22);
+            background: #0d0d0d;
+            border-top: 1px solid rgba(212, 175, 55, .25);
             border-radius: 22px 22px 0 0;
             z-index: 1502;
             transform: translateY(100%);
-            transition: transform .42s cubic-bezier(.32, .72, 0, 1);
+            transition: transform .4s cubic-bezier(.32, .72, 0, 1);
             display: flex;
             flex-direction: column;
-            box-shadow: 0 -14px 50px rgba(0, 0, 0, .55);
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, .6);
+            visibility: hidden;
+            /* prevents touch interception when off-screen */
         }
 
         .fp-panel.open {
             transform: translateY(0);
+            visibility: visible;
         }
 
         @media(min-width:768px) {
@@ -1032,13 +1034,56 @@ MOBILE MENU FULL FIX
         // (Use your full MENU_DATA array in your real file)
         // ═══════════════════════════════════════════════
         const MENU_DATA = [
-            { id: "sm1", name: "Smoked Salmon Carpaccio", cat: "starters", catId: "starters", desc: "Paper-thin smoked salmon, caper cream, micro herbs & lemon oil", tags: ["nonveg"], price: 1850, popular: 82, image: "Smoked Salmon Carpaccio.jpeg" },
-            { id: "sm2", name: "Truffle Arancini", cat: "starters", catId: "starters", desc: "Crispy risotto balls, black truffle, aged parmesan, saffron aioli", tags: ["veg", "chef"], price: 1450, popular: 75, image: "Truffle Arancini.jpeg" },
-            { id: "sm3", name: "King Prawn Cocktail", cat: "starters", catId: "starters", desc: "Poached tiger prawns, Marie Rose sauce, avocado cream", tags: ["nonveg"], price: 2100, popular: 68, image: "King Prawn Cocktail.jpeg" },
-            { id: "st1", name: "Filet Mignon", cat: "steaks", catId: "steaks", desc: "250g centre-cut tenderloin, Béarnaise sauce, truffle jus", tags: ["nonveg", "chef", "gf"], price: 6800, popular: 92, image: "Filet Mignon.jpeg" },
-            { id: "in1", name: "Butter Chicken", cat: "indian", catId: "indian", desc: "Slow-cooked chicken in velvety tomato-butter gravy, fenugreek", tags: ["nonveg", "chef"], price: 1800, popular: 92, image: "Butter Chicken.jpeg" },
-            { id: "de1", name: "Chocolate Fondant", cat: "desserts", catId: "desserts", desc: "Warm Valrhona chocolate fondant, salted caramel, vanilla ice cream", tags: ["veg", "chef"], price: 1400, popular: 91, image: "Chocolate Fondant.jpeg" }
-            // ...add back the rest of your items here
+            { id: "sm1", name: "Smoked Salmon Carpaccio", cat: "starters", catId: "starters", desc: "Paper-thin smoked salmon, caper cream, micro herbs & lemon oil", tags: ["nonveg", "chef"], price: 1850, popular: 85, image: "Smoked Salmon Carpaccio.jpeg" },
+            { id: "sm2", name: "Truffle Arancini", cat: "starters", catId: "starters", desc: "Crispy risotto balls, black truffle, aged parmesan, saffron aioli", tags: ["veg", "chef"], price: 1450, popular: 85, image: "Truffle Arancini.jpeg" },
+            { id: "sm3", name: "King Prawn Cocktail", cat: "starters", catId: "starters", desc: "Poached tiger prawns, Marie Rose sauce, avocado cream", tags: ["nonveg"], price: 2100, popular: 60, image: "King Prawn Cocktail.jpeg" },
+            { id: "sm4", name: "Oysters Rockefeller", cat: "starters", catId: "starters", desc: "Fresh oysters baked with spinach, pancetta & Pernod butter", tags: ["nonveg", "chef"], price: 2800, popular: 85, image: "Oysters Rockefeller.jpeg" },
+            { id: "sm5", name: "Foie Gras Terrine", cat: "starters", catId: "starters", desc: "Silky duck liver terrine, toasted brioche, fig chutney", tags: ["nonveg", "chef"], price: 3200, popular: 85, image: "Foie Gras Terrine.jpeg" },
+            { id: "sm6", name: "Tuna Tartare", cat: "starters", catId: "starters", desc: "Hand-cut bluefin tuna, sesame ponzu, avocado, tobiko", tags: ["nonveg"], price: 2400, popular: 60, image: "Tuna Tartare.jpeg" },
+            { id: "sm7", name: "Caviar with Blinis", cat: "starters", catId: "starters", desc: "Beluga caviar, warm blinis, crème fraîche, chives", tags: ["nonveg", "chef"], price: 8500, popular: 85, image: "Caviar with Blinis.jpeg" },
+            { id: "sm8", name: "Burrata & Heirloom Tomatoes", cat: "starters", catId: "starters", desc: "Creamy burrata, heirloom tomatoes, aged balsamic, basil oil", tags: ["veg"], price: 1600, popular: 60, image: "Burrata & Heirloom Tomatoes.jpeg" },
+            { id: "sm9", name: "Amuse Bouche Selection", cat: "starters", catId: "starters", desc: "Chef's rotating bite-sized morsels to awaken the palate", tags: ["chef"], price: 1200, popular: 85, image: "Amuse Bouche Selection.jpeg" },
+            { id: "sm10", name: "Paneer Royale Tikka", cat: "starters", catId: "starters", desc: "Saffron-marinated paneer, royal cashew sauce, pomegranate", tags: ["veg", "chef"], price: 1400, popular: 85, image: "Paneer Royale Tikka.jpeg" },
+            { id: "sm11", name: "Chicken Lollipops", cat: "starters", catId: "starters", desc: "Crispy glazed chicken drumettes, sriracha-honey dip", tags: ["nonveg"], price: 1350, popular: 60, image: "Chicken Lollipops.jpeg" },
+            { id: "sm12", name: "Scallop Ceviche", cat: "starters", catId: "starters", desc: "Hand-dived scallops, tiger's milk, jalapeño, sweet corn", tags: ["nonveg"], price: 2200, popular: 60, image: "Scallop Ceviche.jpeg" },
+            { id: "sm13", name: "Grilled Vegetable Terrine", cat: "starters", catId: "starters", desc: "Layered roasted Mediterranean vegetables, herb oil, cress", tags: ["veg", "gf"], price: 1300, popular: 60, image: "Grilled Vegetable Terrine.jpeg" },
+            { id: "sm14", name: "Stuffed Squash Blossoms", cat: "starters", catId: "starters", desc: "Zucchini flowers filled with ricotta & truffle, lemon zest", tags: ["veg"], price: 1500, popular: 60, image: "Stuffed Squash Blossoms.jpeg" },
+            { id: "sm15", name: "Lobster Bisque", cat: "starters", catId: "starters", desc: "Velvety cream of lobster, cognac, sherry, tarragon foam", tags: ["nonveg", "chef"], price: 2600, popular: 85, image: "Lobster Bisque.jpeg" },
+            { id: "sm16", name: "Crab Cakes", cat: "starters", catId: "starters", desc: "Pan-fried Dungeness crab cakes, remoulade, microgreens", tags: ["nonveg"], price: 1900, popular: 60, image: "Crab Cakes.jpeg" },
+            { id: "sm17", name: "Seared Tuna Bite", cat: "starters", catId: "starters", desc: "Seared yellowfin tuna, wasabi crème, pickled ginger", tags: ["nonveg"], price: 2000, popular: 60, image: "Seared Tuna Bite.jpeg" },
+            { id: "st1", name: "Filet Mignon", cat: "steaks", catId: "steaks", desc: "250g centre-cut tenderloin, Béarnaise sauce, truffle jus", tags: ["nonveg", "chef", "gf"], price: 6800, popular: 85, image: "Filet Mignon.jpeg" },
+            { id: "st2", name: "Ribeye Steak 350g", cat: "steaks", catId: "steaks", desc: "Grass-fed ribeye, compound butter, bone-marrow jus", tags: ["nonveg", "gf"], price: 5800, popular: 78, image: "Ribeye Steak 350g.jpeg" },
+            { id: "st3", name: "New York Strip", cat: "steaks", catId: "steaks", desc: "300g NY strip, chimichurri, roasted garlic potato", tags: ["nonveg"], price: 5400, popular: 78, image: "New York Strip.jpeg" },
+            { id: "st4", name: "Wagyu Ribeye", cat: "steaks", catId: "steaks", desc: "A5 Wagyu ribeye, truffle salt, aged red wine reduction", tags: ["nonveg", "chef"], price: 14500, popular: 85, image: "Wagyu Ribeye.jpeg" },
+            { id: "st5", name: "Charcoal-Grilled Tomahawk 1kg", cat: "steaks", catId: "steaks", desc: "Bone-in tomahawk, charcoal-kissed, served tableside with au jus", tags: ["nonveg", "chef"], price: 12000, popular: 85, image: "Charcoal-Grilled Tomahawk 1kg.jpeg" },
+            { id: "st6", name: "Sirloin Steak 300g", cat: "steaks", catId: "steaks", desc: "Aged sirloin, peppercorn sauce, sautéed greens", tags: ["nonveg"], price: 4800, popular: 60, image: "Sirloin Steak 300g.jpeg" },
+            { id: "st7", name: "Porterhouse Steak 400g", cat: "steaks", catId: "steaks", desc: "Dry-aged porterhouse, both tenderloin & strip, seasonal vegetables", tags: ["nonveg"], price: 7200, popular: 78, image: "Porterhouse Steak 400g.jpeg" },
+            { id: "st8", name: "Ribeye Surf & Turf", cat: "steaks", catId: "steaks", desc: "300g ribeye topped with half lobster tail, truffle butter", tags: ["nonveg", "chef"], price: 9800, popular: 85, image: "Ribeye Surf & Turf.jpeg" },
+            { id: "st9", name: "Herb-Crusted Lamb Rack", cat: "steaks", catId: "steaks", desc: "New Zealand lamb rack, Dijon-herb crust, minted pea purée", tags: ["nonveg", "chef"], price: 7800, popular: 85, image: "Herb-Crusted Lamb Rack.jpeg" },
+            { id: "st10", name: "Tomahawk Steak", cat: "steaks", catId: "steaks", desc: "Long-bone tomahawk, salt-aged, red wine jus, loaded fries", tags: ["nonveg"], price: 10500, popular: 78, image: "Tomahawk Steak.jpeg" },
+            { id: "st11", name: "Beef Wellington", cat: "steaks", catId: "steaks", desc: "Classic beef Wellington, mushroom duxelles, puff pastry", tags: ["nonveg", "chef"], price: 8200, popular: 85, image: "Beef Wellington.jpeg" },
+            { id: "st12", name: "Beef Tenderloin Medallions", cat: "steaks", catId: "steaks", desc: "Two medallions of tenderloin, black pepper jus, gratin potato", tags: ["nonveg"], price: 6200, popular: 78, image: "Beef Tenderloin Medallions.jpeg" },
+            { id: "st13", name: "Seared Venison Loin", cat: "steaks", catId: "steaks", desc: "Wild venison loin, juniper berry sauce, celery root purée", tags: ["nonveg", "chef", "gf"], price: 7600, popular: 85, image: "Seared Venison Loin.jpeg" },
+            { id: "sf1", name: "Grilled Lobster Tail", cat: "seafood", catId: "seafood", desc: "Whole lobster tail, clarified butter, grilled lemon, herbs", tags: ["nonveg", "chef", "gf"], price: 5800, popular: 85, image: "Grilled Lobster Tail.jpeg" },
+            { id: "sf2", name: "Lobster Thermidor", cat: "seafood", catId: "seafood", desc: "Classic half-lobster, cognac cream, gruyère gratin", tags: ["nonveg", "chef"], price: 6400, popular: 85, image: "Lobster Thermidor.jpeg" },
+            { id: "sf3", name: "King Crab Legs", cat: "seafood", catId: "seafood", desc: "Alaskan king crab legs, drawn butter, dill oil", tags: ["nonveg", "gf"], price: 7200, popular: 78, image: "King Crab Legs.jpeg" },
+            { id: "sf4", name: "Black Tiger Prawns", cat: "seafood", catId: "seafood", desc: "Jumbo tiger prawns, garlic-chilli butter, crispy capers", tags: ["nonveg"], price: 3800, popular: 60, image: "Black Tiger Prawns.jpeg" },
+            { id: "sf5", name: "Grilled King Prawns", cat: "seafood", catId: "seafood", desc: "Chargrilled king prawns, lemon-herb oil, rocket salad", tags: ["nonveg"], price: 3600, popular: 60, image: "Grilled King Prawns.jpeg" },
+            { id: "sf6", name: "Seared Scallops", cat: "seafood", catId: "seafood", desc: "Diver scallops, pea purée, crispy pancetta, lemon beurre blanc", tags: ["nonveg", "chef"], price: 3200, popular: 85, image: "Seared Scallops.jpeg" },
+            { id: "sf7", name: "Black Cod Miso", cat: "seafood", catId: "seafood", desc: "Sake-miso marinated black cod, pickled daikon, edamame", tags: ["nonveg", "chef"], price: 4200, popular: 85, image: "Black Cod Miso.jpeg" },
+            { id: "sf8", name: "Miso-Glazed Salmon", cat: "seafood", catId: "seafood", desc: "Atlantic salmon fillet, miso glaze, sesame-bok choy, ponzu", tags: ["nonveg"], price: 3800, popular: 60, image: "Miso-Glazed Salmon.jpeg" },
+            { id: "sf9", name: "Pan-Seared Red Snapper", cat: "seafood", catId: "seafood", desc: "Crispy-skin snapper, bouillabaisse nage, saffron potato", tags: ["nonveg"], price: 3400, popular: 60, image: "Pan-Seared Red Snapper.jpeg" },
+            { id: "sf10", name: "Chargrilled Octopus", cat: "seafood", catId: "seafood", desc: "Tender chargrilled octopus, chimichurri, smoked paprika oil", tags: ["nonveg"], price: 3200, popular: 60, image: "Chargrilled Octopus.jpeg" },
+            { id: "sf11", name: "Tuna Tataki", cat: "seafood", catId: "seafood", desc: "Lightly seared tuna, ponzu dressing, shiso, sesame", tags: ["nonveg"], price: 2800, popular: 60, image: "Tuna Tataki.jpeg" },
+            { id: "sf12", name: "Seared Sea Bass", cat: "seafood", catId: "seafood", desc: "Crispy-skin seabass, fennel confit, saffron-mussel emulsion", tags: ["nonveg"], price: 3600, popular: 60, image: "Seared Sea Bass.jpeg" },
+            { id: "sf13", name: "Grilled Sea Scallops with Truffle Oil", cat: "seafood", catId: "seafood", desc: "Jumbo scallops, black truffle oil, cauliflower cream, chervil", tags: ["nonveg", "chef"], price: 3900, popular: 85, image: "Grilled Sea Scallops with Truffle Oil.jpeg" },
+            { id: "sf14", name: "Seared Halibut with Citrus Beurre Blanc", cat: "seafood", catId: "seafood", desc: "Atlantic halibut, citrus beurre blanc, wilted spinach", tags: ["nonveg"], price: 4100, popular: 60, image: "Seared Halibut with Citrus Beurre Blanc.jpeg" },
+            { id: "sf15", name: "Tandoori Prawns", cat: "seafood", catId: "seafood", desc: "Maharaja-size prawns, tandoor-roasted, mint chutney, chaat", tags: ["nonveg"], price: 3200, popular: 60, image: "Tandoori Prawns.jpeg" },
+            { id: "in1", name: "Butter Chicken", cat: "indian", catId: "indian", desc: "Slow-cooked chicken in velvety tomato-butter gravy, fenugreek", tags: ["nonveg", "chef"], price: 1800, popular: 85, image: "Butter Chicken.jpeg" },
+            { id: "in2", name: "Dal Makhani", cat: "indian", catId: "indian", desc: "Black lentils slow-cooked overnight, cream, tempered spices", tags: ["veg", "chef"], price: 1200, popular: 85, image: "Dal Makhani.jpeg" },
+            { id: "in3", name: "Paneer Butter Masala", cat: "indian", catId: "indian", desc: "Cottage cheese cubes, rich tomato-cream masala, kasuri methi", tags: ["veg"], price: 1400, popular: 60, image: "Paneer Butter Masala.jpeg" },
+            { id: "in4", name: "Chicken Tikka Masala", cat: "indian", catId: "indian", desc: "Tandoor-smoked chicken, silky masala gravy, basmati", tags: ["nonveg", "chef"], price: 1900, popular: 85, image: "Chicken Tikka Masala.jpeg" },
+            { id: "in5", name: "Lamb Rogan Josh", cat: "indian", catId: "indian", desc: "Kashmiri-spiced slow-cooked lamb, ratanjot, aromatics", tags: ["nonveg"], price: 2400, popular: 60, image: "Lamb Rogan Josh.jpeg" }
         ];
 
         const FAST_MENU_DATA = [
