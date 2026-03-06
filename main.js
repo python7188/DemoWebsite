@@ -12,9 +12,10 @@
   /* ── LOADER ─────────────────────────────────────── */
   const loader = $('#loader');
   if (loader) {
-    window.addEventListener('load', () => {
-      setTimeout(() => loader.classList.add('hidden'), 800);
-    });
+    const hideLoader = () => loader.classList.add('hidden');
+    window.addEventListener('load', () => setTimeout(hideLoader, 800));
+    // Fallback: always hide loader after 3s on slow mobile connections
+    setTimeout(hideLoader, 3000);
   }
 
   /* ── SCROLL PROGRESS ─────────────────────────────── */
@@ -262,12 +263,11 @@
       document.body.style.opacity = '0';
       setTimeout(() => { location.href = a.href; }, 260);
     });
-    // Fade in on load
+    // Fade in on load — with a 400ms fallback so mobile never gets stuck
     document.body.style.opacity = '0';
-    window.addEventListener('load', () => {
-      document.body.style.transition = 'opacity .45s ease';
-      document.body.style.opacity = '1';
-    });
+    const showBody = () => { document.body.style.transition = 'opacity .45s ease'; document.body.style.opacity = '1'; };
+    window.addEventListener('load', showBody);
+    setTimeout(showBody, 400); // Guarantee visibility on slow connections
   }
 
 })();
