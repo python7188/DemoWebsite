@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -712,6 +712,143 @@ MOBILE MENU FULL FIX
             }
 
         }
+
+        /* â•â•â• FLOATING FAST MENU PANEL â•â•â• */
+        .fab-fast-menu {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 54px;
+            height: 54px;
+            background: linear-gradient(135deg, #f5d783, #d4af37);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #000;
+            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.45), 0 1px 4px rgba(0, 0, 0, .4);
+            z-index: 1500;
+            cursor: pointer;
+            border: none;
+            transition: transform .3s, box-shadow .3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .fab-fast-menu:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.65);
+        }
+
+        @media(max-width:767px) {
+            .fab-fast-menu {
+                bottom: 100px;
+                right: 16px;
+            }
+        }
+
+        .fp-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .55);
+            backdrop-filter: blur(4px);
+            z-index: 1501;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .35s;
+        }
+
+        .fp-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .fp-panel {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 68vh;
+            max-height: 780px;
+            background: rgba(13, 13, 13, .97);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border-top: 1px solid rgba(212, 175, 55, .22);
+            border-radius: 22px 22px 0 0;
+            z-index: 1502;
+            transform: translateY(100%);
+            transition: transform .42s cubic-bezier(.32, .72, 0, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 -14px 50px rgba(0, 0, 0, .55);
+        }
+
+        .fp-panel.open {
+            transform: translateY(0);
+        }
+
+        @media(min-width:768px) {
+            .fp-panel {
+                left: unset;
+                right: 24px;
+                bottom: 24px;
+                width: 430px;
+                height: 68vh;
+                border: 1px solid rgba(212, 175, 55, .22);
+                border-radius: 18px;
+            }
+        }
+
+        .fp-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            flex-shrink: 0;
+        }
+
+        .fp-title {
+            font-family: var(--font-head);
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .fp-close {
+            background: transparent;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s;
+        }
+
+        .fp-close:hover {
+            background: rgba(255, 255, 255, .1);
+        }
+
+        .fp-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 1.4rem 2rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .fp-body::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .fp-body::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, .3);
+            border-radius: 8px;
+        }
     </style>
 </head>
 
@@ -768,43 +905,32 @@ MOBILE MENU FULL FIX
                         <input type="search" id="menu-search" placeholder="Search dishes, ingredients…"
                             autocomplete="off" />
                     </div>
-
-                    <!-- Mode toggle + filters row -->
-                    <div
-                        style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem">
-                        <div class="mode-toggle" role="group" aria-label="Display mode">
-                            <span class="mode-toggle-label">View:</span>
-                            <button class="mode-btn active" id="btn-visual" aria-pressed="true">🖼 Visual</button>
-                            <button class="mode-btn" id="btn-fast" aria-pressed="false">⚡ Fast</button>
-                        </div>
-                    </div>
-
-                    <!-- Category filters -->
-                    <div class="cat-filters" role="group" aria-label="Filter by category">
-                        <button class="cat-btn active" data-cat="all">All</button>
-                        <button class="cat-btn" data-cat="starters">🥗 Starters</button>
-                        <button class="cat-btn" data-cat="steaks">🥩 Steaks</button>
-                        <button class="cat-btn" data-cat="seafood">🦞 Seafood</button>
-                        <button class="cat-btn" data-cat="indian">🍛 Indian</button>
-                        <button class="cat-btn" data-cat="global">🌍 Global</button>
-                        <button class="cat-btn" data-cat="desserts">🍮 Desserts</button>
-                        <button class="cat-btn" data-cat="beverages">🍷 Beverages</button>
-                        <button class="cat-btn pill-veg" data-filter="veg">🟢 Veg</button>
-                        <button class="cat-btn pill-nonveg" data-filter="nonveg">🔴 Non-Veg</button>
-                        <button class="cat-btn" data-filter="chef">⭐ Chef's Pick</button>
-                    </div>
+                    <!-- Mode toggle removed -->
                 </div>
 
-                <!-- VISUAL MODE -->
-                <div id="menu-container" aria-label="Menu — Visual Mode"></div>
-
-                <!-- FAST MODE -->
-                <div id="fast-menu-container" aria-label="Menu — Fast Mode"></div>
-
-                <div id="menu-no-results">
-                    <p>No dishes match your search.</p>
-                    <p style="margin-top:.5rem">Try a different term or clear the filters.</p>
+                <!-- Category filters -->
+                <div class="cat-filters" role="group" aria-label="Filter by category">
+                    <button class="cat-btn active" data-cat="all">All</button>
+                    <button class="cat-btn" data-cat="starters">🥗 Starters</button>
+                    <button class="cat-btn" data-cat="steaks">🥩 Steaks</button>
+                    <button class="cat-btn" data-cat="seafood">🦞 Seafood</button>
+                    <button class="cat-btn" data-cat="indian">🍛 Indian</button>
+                    <button class="cat-btn" data-cat="global">🌍 Global</button>
+                    <button class="cat-btn" data-cat="desserts">🍮 Desserts</button>
+                    <button class="cat-btn" data-cat="beverages">🍷 Beverages</button>
+                    <button class="cat-btn pill-veg" data-filter="veg">🟢 Veg</button>
+                    <button class="cat-btn pill-nonveg" data-filter="nonveg">🔴 Non-Veg</button>
+                    <button class="cat-btn" data-filter="chef">⭐ Chef's Pick</button>
                 </div>
+            </div>
+
+            <!-- VISUAL MODE -->
+            <div id="menu-container" aria-label="Menu — Visual Mode"></div>
+
+            <div id="menu-no-results">
+                <p>No dishes match your search.</p>
+                <p style="margin-top:.5rem">Try a different term or clear the filters.</p>
+            </div>
             </div>
         </section>
     </main>
@@ -887,6 +1013,17 @@ MOBILE MENU FULL FIX
         </div>
     </nav>
 
+
+    <!-- FLOATING FAST MENU FAB + PANEL -->
+    <button class="fab-fast-menu" id="fab-menu" aria-label="Open full text menu" title="View full menu">ðŸ“‹</button>
+    <div class="fp-backdrop" id="fp-backdrop"></div>
+    <div class="fp-panel" id="fp-panel" role="dialog" aria-modal="true" aria-labelledby="fp-title">
+        <div class="fp-header">
+            <h2 class="fp-title" id="fp-title">Full Menu â€” All Items</h2>
+            <button class="fp-close" id="fp-close" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="fp-body" id="fp-body"><!-- rendered by JS --></div>
+    </div>
     <div id="live-region" aria-live="polite" class="sr-only"></div>
 
     <script>
@@ -902,6 +1039,107 @@ MOBILE MENU FULL FIX
             { id: "in1", name: "Butter Chicken", cat: "indian", catId: "indian", desc: "Slow-cooked chicken in velvety tomato-butter gravy, fenugreek", tags: ["nonveg", "chef"], price: 1800, popular: 92, image: "Butter Chicken.jpeg" },
             { id: "de1", name: "Chocolate Fondant", cat: "desserts", catId: "desserts", desc: "Warm Valrhona chocolate fondant, salted caramel, vanilla ice cream", tags: ["veg", "chef"], price: 1400, popular: 91, image: "Chocolate Fondant.jpeg" }
             // ...add back the rest of your items here
+        ];
+
+        const FAST_MENU_DATA = [
+            { id: "fmd1", name: "Smoked Salmon Carpaccio", cat: "starters", catId: "starters", desc: "Paper-thin smoked salmon, caper cream, micro herbs & lemon oil", tags: ["nonveg", "chef"], price: 1850 },
+            { id: "fmd2", name: "Truffle Arancini", cat: "starters", catId: "starters", desc: "Crispy risotto balls, black truffle, aged parmesan, saffron aioli", tags: ["veg", "chef"], price: 1450 },
+            { id: "fmd3", name: "King Prawn Cocktail", cat: "starters", catId: "starters", desc: "Poached tiger prawns, Marie Rose sauce, avocado cream", tags: ["nonveg"], price: 2100 },
+            { id: "fmd4", name: "Oysters Rockefeller", cat: "starters", catId: "starters", desc: "Fresh oysters baked with spinach, pancetta & Pernod butter", tags: ["nonveg", "chef"], price: 2800 },
+            { id: "fmd5", name: "Foie Gras Terrine", cat: "starters", catId: "starters", desc: "Silky duck liver terrine, toasted brioche, fig chutney", tags: ["nonveg", "chef"], price: 3200 },
+            { id: "fmd6", name: "Tuna Tartare", cat: "starters", catId: "starters", desc: "Hand-cut bluefin tuna, sesame ponzu, avocado, tobiko", tags: ["nonveg"], price: 2400 },
+            { id: "fmd7", name: "Caviar with Blinis", cat: "starters", catId: "starters", desc: "Beluga caviar, warm blinis, cr├¿me fra├«che, chives", tags: ["nonveg", "chef", "luxury"], price: 8500 },
+            { id: "fmd8", name: "Burrata & Heirloom Tomatoes", cat: "starters", catId: "starters", desc: "Creamy burrata, heirloom tomatoes, aged balsamic, basil oil", tags: ["veg"], price: 1600 },
+            { id: "fmd9", name: "Amuse Bouche Selection", cat: "starters", catId: "starters", desc: "Chef's rotating bite-sized morsels to awaken the palate", tags: ["chef"], price: 1200 },
+            { id: "fmd10", name: "Paneer Royale Tikka", cat: "starters", catId: "starters", desc: "Saffron-marinated paneer, royal cashew sauce, pomegranate", tags: ["veg", "chef"], price: 1400 },
+            { id: "fmd11", name: "Chicken Lollipops", cat: "starters", catId: "starters", desc: "Crispy glazed chicken drumettes, sriracha-honey dip", tags: ["nonveg"], price: 1350 },
+            { id: "fmd12", name: "Scallop Ceviche", cat: "starters", catId: "starters", desc: "Hand-dived scallops, tiger's milk, jalape├▒o, sweet corn", tags: ["nonveg"], price: 2200 },
+            { id: "fmd13", name: "Grilled Vegetable Terrine", cat: "starters", catId: "starters", desc: "Layered roasted Mediterranean vegetables, herb oil, cress", tags: ["veg", "gf"], price: 1300 },
+            { id: "fmd14", name: "Stuffed Squash Blossoms", cat: "starters", catId: "starters", desc: "Zucchini flowers filled with ricotta & truffle, lemon zest", tags: ["veg"], price: 1500 },
+            { id: "fmd15", name: "Lobster Bisque", cat: "starters", catId: "starters", desc: "Velvety cream of lobster, cognac, sherry, tarragon foam", tags: ["nonveg", "chef"], price: 2600 },
+            { id: "fmd16", name: "Crab Cakes", cat: "starters", catId: "starters", desc: "Pan-fried Dungeness crab cakes, remoulade, microgreens", tags: ["nonveg"], price: 1900 },
+            { id: "fmd17", name: "Seared Tuna Bite", cat: "starters", catId: "starters", desc: "Seared yellowfin tuna, wasabi cr├¿me, pickled ginger", tags: ["nonveg"], price: 2000 },
+            { id: "fmd18", name: "Filet Mignon", cat: "steaks", catId: "steaks", desc: "250g centre-cut tenderloin, B├⌐arnaise sauce, truffle jus", tags: ["nonveg", "chef", "gf"], price: 6800 },
+            { id: "fmd19", name: "Ribeye Steak 350g", cat: "steaks", catId: "steaks", desc: "Grass-fed ribeye, compound butter, bone-marrow jus", tags: ["nonveg", "gf"], price: 5800 },
+            { id: "fmd20", name: "New York Strip", cat: "steaks", catId: "steaks", desc: "300g NY strip, chimichurri, roasted garlic potato", tags: ["nonveg"], price: 5400 },
+            { id: "fmd21", name: "Wagyu Ribeye", cat: "steaks", catId: "steaks", desc: "A5 Wagyu ribeye, truffle salt, aged red wine reduction", tags: ["nonveg", "chef", "luxury"], price: 14500 },
+            { id: "fmd22", name: "Charcoal-Grilled Tomahawk 1kg", cat: "steaks", catId: "steaks", desc: "Bone-in tomahawk, charcoal-kissed, served tableside with au jus", tags: ["nonveg", "chef"], price: 12000 },
+            { id: "fmd23", name: "Sirloin Steak 300g", cat: "steaks", catId: "steaks", desc: "Aged sirloin, peppercorn sauce, saut├⌐ed greens", tags: ["nonveg"], price: 4800 },
+            { id: "fmd24", name: "Porterhouse Steak 400g", cat: "steaks", catId: "steaks", desc: "Dry-aged porterhouse, both tenderloin & strip, seasonal vegetables", tags: ["nonveg"], price: 7200 },
+            { id: "fmd25", name: "Ribeye Surf & Turf", cat: "steaks", catId: "steaks", desc: "300g ribeye topped with half lobster tail, truffle butter", tags: ["nonveg", "chef"], price: 9800 },
+            { id: "fmd26", name: "Herb-Crusted Lamb Rack", cat: "steaks", catId: "steaks", desc: "New Zealand lamb rack, Dijon-herb crust, minted pea pur├⌐e", tags: ["nonveg", "chef"], price: 7800 },
+            { id: "fmd27", name: "Tomahawk Steak", cat: "steaks", catId: "steaks", desc: "Long-bone tomahawk, salt-aged, red wine jus, loaded fries", tags: ["nonveg"], price: 10500 },
+            { id: "fmd28", name: "Beef Wellington", cat: "steaks", catId: "steaks", desc: "Classic beef Wellington, mushroom duxelles, puff pastry", tags: ["nonveg", "chef"], price: 8200 },
+            { id: "fmd29", name: "Beef Tenderloin Medallions", cat: "steaks", catId: "steaks", desc: "Two medallions of tenderloin, black pepper jus, gratin potato", tags: ["nonveg"], price: 6200 },
+            { id: "fmd30", name: "Seared Venison Loin", cat: "steaks", catId: "steaks", desc: "Wild venison loin, juniper berry sauce, celery root pur├⌐e", tags: ["nonveg", "chef", "gf"], price: 7600 },
+            { id: "fmd31", name: "Grilled Lobster Tail", cat: "seafood", catId: "seafood", desc: "Whole lobster tail, clarified butter, grilled lemon, herbs", tags: ["nonveg", "chef", "gf"], price: 5800 },
+            { id: "fmd32", name: "Lobster Thermidor", cat: "seafood", catId: "seafood", desc: "Classic half-lobster, cognac cream, gruy├¿re gratin", tags: ["nonveg", "chef"], price: 6400 },
+            { id: "fmd33", name: "King Crab Legs", cat: "seafood", catId: "seafood", desc: "Alaskan king crab legs, drawn butter, dill oil", tags: ["nonveg", "gf"], price: 7200 },
+            { id: "fmd34", name: "Black Tiger Prawns", cat: "seafood", catId: "seafood", desc: "Jumbo tiger prawns, garlic-chilli butter, crispy capers", tags: ["nonveg"], price: 3800 },
+            { id: "fmd35", name: "Grilled King Prawns", cat: "seafood", catId: "seafood", desc: "Chargrilled king prawns, lemon-herb oil, rocket salad", tags: ["nonveg"], price: 3600 },
+            { id: "fmd36", name: "Seared Scallops", cat: "seafood", catId: "seafood", desc: "Diver scallops, pea pur├⌐e, crispy pancetta, lemon beurre blanc", tags: ["nonveg", "chef"], price: 3200 },
+            { id: "fmd37", name: "Black Cod Miso", cat: "seafood", catId: "seafood", desc: "Sake-miso marinated black cod, pickled daikon, edamame", tags: ["nonveg", "chef"], price: 4200 },
+            { id: "fmd38", name: "Miso-Glazed Salmon", cat: "seafood", catId: "seafood", desc: "Atlantic salmon fillet, miso glaze, sesame-bok choy, ponzu", tags: ["nonveg"], price: 3800 },
+            { id: "fmd39", name: "Pan-Seared Red Snapper", cat: "seafood", catId: "seafood", desc: "Crispy-skin snapper, bouillabaisse nage, saffron potato", tags: ["nonveg"], price: 3400 },
+            { id: "fmd40", name: "Chargrilled Octopus", cat: "seafood", catId: "seafood", desc: "Tender chargrilled octopus, chimichurri, smoked paprika oil", tags: ["nonveg"], price: 3200 },
+            { id: "fmd41", name: "Tuna Tataki", cat: "seafood", catId: "seafood", desc: "Lightly seared tuna, ponzu dressing, shiso, sesame", tags: ["nonveg"], price: 2800 },
+            { id: "fmd42", name: "Seared Sea Bass", cat: "seafood", catId: "seafood", desc: "Crispy-skin seabass, fennel confit, saffron-mussel emulsion", tags: ["nonveg"], price: 3600 },
+            { id: "fmd43", name: "Grilled Sea Scallops with Truffle Oil", cat: "seafood", catId: "seafood", desc: "Jumbo scallops, black truffle oil, cauliflower cream, chervil", tags: ["nonveg", "chef"], price: 3900 },
+            { id: "fmd44", name: "Seared Halibut with Citrus Beurre Blanc", cat: "seafood", catId: "seafood", desc: "Atlantic halibut, citrus beurre blanc, wilted spinach", tags: ["nonveg"], price: 4100 },
+            { id: "fmd45", name: "Tandoori Prawns", cat: "seafood", catId: "seafood", desc: "Maharaja-size prawns, tandoor-roasted, mint chutney, chaat", tags: ["nonveg"], price: 3200 },
+            { id: "fmd46", name: "Butter Chicken", cat: "indian", catId: "indian", desc: "Slow-cooked chicken in velvety tomato-butter gravy, fenugreek", tags: ["nonveg", "chef"], price: 1800 },
+            { id: "fmd47", name: "Dal Makhani", cat: "indian", catId: "indian", desc: "Black lentils slow-cooked overnight, cream, tempered spices", tags: ["veg", "chef"], price: 1200 },
+            { id: "fmd48", name: "Paneer Butter Masala", cat: "indian", catId: "indian", desc: "Cottage cheese cubes, rich tomato-cream masala, kasuri methi", tags: ["veg"], price: 1400 },
+            { id: "fmd49", name: "Chicken Tikka Masala", cat: "indian", catId: "indian", desc: "Tandoor-smoked chicken, silky masala gravy, basmati", tags: ["nonveg", "chef"], price: 1900 },
+            { id: "fmd50", name: "Lamb Rogan Josh", cat: "indian", catId: "indian", desc: "Kashmiri-spiced slow-cooked lamb, ratanjot, aromatics", tags: ["nonveg"], price: 2400 },
+            { id: "fmd51", name: "Hyderabadi Gold Biryani", cat: "indian", catId: "indian", desc: "Dum-cooked biryani, saffron rice, caramelised onions, raita", tags: ["nonveg", "chef", "gf"], price: 2200 },
+            { id: "fmd52", name: "Royal Maharaja Thali", cat: "indian", catId: "indian", desc: "Regal thali ΓÇö 12 accompaniments, breads, sweets, seasonal pickles", tags: ["veg", "chef"], price: 3200 },
+            { id: "fmd53", name: "Paneer Tikka", cat: "indian", catId: "indian", desc: "Smoky tandoor paneer, pepper-onion salad, mint yogurt", tags: ["veg"], price: 1300 },
+            { id: "fmd54", name: "Goan Prawn Curry", cat: "indian", catId: "indian", desc: "Tiger prawns, coconut-kokum curry, steamed appam", tags: ["nonveg"], price: 2100 },
+            { id: "fmd55", name: "Masala Dosa Elegance", cat: "indian", catId: "indian", desc: "Crispy dosa, spiced potato masala, sambar, three chutneys", tags: ["veg"], price: 1100 },
+            { id: "fmd56", name: "Rogan Josh Lamb Chops", cat: "indian", catId: "indian", desc: "Frenched lamb chops, rogan josh marinade, carrot harisaa", tags: ["nonveg", "chef"], price: 3400 },
+            { id: "fmd57", name: "Imperial Lobster Curry", cat: "indian", catId: "indian", desc: "Whole lobster, Malabar curry, coconut milk, curry leaf tadka", tags: ["nonveg", "chef"], price: 5600 },
+            { id: "fmd58", name: "Tandoori Royal Prawns", cat: "indian", catId: "indian", desc: "XL Royale prawns, saffron-cream marinade, charcoal tandoor", tags: ["nonveg", "chef"], price: 3800 },
+            { id: "fmd59", name: "Vegetable Korma", cat: "indian", catId: "indian", desc: "Seasonal vegetables, cashew-cream korma, kewra essence", tags: ["veg", "gf"], price: 1200 },
+            { id: "fmd60", name: "Chicken Biriyani", cat: "indian", catId: "indian", desc: "Fragrant basmati, tender chicken, saffron, fried onions", tags: ["nonveg"], price: 1900 },
+            { id: "fmd61", name: "Mutton Biriyani", cat: "indian", catId: "indian", desc: "Slow-cooked mutton biryani, Dum-pukht style, seeraga samba", tags: ["nonveg", "chef"], price: 2400 },
+            { id: "fmd62", name: "Vegetable Biriyani", cat: "indian", catId: "indian", desc: "Garden vegetables, aromatic basmati, rose water, nuts", tags: ["veg", "gf"], price: 1600 },
+            { id: "fmd63", name: "Duck Confit with Cherry Reduction", cat: "starters", catId: "starters", desc: "Slow-cured duck leg, cherry-port reduction, lentils du Puy", tags: ["nonveg", "chef"], price: 4800 },
+            { id: "fmd64", name: "Stuffed Chicken Ballotine", cat: "starters", catId: "starters", desc: "Deboned chicken, wild mushroom stuffing, tarragon cream", tags: ["nonveg"], price: 3400 },
+            { id: "fmd65", name: "Lobster Ravioli in Saffron Sauce", cat: "starters", catId: "starters", desc: "Hand-made pasta, lobster filling, saffron-cream velout├⌐", tags: ["nonveg", "chef"], price: 4200 },
+            { id: "fmd66", name: "Black Truffle Gnocchi", cat: "starters", catId: "starters", desc: "Pillowy potato gnocchi, P├⌐rigord truffle, aged parmesan foam", tags: ["veg", "chef"], price: 3600 },
+            { id: "fmd67", name: "Truffle Risotto", cat: "starters", catId: "starters", desc: "Carnaroli risotto, black truffle shavings, Fontina cream", tags: ["veg", "chef"], price: 3200 },
+            { id: "fmd68", name: "Beef Bourguignon", cat: "starters", catId: "starters", desc: "Burgundy-braised beef, pearl onions, button mushrooms, lardons", tags: ["nonveg"], price: 4400 },
+            { id: "fmd69", name: "Pan-Seared Foie Gras with Fig", cat: "starters", catId: "starters", desc: "Seared duck liver, caramelised fig, brioche toast, balsamico", tags: ["nonveg", "chef"], price: 4600 },
+            { id: "fmd70", name: "Miso-Marinated Black Cod", cat: "starters", catId: "starters", desc: "48-hour miso paste cod, dashi broth, enoki mushrooms", tags: ["nonveg", "chef", "gf"], price: 4200 },
+            { id: "fmd71", name: "Duck ├á l'Orange", cat: "starters", catId: "starters", desc: "Classic French duck breast, bitter orange sauce, root pur├⌐e", tags: ["nonveg"], price: 4000 },
+            { id: "fmd72", name: "Vegetable Wellington", cat: "starters", catId: "starters", desc: "Root vegetable & mushroom duxelles in golden puff pastry", tags: ["veg", "chef"], price: 2800 },
+            { id: "fmd73", name: "Seared Tuna Tartare Bite", cat: "starters", catId: "starters", desc: "Seared exterior tender-raw centre, yuzu kosho, nori crisp", tags: ["nonveg"], price: 2600 },
+            { id: "fmd74", name: "Golden Butter Chicken", cat: "starters", catId: "starters", desc: "Chef's elevated butter chicken, 24-carat gold leaf garnish", tags: ["nonveg", "chef", "luxury"], price: 3400 },
+            { id: "fmd75", name: "Chocolate Fondant", cat: "desserts", catId: "desserts", desc: "Warm Valrhona chocolate fondant, salted caramel, vanilla ice cream", tags: ["veg", "chef"], price: 1400 },
+            { id: "fmd76", name: "Tiramisu", cat: "desserts", catId: "desserts", desc: "Classic Italian tiramisu, Savoiardi, espresso, mascarpone", tags: ["veg"], price: 1200 },
+            { id: "fmd77", name: "Cr├¿me Br├╗l├⌐e", cat: "desserts", catId: "desserts", desc: "Silky vanilla bean custard, torched sugar crust, berries", tags: ["veg", "gf"], price: 1100 },
+            { id: "fmd78", name: "Gulab Jamun", cat: "desserts", catId: "desserts", desc: "Khoya jamuns, rose syrup, saffron cream, silver leaf", tags: ["veg", "chef"], price: 900 },
+            { id: "fmd79", name: "Pistachio Kulfi", cat: "desserts", catId: "desserts", desc: "Traditional kulfi with pistachio, cardamom, rose water", tags: ["veg", "gf"], price: 850 },
+            { id: "fmd80", name: "Mango Mousse", cat: "desserts", catId: "desserts", desc: "Alphonso mango mousse, mascarpone, champagne gel├⌐e", tags: ["veg"], price: 1000 },
+            { id: "fmd81", name: "Caramel Panna Cotta", cat: "desserts", catId: "desserts", desc: "Italian panna cotta, salted caramel, almond tuile", tags: ["veg", "gf"], price: 1100 },
+            { id: "fmd82", name: "Lemon Sorbet", cat: "desserts", catId: "desserts", desc: "Hand-churned lemon sorbet, limoncello syrup, candied zest", tags: ["veg", "gf"], price: 800 },
+            { id: "fmd83", name: "Vanilla Bean Ice Cream with Gold Leaf", cat: "desserts", catId: "desserts", desc: "Madagascar vanilla ice cream, 24-carat gold leaf adornment", tags: ["veg", "gf", "luxury"], price: 1600 },
+            { id: "fmd84", name: "Raspberry Mille-Feuille", cat: "desserts", catId: "desserts", desc: "Crisp puff pastry layers, raspberry cream, fresh berries", tags: ["veg"], price: 1300 },
+            { id: "fmd85", name: "Passionfruit Tart", cat: "desserts", catId: "desserts", desc: "Tangy passionfruit curd, sweet shortcrust shell, mango coulis", tags: ["veg"], price: 1200 },
+            { id: "fmd86", name: "Regal Indian Dessert Platter", cat: "desserts", catId: "desserts", desc: "Chef's curated Indian sweets ΓÇö gulab jamun, kulfi, kheer, halwa", tags: ["veg", "chef"], price: 2200 },
+            { id: "fmd87", name: "Opera Cake Slice", cat: "desserts", catId: "desserts", desc: "French opera cake, joconde, coffee buttercream, praline", tags: ["veg"], price: 1300 },
+            { id: "fmd88", name: "Mango Panna Cotta", cat: "desserts", catId: "desserts", desc: "Alphonso mango panna cotta, coconut gel├⌐e, tropical coulis", tags: ["veg", "gf"], price: 1100 },
+            { id: "fmd89", name: "Chocolate Hazelnut Tart", cat: "desserts", catId: "desserts", desc: "Dark chocolate ganache, praline base, hazelnut crumble", tags: ["veg", "chef"], price: 1400 },
+            { id: "fmd90", name: "Chocolate Sphere Dessert", cat: "desserts", catId: "desserts", desc: "Dark chocolate sphere, molten centre, warm caramel pour", tags: ["veg", "chef"], price: 1500 },
+            { id: "fmd91", name: "Fine Red Wine Pour", cat: "beverages", catId: "beverages", desc: "Sommelier's rotating selection ΓÇö Bordeaux, Burgundy, Barossa", tags: ["chef"], price: 2400 },
+            { id: "fmd92", name: "Classic Champagne Cocktail", cat: "beverages", catId: "beverages", desc: "Brut champagne, Angostura bitters, cognac, sugar cube", tags: [], price: 2200 },
+            { id: "fmd93", name: "Old Fashioned Cocktail", cat: "beverages", catId: "beverages", desc: "Bourbon, Demerara syrup, Angostura & orange bitters, orange peel", tags: ["chef"], price: 1800 },
+            { id: "fmd94", name: "Signature White Wine", cat: "beverages", catId: "beverages", desc: "Sommelier curated whites ΓÇö Chablis, Sancerre, White Burgundy", tags: [], price: 2000 },
+            { id: "fmd95", name: "Espresso Macchiato", cat: "beverages", catId: "beverages", desc: "Double-shot espresso, touch of steamed milk microfoam", tags: ["veg"], price: 650 },
+            { id: "fmd96", name: "Turmeric Latte", cat: "beverages", catId: "beverages", desc: "Golden milk - turmeric, ginger, coconut milk, honey", tags: ["veg", "gf"], price: 550 },
+            { id: "fmd97", name: "Sparkling Water with Lemon Twist", cat: "beverages", catId: "beverages", desc: "Premium sparkling water, hand-crystalled lemon twist", tags: ["veg", "gf"], price: 400 },
+            { id: "fmd98", name: "Lemon Sorbet in Crystal Bowl", cat: "beverages", catId: "beverages", desc: "Palate cleanser ΓÇö refreshing lemon sorbet, edible flowers", tags: ["veg", "gf"], price: 600 }
         ];
 
         const CATS = {
@@ -1031,17 +1269,16 @@ MOBILE MENU FULL FIX
             return totalCards;
         }
 
-        function renderFast(items) {
-            const container = document.getElementById("fast-menu-container");
-            if (!container) return 0;
-            container.innerHTML = "";
+        function renderFastPanel() {
+            const body = document.getElementById("fp-body");
+            if (!body) return;
+            body.innerHTML = "";
             const grouped = {};
-            items.forEach(it => { if (!grouped[it.catId]) grouped[it.catId] = []; grouped[it.catId].push(it) });
-            let total = 0;
+            FAST_MENU_DATA.forEach(it => { if (!grouped[it.catId]) grouped[it.catId] = []; grouped[it.catId].push(it); });
             CAT_ORDER.forEach(catId => {
-                const catItems = grouped[catId];
-                if (!catItems || !catItems.length) return;
-                const meta = CATS[catId];
+                const items = grouped[catId];
+                if (!items || !items.length) return;
+                const meta = CATS[catId] || { label: catId, icon: "\uD83C\uDF7D\uFE0F" };
                 const sec = document.createElement("div");
                 sec.className = "fm-section";
                 const h = document.createElement("div");
@@ -1050,21 +1287,15 @@ MOBILE MENU FULL FIX
                 sec.appendChild(h);
                 const list = document.createElement("div");
                 list.className = "fm-list";
-                catItems.forEach((item, i) => {
+                items.forEach(item => {
                     const row = document.createElement("div");
                     row.className = "fm-item";
-                    row.dataset.cat = item.catId;
-                    row.dataset.diet = item.tags.includes("veg") ? "veg" : item.tags.includes("nonveg") ? "nonveg" : "";
-                    row.dataset.chef = item.tags.includes("chef") ? "1" : "";
-                    row.dataset.name = item.name.toLowerCase();
                     row.innerHTML = `<div class="fm-left"><div class="fm-name">${esc(item.name)}</div><div class="fm-desc">${esc(item.desc)}</div></div><div class="fm-price">${price(item.price)}</div>`;
                     list.appendChild(row);
-                    total++;
                 });
                 sec.appendChild(list);
-                container.appendChild(sec);
+                body.appendChild(sec);
             });
-            return total;
         }
 
         function getFiltered() {
@@ -1085,45 +1316,32 @@ MOBILE MENU FULL FIX
             const items = getFiltered();
             const noRes = document.getElementById("menu-no-results");
             const vc = document.getElementById("menu-container");
-            const fc = document.getElementById("fast-menu-container");
-            if (!vc || !fc) return;
-            let count = 0;
-            if (currentMode === "visual") {
-                vc.style.display = "block"; fc.style.display = "none";
-                count = renderVisual(items);
-            } else {
-                vc.style.display = "none"; fc.style.display = "block";
-                count = renderFast(items);
-            }
+            if (!vc) return;
+            const count = renderVisual(items);
             if (noRes) noRes.style.display = count === 0 ? "block" : "none";
         }
 
-        // ── Robust init — works on ALL browsers/devices ──
+        // ── Robust init ──
         function initMenu() {
             if (initMenu._done) return;
             initMenu._done = true;
 
             render();
+            renderFastPanel();
 
-            const btnVis = document.getElementById("btn-visual");
-            const btnFast = document.getElementById("btn-fast");
+            // Floating fast-menu panel open/close
+            const fab = document.getElementById("fab-menu");
+            const backdrop = document.getElementById("fp-backdrop");
+            const panel = document.getElementById("fp-panel");
+            const closeBtn = document.getElementById("fp-close");
 
-            if (btnVis) {
-                btnVis.addEventListener("click", function () {
-                    currentMode = "visual";
-                    this.classList.add("active"); this.setAttribute("aria-pressed", "true");
-                    if (btnFast) { btnFast.classList.remove("active"); btnFast.setAttribute("aria-pressed", "false"); }
-                    render();
-                });
-            }
-            if (btnFast) {
-                btnFast.addEventListener("click", function () {
-                    currentMode = "fast";
-                    this.classList.add("active"); this.setAttribute("aria-pressed", "true");
-                    if (btnVis) { btnVis.classList.remove("active"); btnVis.setAttribute("aria-pressed", "false"); }
-                    render();
-                });
-            }
+            function openPanel() { backdrop.classList.add("open"); panel.classList.add("open"); document.body.style.overflow = "hidden"; }
+            function closePanel() { backdrop.classList.remove("open"); panel.classList.remove("open"); document.body.style.overflow = ""; }
+
+            if (fab) fab.addEventListener("click", openPanel);
+            if (closeBtn) closeBtn.addEventListener("click", closePanel);
+            if (backdrop) backdrop.addEventListener("click", closePanel);
+            document.addEventListener("keydown", e => { if (e.key === "Escape") closePanel(); });
 
             document.querySelectorAll(".cat-btn").forEach(btn => {
                 btn.addEventListener("click", function () {
