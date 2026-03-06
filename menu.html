@@ -1017,11 +1017,12 @@ MOBILE MENU FULL FIX
 
 
     <!-- FLOATING FAST MENU FAB + PANEL -->
-    <button class="fab-fast-menu" id="fab-menu" aria-label="Open full text menu" title="View full menu">ðŸ“‹</button>
+    <!-- FLOATING FAST MENU FAB + PANEL -->
+    <button class="fab-fast-menu" id="fab-menu" aria-label="Open full text menu" title="View full menu">📋</button>
     <div class="fp-backdrop" id="fp-backdrop"></div>
     <div class="fp-panel" id="fp-panel" role="dialog" aria-modal="true" aria-labelledby="fp-title">
         <div class="fp-header">
-            <h2 class="fp-title" id="fp-title">Full Menu â€” All Items</h2>
+            <h2 class="fp-title" id="fp-title">Full Menu — All Items</h2>
             <button class="fp-close" id="fp-close" aria-label="Close menu">&times;</button>
         </div>
         <div class="fp-body" id="fp-body"><!-- rendered by JS --></div>
@@ -1323,7 +1324,7 @@ MOBILE MENU FULL FIX
             CAT_ORDER.forEach(catId => {
                 const items = grouped[catId];
                 if (!items || !items.length) return;
-                const meta = CATS[catId] || { label: catId, icon: "\uD83C\uDF7D\uFE0F" };
+                const meta = CATS[catId] || { label: catId, icon: "🍽️" };
                 const sec = document.createElement("div");
                 sec.className = "fm-section";
                 const h = document.createElement("div");
@@ -1399,11 +1400,17 @@ MOBILE MENU FULL FIX
                     } else if (filter === "veg") {
                         this.classList.toggle("active");
                         activeFilters.diet = this.classList.contains("active") ? "veg" : null;
-                        if (activeFilters.diet === "veg") document.querySelector(".pill-nonveg")?.classList.remove("active");
+                        if (activeFilters.diet === "veg") {
+                            const btnNV = document.querySelector(".pill-nonveg");
+                            if (btnNV) btnNV.classList.remove("active");
+                        }
                     } else if (filter === "nonveg") {
                         this.classList.toggle("active");
                         activeFilters.diet = this.classList.contains("active") ? "nonveg" : null;
-                        if (activeFilters.diet === "nonveg") document.querySelector(".pill-veg")?.classList.remove("active");
+                        if (activeFilters.diet === "nonveg") {
+                            const btnV = document.querySelector(".pill-veg");
+                            if (btnV) btnV.classList.remove("active");
+                        }
                     } else if (filter === "chef") {
                         this.classList.toggle("active");
                         activeFilters.special = this.classList.contains("active") ? "chef" : null;
