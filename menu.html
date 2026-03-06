@@ -207,8 +207,8 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, .4);
             transition: box-shadow .3s ease, transform .3s ease;
             position: relative;
-            /* Fade-in animation — no JS needed */
-            animation: cardFadeIn .5s ease both;
+            opacity: 1;
+            width: 100%;
         }
 
         .menu-card:hover {
@@ -483,7 +483,6 @@
             gap: 1rem;
             padding: .65rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, .04);
-            animation: cardFadeIn .35s ease both;
         }
 
         .fm-item:last-child {
@@ -1023,8 +1022,6 @@
 
             const art = document.createElement("article");
             art.className = "menu-card";
-            // Staggered animation delay via CSS
-            art.style.animationDelay = (index % 8) * 60 + "ms";
             art.dataset.id = item.id;
             art.dataset.cat = item.catId;
             art.dataset.diet = isVeg ? "veg" : isNV ? "nonveg" : "";
@@ -1104,7 +1101,6 @@
                 catItems.forEach((item, i) => {
                     const row = document.createElement("div");
                     row.className = "fm-item";
-                    row.style.animationDelay = (i % 10) * 30 + "ms";
                     row.dataset.cat = item.catId;
                     row.dataset.diet = item.tags.includes("veg") ? "veg" : item.tags.includes("nonveg") ? "nonveg" : "";
                     row.dataset.chef = item.tags.includes("chef") ? "1" : "";
