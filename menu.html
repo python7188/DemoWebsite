@@ -646,63 +646,71 @@
             .bottom-nav {
                 display: none;
             }
-        }
 
-        /* ═══ MOBILE OVERRIDE — FORCE FULL SCROLL & VISIBLE IMAGES ═══ */
-        body,
-        html {
-            overflow-x: hidden;
-        }
+            /* =====================================
+MOBILE MENU FULL FIX
+===================================== */
 
-        main,
-        main>section,
-        main .container,
-        #menu-container,
-        #fast-menu-container {
-            height: auto !important;
-            max-height: none !important;
-            overflow: visible !important;
-        }
+            @media (max-width:768px) {
 
-        @media(max-width:768px) {
+                /* Fix scrolling issue */
+                html,
+                body {
+                    height: auto !important;
+                    overflow-x: hidden;
+                    overflow-y: auto !important;
+                }
 
-            /* Cards stack full width */
-            .menu-card {
-                width: 100% !important;
-                display: flex !important;
-                flex-direction: row !important;
+                /* Remove container scroll traps */
+                main,
+                main section,
+                .container,
+                #menu-container,
+                #fast-menu-container {
+                    height: auto !important;
+                    max-height: none !important;
+                    overflow: visible !important;
+                }
+
+                /* Ensure cards render properly */
+                .menu-card {
+                    display: flex !important;
+                    flex-direction: row !important;
+                    width: 100% !important;
+                    margin-bottom: 14px;
+                }
+
+                /* Force images to appear */
+                .menu-image {
+                    display: block !important;
+                    width: 120px !important;
+                    min-width: 120px !important;
+                    height: 120px !important;
+                    flex-shrink: 0 !important;
+                    background: #111 !important;
+                }
+
+                .menu-image img {
+                    display: block !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                    object-fit: cover !important;
+                }
+
+                /* Ensure full page scroll */
+                body {
+                    padding-bottom: 80px;
+                }
+
+                /* Make filter bar properly sticky */
+                .menu-controls-bar {
+                    position: sticky;
+                    top: 70px;
+                    z-index: 500;
+                    background: #0b0b0b;
+                }
+
             }
-
-            /* Images NEVER hidden */
-            .menu-image {
-                display: block !important;
-                width: 110px !important;
-                min-width: 110px !important;
-                min-height: 110px !important;
-                flex-shrink: 0 !important;
-            }
-
-            .menu-image img {
-                width: 100% !important;
-                height: 100% !important;
-                display: block !important;
-                object-fit: cover !important;
-                border-radius: 0 !important;
-            }
-
-            /* Sections unrestricted */
-            .menu-section {
-                height: auto !important;
-                max-height: none !important;
-                overflow: visible !important;
-            }
-
-            /* Ensure normal page scroll */
-            main {
-                overflow: visible !important;
-                min-height: auto !important;
-            }
-        }
     </style>
 </head>
 
