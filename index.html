@@ -86,6 +86,120 @@
       </div>
     </section>
 
+    <!-- ═══════════════════════════════════════════════════════════════════
+         CINEMATIC SCROLL ANIMATION — frames at /frames/0001.jpg … 0145.jpg
+         Section height is set INLINE (400vh). The sticky container is 100vh.
+         scroll-anim.js controls the canvas. Do NOT remove the inline height.
+    ════════════════════════════════════════════════════════════════════ -->
+    <section id="scroll-anim" aria-label="Cinematic dining experience animation"
+      style="position:relative; height:400vh; background:#000;">
+      <!-- Sticky viewport — stays pinned while user scrolls 400vh -->
+      <div id="scroll-anim-sticky"
+        style="position:sticky; top:0; height:100vh; width:100%; overflow:hidden; background:#000;">
+        <!-- Gold circular progress spinner (hidden once frames load) -->
+        <div id="sa-spinner" aria-hidden="true" style="
+          position:absolute; top:50%; left:50%;
+          transform:translate(-50%,-50%);
+          display:flex; flex-direction:column; align-items:center; gap:.6rem;
+          z-index:20;">
+          <svg width="80" height="80" viewBox="0 0 80 80" style="transform:rotate(-90deg)">
+            <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(212,175,55,.2)" stroke-width="5" />
+            <circle id="sa-ring-fill" cx="40" cy="40" r="36" fill="none" stroke="#d4af37" stroke-width="5"
+              stroke-linecap="round" stroke-dasharray="226.19" stroke-dashoffset="226.19"
+              style="transition:stroke-dashoffset .12s linear" />
+          </svg>
+          <span id="sa-pct"
+            style="font-size:.78rem;font-weight:600;letter-spacing:.08em;color:rgba(212,175,55,.9)">0%</span>
+        </div>
+
+        <!-- Frame canvas — fills 100% of the sticky container -->
+        <canvas id="hero-scroll-canvas" aria-hidden="true"
+          style="position:absolute; top:0; left:0; width:100%; height:100%; display:block;"></canvas>
+
+        <!-- Cinematic vignette -->
+        <div aria-hidden="true" style="
+          position:absolute; inset:0; pointer-events:none; z-index:2;
+          background:radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,.75) 100%);"></div>
+
+        <!-- Warm gold colour-grade -->
+        <div aria-hidden="true" style="
+          position:absolute; inset:0; pointer-events:none; z-index:3;
+          mix-blend-mode:screen;
+          background:linear-gradient(160deg,rgba(212,175,55,.07) 0%,rgba(0,0,0,.2) 55%,rgba(180,120,20,.08) 100%);">
+        </div>
+
+        <!-- Content reveal — fades in at end of animation -->
+        <div id="sa-reveal" aria-live="polite" style="
+          position:absolute; bottom:12%; left:50%; transform:translateX(-50%);
+          text-align:center; z-index:10; opacity:0;
+          transition:opacity 1.2s cubic-bezier(.25,.46,.45,.94);
+          pointer-events:none; white-space:nowrap;">
+          <span class="section-eyebrow">Crafted with Passion</span>
+          <h2 style="
+            font-family:var(--font-head,'Playfair Display',serif);
+            font-size:clamp(1.8rem,5vw,3.5rem);
+            color:#fff; line-height:1.15; margin:.4rem 0 1.4rem;
+            text-shadow:0 2px 24px rgba(0,0,0,.7);">
+            Every Detail.<br><span class="gold">Precisely Perfected.</span>
+          </h2>
+          <a href="menu.html" class="btn btn-gold">Explore the Menu</a>
+        </div>
+
+        <!-- Skip button — keyboard accessible, always visible -->
+        <button id="skip-anim" aria-label="Skip scroll animation" style="
+            position:absolute; bottom:2.25rem; right:1.75rem; z-index:30;
+            padding:.55rem 1.1rem;
+            background:rgba(10,10,10,.55);
+            border:1px solid rgba(212,175,55,.45); border-radius:50px;
+            color:rgba(212,175,55,.9); font-size:.78rem; font-weight:600;
+            letter-spacing:.08em; cursor:pointer;
+            backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+            transition:background .25s,border-color .25s,transform .2s;"
+          onmouseover="this.style.background='rgba(212,175,55,.18)';this.style.borderColor='#d4af37'"
+          onmouseout="this.style.background='rgba(10,10,10,.55)';this.style.borderColor='rgba(212,175,55,.45)'">Skip
+          ›</button>
+
+        <!-- Scroll indicator (fades out once scroll starts) -->
+        <div id="sa-scroll-hint" aria-hidden="true" style="
+          position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+          display:flex; flex-direction:column; align-items:center; gap:.4rem;
+          opacity:.7; z-index:10; transition:opacity .6s;">
+          <span style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#d4af37">Scroll</span>
+          <div style="width:1px;height:40px;background:linear-gradient(to bottom,#d4af37,transparent);
+            animation:saScrollPulse 1.6s ease-in-out infinite;"></div>
+        </div>
+      </div>
+    </section>
+    <!-- ═══════════════════ END CINEMATIC SCROLL ANIMATION ════════════ -->
+    <style>
+      @keyframes saScrollPulse {
+
+        0%,
+        100% {
+          transform: scaleY(1);
+          opacity: .7
+        }
+
+        50% {
+          transform: scaleY(1.3);
+          opacity: 1
+        }
+      }
+
+      @media(max-width:640px) {
+        #skip-anim {
+          bottom: 5.5rem !important;
+          right: 1rem !important;
+        }
+      }
+
+      @media(prefers-reduced-motion:reduce) {
+        #scroll-anim {
+          height: 100vh !important;
+        }
+      }
+    </style>
+
     <!-- ── SIGNATURE DISH STORY ── -->
     <section aria-labelledby="sig-heading" style="background:var(--charcoal)">
       <div class="container">
@@ -424,8 +538,203 @@
   </div>
 
   <div id="live-region" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+  <script src="scroll-anim.js" defer></script>
   <script src="main.js" defer></script>
   <style>
+    /* ─────────────────────────────────────────
+     * SCROLL-DRIVEN FRAME ANIMATION STYLES
+     * ───────────────────────────────────────── */
+
+    /* Section height = SCROLL_VH × 1vh */
+    .scroll-anim {
+      position: relative;
+      height: calc(var(--scroll-anim-vh, 350) * 1vh);
+      will-change: transform;
+      /* GPU layer hint */
+      transform: translateZ(0);
+    }
+
+    /* Sticky container — fills viewport while section scrolls */
+    .scroll-anim-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* Canvas — fullscreen, GPU composited */
+    #hero-scroll-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      image-rendering: -webkit-optimize-contrast;
+      /* Safari */
+      image-rendering: optimizeQuality;
+      /* Standard */
+      image-rendering: crisp-edges;
+      /* Firefox */
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+
+    /* Radial vignette for cinematic depth */
+    .sa-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%,
+          transparent 45%,
+          rgba(0, 0, 0, 0.72) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Warm golden colour-grade overlay */
+    .sa-grade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg,
+          rgba(212, 175, 55, 0.06) 0%,
+          rgba(0, 0, 0, 0.18) 60%,
+          rgba(180, 120, 20, 0.09) 100%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Reveal content that appears after animation */
+    .sa-reveal {
+      position: absolute;
+      bottom: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .sa-reveal.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .sa-headline {
+      font-family: var(--font-head, 'Playfair Display', serif);
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      color: #fff;
+      line-height: 1.15;
+      margin: .4rem 0 1.4rem;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, .7);
+    }
+
+    .sa-cta {
+      margin-top: .25rem;
+    }
+
+    /* SVG spinner */
+    .sa-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .sa-ring {
+      width: 80px;
+      height: 80px;
+      transform: rotate(-90deg);
+    }
+
+    .sa-ring-track {
+      fill: none;
+      stroke: rgba(212, 175, 55, .2);
+      stroke-width: 5;
+    }
+
+    .sa-ring-fill {
+      fill: none;
+      stroke: #d4af37;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 226.19;
+      /* 2π×36 */
+      stroke-dashoffset: 226.19;
+      /* fully hidden at start */
+      transition: stroke-dashoffset .15s linear;
+    }
+
+    .sa-pct {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      color: rgba(212, 175, 55, .9);
+    }
+
+    /* Skip button — premium floating style */
+    .sa-skip {
+      position: absolute;
+      bottom: 2.25rem;
+      right: 1.75rem;
+      z-index: 30;
+      padding: .55rem 1.1rem;
+      background: rgba(10, 10, 10, .55);
+      border: 1px solid rgba(212, 175, 55, .45);
+      border-radius: 50px;
+      color: rgba(212, 175, 55, .9);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: background .25s, border-color .25s, color .25s, transform .2s;
+    }
+
+    .sa-skip:hover,
+    .sa-skip:focus-visible {
+      background: rgba(212, 175, 55, .18);
+      border-color: #d4af37;
+      color: #d4af37;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    /* Scroll-anim on mobile / reduced-motion */
+    @media (max-width: 640px) {
+      .sa-skip {
+        bottom: 5.5rem;
+        /* above bottom nav */
+        right: 1rem;
+      }
+
+      .sa-headline {
+        font-size: clamp(1.4rem, 6vw, 2.2rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-anim {
+        height: 100vh !important;
+      }
+
+      #hero-scroll-canvas {
+        transition: none !important;
+      }
+    }
+
     /* Bottom nav for index page */
     .bottom-nav {
       display: none;
