@@ -23,7 +23,7 @@
  * ╚══════════════════════════════════════════════════════════════════╝
  *
  * FRAME PATHS (relative to index.html):
- *   Public/frames/0001.jpg … Public/frames/0145.jpg
+ *   Public/frames/0001.jpg … Public/frames/0166.jpg
  *
  * On Vercel / Netlify, the /public folder is served at root,
  * so change FRAME_PREFIX back to '/frames/' before deploying.
@@ -35,13 +35,12 @@
     /* ═══════════════════════════════════════════════════════════════
      * CONFIG — edit these to match your setup
      * ═══════════════════════════════════════════════════════════════ */
-    var FRAME_COUNT = 145;
-    var FRAME_PREFIX = 'Public/frames/';  /* relative to index.html */
+    var FRAME_COUNT = 166;
+    var FRAME_PREFIX = 'Public/frames/';
     var FRAME_EXT = '.jpg';
-    var LERP_SPEED = 0.10;              /* 0.05 = silky, 0.15 = snappy */
-    var ZOOM_START = 1.04;             /* zoom at frame 0  */
-    var ZOOM_END = 1.00;             /* zoom at last frame */
-    var PARALLAX_PX = 14;              /* vertical parallax travel px */
+    var LERP_SPEED = 0.12;   /* faster settle = fewer redraws per scroll event */
+    var ZOOM_MIN = 1.00;
+    var ZOOM_MAX = 1.03;     /* subtle zoom only, no 3D matrix ops */
 
     /* ═══════════════════════════════════════════════════════════════
      * DOM refs (filled in init)
@@ -125,26 +124,26 @@
             img = best;
         }
 
-        /* ── object-fit: contain scaling ──
-           scale = min(canvasW / imgW, canvasH / imgH)
-           This guarantees the full image is always visible and never
-           overflows the viewport on any screen size.               */
+        /* ── Optimised draw: single drawImage, no matrix transforms ──
+         * Using direct drawImage (9-arg form) is the fastest possible
+         * 2D canvas draw. No save/restore, no rotate, no skew.       */
         progress = clamp(progress, 0, 1);
-        var offsetY = lerp(PARALLAX_PX * 0.3, 0, progress); /* subtle only */
 
         var iW = img.naturalWidth || CW;
         var iH = img.naturalHeight || CH;
 
-        /* CONTAIN: fit the entire image inside the canvas */
-        var scale = Math.min(CW / iW, CH / iH);
+        /* contain-fit scale */
+        var fitScale = Math.min(CW / iW, CH / iH);
 
-        /* Centre */
-        var dW = iW * scale;
-        var dH = iH * scale;
-        var dX = (CW - dW) / 2;
-        var dY = (CH - dH) / 2 + offsetY;
+        /* Subtle zoom: 1.00 → 1.03 — rendered via larger dest rect, no ctx.scale */
+        var zoom = ZOOM_MIN + (ZOOM_MAX - ZOOM_MIN) * progress;
+        var dW = iW * fitScale * zoom;
+        var dH = iH * fitScale * zoom;
+        var dX = (CW - dW) * 0.5;  /* centred X */
+        var dY = (CH - dH) * 0.5;  /* centred Y */
 
         ctx.clearRect(0, 0, CW, CH);
+        /* Single GPU-accelerated blit — no extra context state */
         ctx.drawImage(img, 0, 0, iW, iH, dX, dY, dW, dH);
     }
 
@@ -252,6 +251,9 @@
             var t = ease(getScrollProgress());
             targetF = t * (FRAME_COUNT - 1);
 
+            /* Restart RAF if it went idle */
+            startRAF();
+
             /* Hide scroll hint after first scroll movement */
             if (targetF > 2 && scrollHint && scrollHint.style.opacity !== '0') {
                 scrollHint.style.opacity = '0';
@@ -263,18 +265,31 @@
      * requestAnimationFrame render loop
      * ═══════════════════════════════════════════════════════════════ */
     var prevTS = 0;
+    var IDLE_EPS = 0.05; /* snap threshold — stops RAF when this close to target */
+
     function tick(ts) {
-        rafId = requestAnimationFrame(tick);
-        if (ts - prevTS < 14) return; /* ~60 fps cap */
+        /* ~60 fps throttle */
+        if (ts - prevTS < 14) { rafId = requestAnimationFrame(tick); return; }
         prevTS = ts;
 
-        /* Inertia: smooth lerp towards target */
-        currentF = lerp(currentF, targetF, LERP_SPEED);
+        var diff = targetF - currentF;
 
+        /* IDLE CHECK: if close enough, snap & stop the loop */
+        if (Math.abs(diff) < IDLE_EPS) {
+            if (currentF !== targetF) {
+                currentF = targetF;
+                drawFrame(currentF, clamp(currentF / (FRAME_COUNT - 1), 0, 1));
+            }
+            rafId = 0; /* RAF stops here — restarted by onScroll */
+            return;
+        }
+
+        /* Lerp */
+        currentF += diff * LERP_SPEED;
         var prog = clamp(currentF / (FRAME_COUNT - 1), 0, 1);
         drawFrame(currentF, prog);
 
-        /* Reveal overlay when animation nears the end */
+        /* Reveal overlay near the end */
         if (!animDone && currentF >= FRAME_COUNT - 3) {
             animDone = true;
             if (revealEl) {
@@ -284,6 +299,8 @@
             var lr = document.getElementById('live-region');
             if (lr) lr.textContent = 'Animation complete.';
         }
+
+        rafId = requestAnimationFrame(tick);
     }
 
     function startRAF() {
