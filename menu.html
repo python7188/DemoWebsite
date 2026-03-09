@@ -910,11 +910,19 @@ MOBILE MENU FULL FIX
                     <!-- Mode toggle removed -->
                 </div>
 
-                <!-- Category filters (2025 Standard) -->
-                <div class="cat-filters" role="group" aria-label="Filter menu items">
+                <!-- Category filters -->
+                <div class="cat-filters" role="group" aria-label="Filter by category">
                     <button class="cat-btn active" data-cat="all">All</button>
-                    <button class="cat-btn pill-veg" data-filter="veg">🟢 Vegetarian</button>
-                    <button class="cat-btn" data-filter="chef">⭐ Signature</button>
+                    <button class="cat-btn" data-cat="starters">🥗 Starters</button>
+                    <button class="cat-btn" data-cat="steaks">🥩 Steaks</button>
+                    <button class="cat-btn" data-cat="seafood">🦞 Seafood</button>
+                    <button class="cat-btn" data-cat="indian">🍛 Indian</button>
+                    <button class="cat-btn" data-cat="global">🌍 Global</button>
+                    <button class="cat-btn" data-cat="desserts">🍮 Desserts</button>
+                    <button class="cat-btn" data-cat="beverages">🍷 Beverages</button>
+                    <button class="cat-btn pill-veg" data-filter="veg">🟢 Veg</button>
+                    <button class="cat-btn pill-nonveg" data-filter="nonveg">🔴 Non-Veg</button>
+                    <button class="cat-btn" data-filter="chef">⭐ Chef's Pick</button>
                 </div>
             </div>
 
@@ -985,24 +993,27 @@ MOBILE MENU FULL FIX
     <!-- TOAST -->
     <div id="menu-toast" role="status" aria-live="polite"></div>
 
-    <!-- ── STICKY MOBILE CTA BAR (Thumb Zone) ──
-         2025 Global Standard: 3-Click Rule (Menu, Call, Book Table)
-         Hidden on desktop via media query.
-    ────────────────────────────────────────────────────── -->
-    <div class="sticky-cta-bar" role="navigation" aria-label="Quick actions">
-        <a href="menu.html" class="sticky-cta-btn sticky-cta-menu" aria-label="View Menu">
-            <span class="sticky-cta-icon" aria-hidden="true">📖</span>
-            Menu
-        </a>
-        <a href="tel:+919876543210" class="sticky-cta-btn sticky-cta-call" aria-label="Call Restaurant">
-            <span class="sticky-cta-icon" aria-hidden="true">📞</span>
-            Call
-        </a>
-        <button class="sticky-cta-btn sticky-cta-reserve" data-reserve aria-haspopup="dialog" aria-label="Book Table">
-            <span class="sticky-cta-icon" aria-hidden="true">✦</span>
-            Book Table
-        </button>
-    </div>
+    <!-- BOTTOM MOBILE NAV -->
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+        <div class="bottom-nav-inner">
+            <a href="index.html" class="bn-item" aria-label="Home">
+                <span class="bn-icon">🏠</span>
+                <span class="bn-label">Home</span>
+            </a>
+            <a href="menu.html" class="bn-item active" aria-current="page" aria-label="Menu">
+                <span class="bn-icon">🍽️</span>
+                <span class="bn-label">Menu</span>
+            </a>
+            <a href="about.html" class="bn-item" aria-label="Experience">
+                <span class="bn-icon">✨</span>
+                <span class="bn-label">Experience</span>
+            </a>
+            <a href="contact.html" class="bn-item" aria-label="Contact">
+                <span class="bn-icon">📞</span>
+                <span class="bn-label">Contact</span>
+            </a>
+        </div>
+    </nav>
 
 
     <!-- FLOATING FAST MENU FAB + PANEL -->
