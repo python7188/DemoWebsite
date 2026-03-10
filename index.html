@@ -31,11 +31,11 @@
   <!-- ═══ CANONICAL ═══ -->
   <link rel="canonical" href="https://websitefordemo.vercel.app/" />
 
-  <!-- ═══ FONTS ═══ -->
+  <!-- ═══ FONTS — Instrument Serif (editorial luxury) + Lato (clean legibility) ═══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 
@@ -143,10 +143,22 @@
 
   <main id="main">
 
-    <!-- ── HERO ── -->
+    <!-- ── HERO ──
+         Phase 4: fetchpriority="high" on the hero asset.
+         Video-ready: <video> replaces static image once an ambient clip is provided.
+         Falls back to poster (Interior.jpeg) while video loads or if unsupported.
+    ──────────────────────────── -->
     <section class="hero" aria-label="Welcome to TajHotel">
       <div class="hero-parallax">
-        <img src="Interior.jpeg" alt="" fetchpriority="high" decoding="async" width="1600" height="900" />
+        <!-- VIDEO-READY: swap poster for src when ambient clip is available -->
+        <video class="hero-video" autoplay muted loop playsinline preload="none" poster="Interior.jpeg"
+          fetchpriority="high" aria-hidden="true">
+          <!-- <source src="hero-ambient.webm" type="video/webm" /> -->
+          <!-- <source src="hero-ambient.mp4" type="video/mp4" /> -->
+        </video>
+        <!-- Phase 4: Fallback image while video sources are pending -->
+        <img id="hero-fallback" src="Interior.jpeg" alt="" fetchpriority="high" decoding="async" width="1600"
+          height="900" loading="eager" />
       </div>
       <div class="hero-overlay"></div>
       <div class="container">
@@ -154,12 +166,14 @@
           <div class="hero-badge">Fine Dining · Delhi, India</div>
           <h1>
             <span class="brand">TajHotel</span>
-            Luxury Dining<br />Experience in Delhi
+            Where Every Dish Tells<br />a Story of Place &amp; Passion
           </h1>
-          <p class="hero-sub">Where culinary excellence meets timeless elegance.</p>
+          <!-- Phase 3: Sensory sub-headline — 20-40 words, geographic-first -->
+          <p class="hero-sub">Slow-fired over hardwood embers, sourced from India's finest terroir and presented for
+            guests who demand more than a meal — an experience curated from field to flame.</p>
           <div class="hero-btns">
-            <a href="menu.html" class="btn btn-gold">Explore Menu</a>
-            <button class="btn btn-outline" data-reserve aria-haspopup="dialog">Reserve Table</button>
+            <a href="menu.html" class="btn btn-gold">Explore the Menu</a>
+            <button class="btn btn-outline" data-reserve aria-haspopup="dialog">Reserve a Table</button>
           </div>
         </div>
       </div>
