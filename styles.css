@@ -7,40 +7,32 @@
 :root {
   /* ── Palette ── */
   --black: #07050a;
-  /* obsidian with warm violet undertone  */
-  --charcoal: #0f0d11;
-  /* deep midnight charcoal               */
-  --charcoal-2: #16131a;
-  /* card / section background            */
-  --card-bg: #1a1720;
-  /* elevated surface                     */
-  --card-raised: #201d28;
-  /* hover-raised surface                 */
+  --charcoal: #f3f3f3;
+  /* Mapped to bg-alt for sections */
+  --charcoal-2: #ffffff;
+  --bg: #ffffff;
+  --bg-alt: #f3f3f3;
+  --bg-card: #ffffff;
+  --card-bg: #ffffff;
+  --card-raised: #f9f9f9;
 
   /* ── Gold — champagne, not yellow ── */
   --gold: #C9A84C;
-  /* warm champagne gold                  */
   --gold-light: #E2C97E;
-  /* bright accent / star highlight       */
   --soft-gold: #B8922F;
-  /* muted brass                          */
   --gold-dim: rgba(201, 168, 76, .10);
-  /* tinted background wash               */
   --gold-glow: rgba(201, 168, 76, .28);
-  /* luminous glow                        */
   --gold-border: rgba(201, 168, 76, .22);
-  /* refined border                       */
 
   /* ── Text ── */
+  --ink: #1a1a1a;
+  --ink-muted: #5c5852;
   --white: #FFFFFF;
-  --off-white: #F0EAD8;
-  /* aged ivory / cream                   */
+  --off-white: #fcfcfc;
   --muted: #8e8a82;
-  /* warm grey body text                  */
-  --muted-2: #5c5852;
-  /* dimmer secondary text                */
-  --border: rgba(201, 168, 76, .18);
-  --border-soft: rgba(255, 255, 255, .05);
+  --muted-2: #7a756d;
+  --border: rgba(0, 0, 0, .08);
+  --border-soft: rgba(0, 0, 0, .05);
 
   /* ── Radii ── */
   --r-sm: 6px;
@@ -362,6 +354,24 @@ p {
   to {
     --angle: 360deg;
   }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  padding: .85rem 2.2rem;
+  font-family: var(--font-body);
+  font-size: .85rem;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  border-radius: var(--r-sm);
+  transition: all var(--dur) var(--ease);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
 
 .btn-gold {
@@ -2418,10 +2428,3 @@ footer {
 img {
   height: auto;
 }
-
-i m g    {
-     h e i g h t :    a u t o    ! i m p o r t a n t ;
-     
-}
-
-     
