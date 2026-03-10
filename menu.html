@@ -1204,7 +1204,7 @@ MOBILE MENU FULL FIX
         let activeFilters = { cat: "all", diet: null, special: null };
         let savedItems = new Set(JSON.parse(localStorage.getItem("tj_saved") || "[]"));
 
-        function price(n) { return n ? "₹" + Number(n).toLocaleString("en-IN") : "" }
+        function price(n) { return n ? Number(n).toLocaleString("en-IN") : "" }
         function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;") }
         function saveToStorage() { localStorage.setItem("tj_saved", JSON.stringify([...savedItems])) }
         function showToast(msg) { const t = document.getElementById("menu-toast"); t.textContent = msg; t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 2200) }
