@@ -450,7 +450,7 @@ li {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1.75rem 0;
+  padding: 1rem 0;
   /* Always-on glassmorphism — premium brands blur from the start */
   background: rgba(10, 10, 10, 0.55);
   backdrop-filter: blur(20px) saturate(160%) brightness(0.9);
