@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Menu — TajHotel Fine Dining Delhi</title>
+    <title>Menu � TajHotel Fine Dining Delhi</title>
     <meta name="description"
-        content="Explore TajHotel's full menu — Starters, Signature Steaks, Seafood, Indian Classics, Global Cuisine, Desserts and Beverages. Luxury fine dining in Delhi." />
+        content="Explore TajHotel's full menu � Starters, Signature Steaks, Seafood, Indian Classics, Global Cuisine, Desserts and Beverages. Luxury fine dining in Delhi." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,9 +14,9 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <style>
-        /* ═══ MENU PAGE — PREMIUM LUXURY STYLES ═══ */
+        /* --- MENU PAGE � PREMIUM LUXURY STYLES --- */
 
-        /* ── Fade-in animation ── */
+        /* -- Fade-in animation -- */
         @keyframes cardFadeIn {
             from {
                 opacity: 0;
@@ -29,78 +29,92 @@
             }
         }
 
-        /* ── Controls bar — STICKY on scroll ── */
+        /* -- App-Like Controls Bar � STICKY -- */
         .menu-controls-bar {
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(10, 10, 10, .96);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 1rem 0 .65rem;
-            border-bottom: 1px solid rgba(212, 175, 55, .1);
-            margin-bottom: .25rem;
+            background: rgba(26, 26, 26, 0.75);
+            /* Stripe-like translucency */
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            padding: 1.5rem 0 1rem;
+            border-bottom: 1px solid rgba(245, 245, 247, 0.08);
+            margin-bottom: 1.5rem;
         }
 
-        /* ── Search ── */
+        /* -- Search field (44px min rule) -- */
         .menu-search-wrap {
             position: relative;
-            margin-bottom: .75rem;
+            margin-bottom: 1rem;
         }
 
         .menu-search-wrap .s-icon {
             position: absolute;
-            left: 1rem;
+            left: 1.25rem;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1rem;
+            font-size: 1.1rem;
             pointer-events: none;
             color: var(--muted);
         }
 
         #menu-search {
             width: 100%;
-            background: var(--charcoal-2);
-            border: 1px solid var(--border-soft);
+            height: 48px;
+            /* Massive iOS search bar */
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(245, 245, 247, 0.12);
             border-radius: var(--r-full);
-            padding: .65rem 1rem .65rem 2.8rem;
-            color: var(--white);
-            font-size: .9rem;
+            padding: 0 1.25rem 0 3.2rem;
+            color: var(--ink);
+            font-family: var(--font-body);
+            font-size: var(--ts-sm);
             outline: none;
-            transition: border-color .25s;
+            transition: border-color var(--dur-fast), background var(--dur-fast);
         }
 
         #menu-search:focus {
             border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.08);
+            /* Highlight focus */
         }
 
-        /* ── Mode toggle ── */
+        #menu-search::placeholder {
+            color: var(--muted-2);
+        }
+
+        /* -- Display Mode Toggle (Thumbs) -- */
         .mode-toggle {
             display: flex;
             align-items: center;
             gap: .5rem;
-            margin-bottom: .75rem;
+            margin-bottom: 1rem;
             flex-wrap: wrap;
         }
 
         .mode-toggle-label {
+            font-family: var(--font-body);
             font-size: .72rem;
-            letter-spacing: .1em;
+            letter-spacing: .15em;
             text-transform: uppercase;
             color: var(--muted);
-            margin-right: .25rem;
+            margin-right: .5rem;
         }
 
         .mode-btn {
-            padding: .42rem 1.15rem;
+            height: 44px;
+            /* Minimum thumb zone */
+            padding: 0 1.5rem;
             border-radius: var(--r-full);
-            border: 1px solid var(--border);
-            background: transparent;
+            border: 1px solid rgba(245, 245, 247, 0.12);
+            background: rgba(255, 255, 255, 0.03);
             color: var(--muted);
-            font-size: .78rem;
-            font-weight: 600;
+            font-family: var(--font-body);
+            font-size: var(--ts-sm);
+            font-weight: 500;
             cursor: pointer;
-            transition: all .25s;
+            transition: all var(--dur-fast) var(--ease-spring);
             letter-spacing: .05em;
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
@@ -110,62 +124,73 @@
             background: var(--gold);
             color: var(--black);
             border-color: var(--gold);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
         }
 
-        /* ── Filter pills ── */
+        /* -- Scrollable Tab Filters (App-style) -- */
         .cat-filters {
             display: flex;
-            gap: .5rem;
+            gap: .75rem;
             overflow-x: auto;
-            padding-bottom: .35rem;
+            padding-bottom: .5rem;
+            /* Scrollbar padding */
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
         }
 
         .cat-filters::-webkit-scrollbar {
             display: none;
+            /* Hide for true app feel */
         }
 
         .cat-btn {
             flex-shrink: 0;
-            padding: .42rem 1rem;
+            height: 44px;
+            /* Thumb hit area */
+            padding: 0 1.25rem;
             border-radius: var(--r-full);
-            border: 1px solid var(--border);
-            background: transparent;
+            border: 1px solid rgba(245, 245, 247, 0.12);
+            background: rgba(255, 255, 255, 0.03);
             color: var(--muted);
-            font-size: .78rem;
+            font-family: var(--font-body);
+            font-size: var(--ts-sm);
             font-weight: 500;
             cursor: pointer;
-            transition: all .2s;
+            transition: all var(--dur-fast) var(--ease-spring);
             white-space: nowrap;
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
         }
 
         .cat-btn.active {
-            background: var(--gold);
+            background: var(--ink);
+            /* Deep charcoal active */
             color: var(--black);
-            border-color: var(--gold);
+            border-color: rgba(245, 245, 247, 0.2);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         .cat-btn:hover:not(.active) {
             border-color: var(--gold);
             color: var(--gold);
+            transform: translateY(-1px);
         }
 
         .pill-veg.active {
-            background: #16a34a;
-            color: #fff;
-            border-color: #16a34a;
+            background: #22c55e;
+            color: #000;
+            border-color: #22c55e;
         }
 
         .pill-nonveg.active {
-            background: #dc2626;
+            background: #ef4444;
             color: #fff;
-            border-color: #dc2626;
+            border-color: #ef4444;
         }
 
-        /* ═══ VISUAL MODE CARDS ═══ */
+        /* --- VISUAL MODE CARDS --- */
         #menu-container {
             padding-top: 1.25rem;
         }
@@ -194,30 +219,42 @@
             font-weight: 600;
         }
 
-        /* ── Premium horizontal card ── */
+        /* -- Premium App-Like Horizontal Card (Liquid Glass) -- */
         .menu-card {
             display: flex;
             align-items: stretch;
             gap: 0;
-            background: var(--bg-card);
-            border: 1px solid var(--border-soft);
-            border-radius: 18px;
+            background: var(--card-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(245, 245, 247, 0.04);
+            border-radius: 24px;
+            /* iOS App-like radius */
             overflow: hidden;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
+            /* Increased resting space */
             box-shadow: var(--shadow-card);
-            transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease;
+            transition: transform var(--dur-fast) var(--ease-spring),
+                box-shadow var(--dur-fast) var(--ease),
+                border-color var(--dur-fast);
             position: relative;
             opacity: 1;
             width: 100%;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .menu-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-4px) scale(1.01);
             box-shadow: var(--shadow-hover);
-            border-color: rgba(184, 150, 46, .25);
+            border-color: rgba(184, 134, 11, 0.25);
         }
 
-        /* ── Text side ── */
+        .menu-card:active {
+            transform: scale(0.98);
+        }
+
+        /* -- Text side -- */
         .menu-text {
             flex: 1;
             padding: 16px 14px 14px;
@@ -373,24 +410,33 @@
         .action-row {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 6px;
+            gap: 12px;
+            margin-top: 10px;
+            /* More breathing room */
         }
 
         .btn-save,
         .btn-share {
-            width: 32px;
-            height: 32px;
+            width: 44px;
+            /* Apple minimum thumb zone */
+            height: 44px;
+            /* Apple minimum thumb zone */
             border-radius: 50%;
-            border: 1px solid var(--border);
-            background: transparent;
+            border: 1px solid rgba(245, 245, 247, 0.15);
+            /* Glass border */
+            background: rgba(255, 255, 255, 0.03);
+            /* Liquid Glass wash */
             color: var(--muted);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: .85rem;
-            transition: all .2s;
+            font-size: 1.1rem;
+            /* Larger icon */
+            transition: transform var(--dur-fast) var(--ease-spring),
+                border-color var(--dur-fast) var(--ease),
+                color var(--dur-fast) var(--ease),
+                background var(--dur-fast) var(--ease);
             flex-shrink: 0;
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
@@ -398,26 +444,37 @@
 
         .btn-save:hover,
         .btn-share:hover {
-            border-color: var(--gold);
+            border-color: rgba(184, 134, 11, 0.3);
+            background: rgba(184, 134, 11, 0.05);
+            /* Soft gold wash */
             color: var(--gold);
+            transform: scale(1.05);
+        }
+
+        .btn-save:active,
+        .btn-share:active {
+            transform: scale(0.95);
         }
 
         .btn-save.saved {
             color: var(--gold);
             border-color: var(--gold);
-            background: rgba(212, 175, 55, .1);
+            background: rgba(184, 134, 11, 0.1);
         }
 
-        /* ── Image side — ALWAYS VISIBLE, 16/9 aspect equivalent width  ── */
+        /* -- Image side � ALWAYS VISIBLE, 16/9 aspect equivalent width  -- */
         .menu-image {
             position: relative;
             flex-shrink: 0;
             /* 16/9 aspect of ~120px height = 210px width */
             width: 130px;
             min-width: 130px;
-            min-height: 110px;
-            background: var(--bg-alt);
+            min-height: 120px;
+            background: rgba(26, 26, 26, 0.5);
+            /* Deep base */
             overflow: hidden;
+            border-radius: 0 24px 24px 0;
+            /* Match parent */
         }
 
         @media(min-width:640px) {
@@ -450,7 +507,7 @@
             color: rgba(212, 175, 55, .25);
         }
 
-        /* ═══ FAST / TEXT MODE ═══ */
+        /* --- FAST / TEXT MODE --- */
         #fast-menu-container {
             display: none;
             padding-top: 1.25rem;
@@ -557,7 +614,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* ═══ BOTTOM MOBILE NAV ═══ */
+        /* --- BOTTOM MOBILE NAV (iOS App-Like) --- */
         .bottom-nav {
             display: none;
             position: fixed;
@@ -565,12 +622,13 @@
             left: 0;
             right: 0;
             z-index: 950;
-            padding: .5rem 1rem calc(.5rem + env(safe-area-inset-bottom));
-            background: rgba(11, 11, 11, .82);
-            backdrop-filter: blur(20px) saturate(160%);
-            -webkit-backdrop-filter: blur(20px) saturate(160%);
-            border-top: 1px solid rgba(212, 175, 55, .15);
-            border-radius: 20px 20px 0 0;
+            padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom));
+            background: var(--card-bg);
+            /* liquid glass */
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-top: 1px solid rgba(245, 245, 247, 0.08);
+            /* crisp edge */
         }
 
         @media(max-width:767px) {
@@ -597,13 +655,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 3px;
+            gap: 4px;
             text-decoration: none;
-            padding: .3rem .75rem;
+            padding: .5rem .75rem;
+            /* Large 44px+ hit area height */
             border-radius: 12px;
-            transition: all .25s;
-            color: rgba(255, 255, 255, .5);
-            min-width: 56px;
+            transition: all var(--dur-fast) var(--ease-spring);
+            color: var(--muted);
+            min-width: 64px;
+            /* Sufficient thumb isolation */
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -715,7 +775,7 @@ MOBILE MENU FULL FIX
 
         }
 
-        /* â•â•â• FLOATING FAST MENU PANEL â•â•â• */
+        /* ═══ FLOATING FAST MENU PANEL ═══ */
         .fab-fast-menu {
             position: fixed;
             bottom: 90px;
@@ -756,7 +816,7 @@ MOBILE MENU FULL FIX
             background: rgba(0, 0, 0, .6);
             z-index: 1501;
             display: none;
-            /* hidden by default – no rendering cost */
+            /* hidden by default � no rendering cost */
             opacity: 0;
             transition: opacity .3s;
         }
@@ -893,7 +953,7 @@ MOBILE MENU FULL FIX
                 <h1>The TajHotel <span class="gold">Menu</span></h1>
                 <div class="gold-line center"></div>
                 <p style="max-width:500px;margin:0 auto;font-style:italic;font-family:var(--font-menu)">From
-                    tandoor-kissed classics to global fine-dining signatures — a curated journey of flavour.</p>
+                    tandoor-kissed classics to global fine-dining signatures � a curated journey of flavour.</p>
             </div>
         </div>
 
@@ -904,9 +964,9 @@ MOBILE MENU FULL FIX
                 <div class="menu-controls-bar">
                     <!-- Search -->
                     <div class="menu-search-wrap">
-                        <span class="s-icon" aria-hidden="true">🔍</span>
+                        <span class="s-icon" aria-hidden="true">??</span>
                         <label for="menu-search" class="sr-only">Search dishes</label>
-                        <input type="search" id="menu-search" placeholder="Search dishes, ingredients…"
+                        <input type="search" id="menu-search" placeholder="Search dishes, ingredients�"
                             autocomplete="off" />
                     </div>
                     <!-- Mode toggle removed -->
@@ -915,21 +975,21 @@ MOBILE MENU FULL FIX
                 <!-- Category filters -->
                 <div class="cat-filters" role="group" aria-label="Filter by category">
                     <button class="cat-btn active" data-cat="all">All</button>
-                    <button class="cat-btn" data-cat="starters">🥗 Starters</button>
-                    <button class="cat-btn" data-cat="steaks">🥩 Steaks</button>
-                    <button class="cat-btn" data-cat="seafood">🦞 Seafood</button>
-                    <button class="cat-btn" data-cat="indian">🍛 Indian</button>
-                    <button class="cat-btn" data-cat="global">🌍 Global</button>
-                    <button class="cat-btn" data-cat="desserts">🍮 Desserts</button>
-                    <button class="cat-btn" data-cat="beverages">🍷 Beverages</button>
-                    <button class="cat-btn pill-veg" data-filter="veg">🟢 Veg</button>
-                    <button class="cat-btn pill-nonveg" data-filter="nonveg">🔴 Non-Veg</button>
-                    <button class="cat-btn" data-filter="chef">⭐ Chef's Pick</button>
+                    <button class="cat-btn" data-cat="starters">?? Starters</button>
+                    <button class="cat-btn" data-cat="steaks">?? Steaks</button>
+                    <button class="cat-btn" data-cat="seafood">?? Seafood</button>
+                    <button class="cat-btn" data-cat="indian">?? Indian</button>
+                    <button class="cat-btn" data-cat="global">?? Global</button>
+                    <button class="cat-btn" data-cat="desserts">?? Desserts</button>
+                    <button class="cat-btn" data-cat="beverages">?? Beverages</button>
+                    <button class="cat-btn pill-veg" data-filter="veg">?? Veg</button>
+                    <button class="cat-btn pill-nonveg" data-filter="nonveg">?? Non-Veg</button>
+                    <button class="cat-btn" data-filter="chef">? Chef's Pick</button>
                 </div>
             </div>
 
             <!-- VISUAL MODE -->
-            <div id="menu-container" aria-label="Menu — Visual Mode"></div>
+            <div id="menu-container" aria-label="Menu � Visual Mode"></div>
 
             <div id="menu-no-results">
                 <p>No dishes match your search.</p>
@@ -947,9 +1007,9 @@ MOBILE MENU FULL FIX
                     <a href="index.html" class="footer-logo">Taj<span>Hotel</span></a>
                     <p class="footer-tagline">A fine-dining legacy in Delhi, India.</p>
                     <div class="social-row">
-                        <a href="#" class="social-btn" aria-label="Instagram">📷</a>
-                        <a href="#" class="social-btn" aria-label="Facebook">📘</a>
-                        <a href="#" class="social-btn" aria-label="Twitter">🐦</a>
+                        <a href="#" class="social-btn" aria-label="Instagram">??</a>
+                        <a href="#" class="social-btn" aria-label="Facebook">??</a>
+                        <a href="#" class="social-btn" aria-label="Twitter">??</a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -964,8 +1024,8 @@ MOBILE MENU FULL FIX
                 <div class="footer-col">
                     <h5>Hours</h5>
                     <ul>
-                        <li style="color:var(--muted-2);font-size:.84rem">Mon–Fri: 12:00–23:00</li>
-                        <li style="color:var(--muted-2);font-size:.84rem">Sat–Sun: 11:00–23:30</li>
+                        <li style="color:var(--muted-2);font-size:.84rem">Mon�Fri: 12:00�23:00</li>
+                        <li style="color:var(--muted-2);font-size:.84rem">Sat�Sun: 11:00�23:30</li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -977,7 +1037,7 @@ MOBILE MENU FULL FIX
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 TajHotel, New Delhi. All rights reserved.</p>
+                <p>� 2025 TajHotel, New Delhi. All rights reserved.</p>
                 <nav class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></nav>
             </div>
         </div>
@@ -985,10 +1045,10 @@ MOBILE MENU FULL FIX
 
     <!-- LIGHTBOX -->
     <div id="lightbox" role="dialog" aria-modal="true" hidden>
-        <button id="lb-close" aria-label="Close">✕</button>
-        <button id="lb-prev" class="lb-arrow" aria-label="Previous">‹</button>
+        <button id="lb-close" aria-label="Close">?</button>
+        <button id="lb-prev" class="lb-arrow" aria-label="Previous">�</button>
         <img id="lb-img" src="" alt="" loading="lazy" decoding="async" />
-        <button id="lb-next" class="lb-arrow" aria-label="Next">›</button>
+        <button id="lb-next" class="lb-arrow" aria-label="Next">�</button>
         <div id="lb-caption" aria-live="polite"></div>
     </div>
 
@@ -999,19 +1059,19 @@ MOBILE MENU FULL FIX
     <nav class="bottom-nav" aria-label="Mobile navigation">
         <div class="bottom-nav-inner">
             <a href="index.html" class="bn-item" aria-label="Home">
-                <span class="bn-icon">🏠</span>
+                <span class="bn-icon">??</span>
                 <span class="bn-label">Home</span>
             </a>
             <a href="menu.html" class="bn-item active" aria-current="page" aria-label="Menu">
-                <span class="bn-icon">🍽️</span>
+                <span class="bn-icon">???</span>
                 <span class="bn-label">Menu</span>
             </a>
             <a href="about.html" class="bn-item" aria-label="Experience">
-                <span class="bn-icon">✨</span>
+                <span class="bn-icon">?</span>
                 <span class="bn-label">Experience</span>
             </a>
             <a href="contact.html" class="bn-item" aria-label="Contact">
-                <span class="bn-icon">📞</span>
+                <span class="bn-icon">??</span>
                 <span class="bn-label">Contact</span>
             </a>
         </div>
@@ -1020,11 +1080,11 @@ MOBILE MENU FULL FIX
 
     <!-- FLOATING FAST MENU FAB + PANEL -->
     <!-- FLOATING FAST MENU FAB + PANEL -->
-    <button class="fab-fast-menu" id="fab-menu" aria-label="Open full text menu" title="View full menu">📋</button>
+    <button class="fab-fast-menu" id="fab-menu" aria-label="Open full text menu" title="View full menu">??</button>
     <div class="fp-backdrop" id="fp-backdrop"></div>
     <div class="fp-panel" id="fp-panel" role="dialog" aria-modal="true" aria-labelledby="fp-title">
         <div class="fp-header">
-            <h2 class="fp-title" id="fp-title">Full Menu — All Items</h2>
+            <h2 class="fp-title" id="fp-title">Full Menu � All Items</h2>
             <button class="fp-close" id="fp-close" aria-label="Close menu">&times;</button>
         </div>
         <div class="fp-body" id="fp-body"><!-- rendered by JS --></div>
@@ -1032,10 +1092,10 @@ MOBILE MENU FULL FIX
     <div id="live-region" aria-live="polite" class="sr-only"></div>
 
     <script>
-        // ═══════════════════════════════════════════════
-        // TAJHOTEL MENU — Full menu DATA (shortened here for brevity in this example)
+        // -----------------------------------------------
+        // TAJHOTEL MENU � Full menu DATA (shortened here for brevity in this example)
         // (Use your full MENU_DATA array in your real file)
-        // ═══════════════════════════════════════════════
+        // -----------------------------------------------
         const MENU_DATA = [
             {
                 "id": "sm1",
@@ -1049,7 +1109,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1850,
                 "popular": 85,
-                "image": "Smoked Salmon Carpaccio.webp"
+                "image": "Smoked Salmon Carpaccio.jpeg"
             },
             {
                 "id": "sm2",
@@ -1063,7 +1123,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1450,
                 "popular": 85,
-                "image": "Truffle Arancini.webp"
+                "image": "Truffle Arancini.jpeg"
             },
             {
                 "id": "sm3",
@@ -1076,7 +1136,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 2100,
                 "popular": 60,
-                "image": "King Prawn Cocktail.webp"
+                "image": "King Prawn Cocktail.jpeg"
             },
             {
                 "id": "sm4",
@@ -1090,7 +1150,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 2800,
                 "popular": 85,
-                "image": "Oysters Rockefeller.webp"
+                "image": "Oysters Rockefeller.jpeg"
             },
             {
                 "id": "sm5",
@@ -1104,7 +1164,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 3200,
                 "popular": 85,
-                "image": "Foie Gras Terrine.webp"
+                "image": "Foie Gras Terrine.jpeg"
             },
             {
                 "id": "sm6",
@@ -1117,7 +1177,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 2400,
                 "popular": 60,
-                "image": "Tuna Tartare.webp"
+                "image": "Tuna Tartare.jpeg"
             },
             {
                 "id": "sm7",
@@ -1132,7 +1192,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 8500,
                 "popular": 85,
-                "image": "Caviar with Blinis.webp"
+                "image": "Caviar with Blinis.jpeg"
             },
             {
                 "id": "sm8",
@@ -1145,7 +1205,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1600,
                 "popular": 60,
-                "image": "Burrata & Heirloom Tomatoes.webp"
+                "image": "Burrata & Heirloom Tomatoes.jpeg"
             },
             {
                 "id": "sm9",
@@ -1158,7 +1218,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1200,
                 "popular": 85,
-                "image": "Amuse Bouche Selection.webp"
+                "image": "Amuse Bouche Selection.jpeg"
             },
             {
                 "id": "sm10",
@@ -1172,7 +1232,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1400,
                 "popular": 85,
-                "image": "Paneer Royale Tikka.webp"
+                "image": "Paneer Royale Tikka.jpeg"
             },
             {
                 "id": "sm11",
@@ -1185,7 +1245,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1350,
                 "popular": 60,
-                "image": "Chicken Lollipops.webp"
+                "image": "Chicken Lollipops.jpeg"
             },
             {
                 "id": "sm12",
@@ -1198,7 +1258,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 2200,
                 "popular": 60,
-                "image": "Scallop Ceviche.webp"
+                "image": "Scallop Ceviche.jpeg"
             },
             {
                 "id": "sm13",
@@ -1212,7 +1272,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1300,
                 "popular": 60,
-                "image": "Grilled Vegetable Terrine.webp"
+                "image": "Grilled Vegetable Terrine.jpeg"
             },
             {
                 "id": "sm14",
@@ -1225,7 +1285,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1500,
                 "popular": 60,
-                "image": "Stuffed Squash Blossoms.webp"
+                "image": "Stuffed Squash Blossoms.jpeg"
             },
             {
                 "id": "sm15",
@@ -1239,7 +1299,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 2600,
                 "popular": 85,
-                "image": "Lobster Bisque.webp"
+                "image": "Lobster Bisque.jpeg"
             },
             {
                 "id": "sm16",
@@ -1252,7 +1312,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1900,
                 "popular": 60,
-                "image": "Crab Cakes.webp"
+                "image": "Crab Cakes.jpeg"
             },
             {
                 "id": "sm17",
@@ -1265,7 +1325,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 2000,
                 "popular": 60,
-                "image": "Seared Tuna Bite.webp"
+                "image": "Seared Tuna Bite.jpeg"
             },
             {
                 "id": "st1",
@@ -1280,7 +1340,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 6800,
                 "popular": 85,
-                "image": "Filet Mignon.webp"
+                "image": "Filet Mignon.jpeg"
             },
             {
                 "id": "st2",
@@ -1294,7 +1354,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 5800,
                 "popular": 60,
-                "image": "Ribeye Steak 350g.webp"
+                "image": "Ribeye Steak 350g.jpeg"
             },
             {
                 "id": "st3",
@@ -1307,7 +1367,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 5400,
                 "popular": 60,
-                "image": "New York Strip.webp"
+                "image": "New York Strip.jpeg"
             },
             {
                 "id": "st4",
@@ -1322,7 +1382,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 14500,
                 "popular": 85,
-                "image": "Wagyu Ribeye.webp"
+                "image": "Wagyu Ribeye.jpeg"
             },
             {
                 "id": "st5",
@@ -1336,7 +1396,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 12000,
                 "popular": 85,
-                "image": "Charcoal-Grilled Tomahawk 1kg.webp"
+                "image": "Charcoal-Grilled Tomahawk 1kg.jpeg"
             },
             {
                 "id": "st6",
@@ -1349,7 +1409,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 4800,
                 "popular": 60,
-                "image": "Sirloin Steak 300g.webp"
+                "image": "Sirloin Steak 300g.jpeg"
             },
             {
                 "id": "st7",
@@ -1362,7 +1422,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 7200,
                 "popular": 60,
-                "image": "Porterhouse Steak 400g.webp"
+                "image": "Porterhouse Steak 400g.jpeg"
             },
             {
                 "id": "st8",
@@ -1376,7 +1436,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 9800,
                 "popular": 85,
-                "image": "Ribeye Surf & Turf.webp"
+                "image": "Ribeye Surf & Turf.jpeg"
             },
             {
                 "id": "st9",
@@ -1390,7 +1450,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 7800,
                 "popular": 85,
-                "image": "Herb-Crusted Lamb Rack.webp"
+                "image": "Herb-Crusted Lamb Rack.jpeg"
             },
             {
                 "id": "st10",
@@ -1403,7 +1463,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 10500,
                 "popular": 60,
-                "image": "Tomahawk Steak.webp"
+                "image": "Tomahawk Steak.jpeg"
             },
             {
                 "id": "st11",
@@ -1417,7 +1477,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 8200,
                 "popular": 85,
-                "image": "Beef Wellington.webp"
+                "image": "Beef Wellington.jpeg"
             },
             {
                 "id": "st12",
@@ -1430,7 +1490,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 6200,
                 "popular": 60,
-                "image": "Beef Tenderloin Medallions.webp"
+                "image": "Beef Tenderloin Medallions.jpeg"
             },
             {
                 "id": "st13",
@@ -1445,7 +1505,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 7600,
                 "popular": 85,
-                "image": "Seared Venison Loin.webp"
+                "image": "Seared Venison Loin.jpeg"
             },
             {
                 "id": "sf1",
@@ -1460,7 +1520,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 5800,
                 "popular": 85,
-                "image": "Grilled Lobster Tail.webp"
+                "image": "Grilled Lobster Tail.jpeg"
             },
             {
                 "id": "sf2",
@@ -1474,7 +1534,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 6400,
                 "popular": 85,
-                "image": "Lobster Thermidor.webp"
+                "image": "Lobster Thermidor.jpeg"
             },
             {
                 "id": "sf3",
@@ -1488,7 +1548,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 7200,
                 "popular": 60,
-                "image": "King Crab Legs.webp"
+                "image": "King Crab Legs.jpeg"
             },
             {
                 "id": "sf4",
@@ -1501,7 +1561,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 3800,
                 "popular": 60,
-                "image": "Black Tiger Prawns.webp"
+                "image": "Black Tiger Prawns.jpeg"
             },
             {
                 "id": "sf5",
@@ -1514,7 +1574,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 3600,
                 "popular": 60,
-                "image": "Grilled King Prawns.webp"
+                "image": "Grilled King Prawns.jpeg"
             },
             {
                 "id": "sf6",
@@ -1528,7 +1588,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 3200,
                 "popular": 85,
-                "image": "Seared Scallops.webp"
+                "image": "Seared Scallops.jpeg"
             },
             {
                 "id": "sf7",
@@ -1542,7 +1602,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 4200,
                 "popular": 85,
-                "image": "Black Cod Miso.webp"
+                "image": "Black Cod Miso.jpeg"
             },
             {
                 "id": "sf8",
@@ -1555,7 +1615,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 3800,
                 "popular": 60,
-                "image": "Miso-Glazed Salmon.webp"
+                "image": "Miso-Glazed Salmon.jpeg"
             },
             {
                 "id": "sf9",
@@ -1568,7 +1628,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 3400,
                 "popular": 60,
-                "image": "Pan-Seared Red Snapper.webp"
+                "image": "Pan-Seared Red Snapper.jpeg"
             },
             {
                 "id": "sf10",
@@ -1581,7 +1641,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 3200,
                 "popular": 60,
-                "image": "Chargrilled Octopus.webp"
+                "image": "Chargrilled Octopus.jpeg"
             },
             {
                 "id": "sf11",
@@ -1594,7 +1654,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 2800,
                 "popular": 60,
-                "image": "Tuna Tataki.webp"
+                "image": "Tuna Tataki.jpeg"
             },
             {
                 "id": "sf12",
@@ -1607,7 +1667,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 3600,
                 "popular": 60,
-                "image": "Seared Sea Bass.webp"
+                "image": "Seared Sea Bass.jpeg"
             },
             {
                 "id": "sf13",
@@ -1621,7 +1681,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 3900,
                 "popular": 85,
-                "image": "Grilled Sea Scallops with Truffle Oil.webp"
+                "image": "Grilled Sea Scallops with Truffle Oil.jpeg"
             },
             {
                 "id": "sf14",
@@ -1634,7 +1694,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 4100,
                 "popular": 60,
-                "image": "Seared Halibut with Citrus Beurre Blanc.webp"
+                "image": "Seared Halibut with Citrus Beurre Blanc.jpeg"
             },
             {
                 "id": "sf15",
@@ -1647,7 +1707,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 3200,
                 "popular": 60,
-                "image": "Tandoori Prawns.webp"
+                "image": "Tandoori Prawns.jpeg"
             },
             {
                 "id": "in1",
@@ -1661,7 +1721,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1800,
                 "popular": 85,
-                "image": "Butter Chicken.webp"
+                "image": "Butter Chicken.jpeg"
             },
             {
                 "id": "in2",
@@ -1675,7 +1735,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1200,
                 "popular": 85,
-                "image": "Dal Makhani.webp"
+                "image": "Dal Makhani.jpeg"
             },
             {
                 "id": "in3",
@@ -1688,7 +1748,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1400,
                 "popular": 60,
-                "image": "Paneer Butter Masala.webp"
+                "image": "Paneer Butter Masala.jpeg"
             },
             {
                 "id": "in4",
@@ -1702,7 +1762,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 1900,
                 "popular": 85,
-                "image": "Chicken Tikka Masala.webp"
+                "image": "Chicken Tikka Masala.jpeg"
             },
             {
                 "id": "in5",
@@ -1715,7 +1775,7 @@ MOBILE MENU FULL FIX
                 ],
                 "price": 2400,
                 "popular": 60,
-                "image": "Lamb Rogan Josh.webp"
+                "image": "Lamb Rogan Josh.jpeg"
             }
         ];
 
@@ -2303,13 +2363,13 @@ MOBILE MENU FULL FIX
         ];
 
         const CATS = {
-            starters: { label: "Starters / Appetizers", icon: "🥗" },
-            steaks: { label: "Signature Steaks", icon: "🥩" },
-            seafood: { label: "Fresh Seafood", icon: "🦞" },
-            indian: { label: "Indian Classics", icon: "🍛" },
-            global: { label: "Global Cuisine & Chef Specials", icon: "🌍" },
-            desserts: { label: "Desserts", icon: "🍮" },
-            beverages: { label: "Beverages & Wine", icon: "🍷" }
+            starters: { label: "Starters / Appetizers", icon: "??" },
+            steaks: { label: "Signature Steaks", icon: "??" },
+            seafood: { label: "Fresh Seafood", icon: "??" },
+            indian: { label: "Indian Classics", icon: "??" },
+            global: { label: "Global Cuisine & Chef Specials", icon: "??" },
+            desserts: { label: "Desserts", icon: "??" },
+            beverages: { label: "Beverages & Wine", icon: "??" }
         };
         const CAT_ORDER = ["starters", "steaks", "seafood", "indian", "global", "desserts", "beverages"];
 
@@ -2325,19 +2385,19 @@ MOBILE MENU FULL FIX
 
         function addToCart(id) {
             const item = MENU_DATA.find(d => d.id === id);
-            if (item) showToast("✔ " + item.name + " added to order");
+            if (item) showToast("? " + item.name + " added to order");
         }
 
         function toggleSave(id, btn) {
-            if (savedItems.has(id)) { savedItems.delete(id); btn.classList.remove("saved"); btn.setAttribute("aria-label", "Save " + id); showToast("🔖 Removed from saved") }
-            else { savedItems.add(id); btn.classList.add("saved"); showToast("🔖 Saved!") }
+            if (savedItems.has(id)) { savedItems.delete(id); btn.classList.remove("saved"); btn.setAttribute("aria-label", "Save " + id); showToast("?? Removed from saved") }
+            else { savedItems.add(id); btn.classList.add("saved"); showToast("?? Saved!") }
             saveToStorage();
         }
 
         async function doShare(item) {
-            const text = `${item.name} — ${item.desc} | TajHotel Delhi | ${price(item.price)}`;
+            const text = `${item.name} � ${item.desc} | TajHotel Delhi | ${price(item.price)}`;
             if (navigator.share) { try { await navigator.share({ title: item.name, text, url: location.href }); return } catch (_) { } }
-            try { await navigator.clipboard.writeText(text); showToast("📋 Copied to clipboard!") } catch (_) { showToast("Share: " + text.substring(0, 50)) }
+            try { await navigator.clipboard.writeText(text); showToast("?? Copied to clipboard!") } catch (_) { showToast("Share: " + text.substring(0, 50)) }
         }
 
         function buildVisualCard(item, index) {
@@ -2359,14 +2419,14 @@ MOBILE MENU FULL FIX
                 : "";
 
             const tagsHtml = [
-                isChef ? `<span class="mic-tag mt-c">⭐ Chef</span>` : "",
+                isChef ? `<span class="mic-tag mt-c">? Chef</span>` : "",
                 isGF ? `<span class="mic-tag mt-gf">GF</span>` : ""
             ].join("");
 
             const loadAttr = index < 6 ? 'eager' : 'lazy';
             const imgHtml = item.image
                 ? `<img src="${esc(item.image)}" alt="${esc(item.name)}" loading="${loadAttr}" decoding="async" width="150" height="150" />`
-                : `<div class="img-placeholder">🍽️</div>`;
+                : `<div class="img-placeholder">???</div>`;
 
             const art = document.createElement("article");
             art.className = "menu-card";
@@ -2385,8 +2445,8 @@ MOBILE MENU FULL FIX
         <p class="desc">${esc(item.desc)}</p>
         ${tagsHtml ? `<div class="mic-tags-row">${tagsHtml}</div>` : ""}
         <div class="action-row">
-          <button class="btn-save${isSaved ? " saved" : ""}" aria-label="Save ${esc(item.name)}" data-id="${item.id}">🔖</button>
-          <button class="btn-share" aria-label="Share ${esc(item.name)}" data-id="${item.id}">↗</button>
+          <button class="btn-save${isSaved ? " saved" : ""}" aria-label="Save ${esc(item.name)}" data-id="${item.id}">??</button>
+          <button class="btn-share" aria-label="Share ${esc(item.name)}" data-id="${item.id}">?</button>
         </div>
       </div>
       <div class="menu-image">
@@ -2438,7 +2498,7 @@ MOBILE MENU FULL FIX
             CAT_ORDER.forEach(catId => {
                 const items = grouped[catId];
                 if (!items || !items.length) return;
-                const meta = CATS[catId] || { label: catId, icon: "🍽️" };
+                const meta = CATS[catId] || { label: catId, icon: "???" };
                 const sec = document.createElement("div");
                 sec.className = "fm-section";
                 const h = document.createElement("div");
@@ -2481,7 +2541,7 @@ MOBILE MENU FULL FIX
             if (noRes) noRes.style.display = count === 0 ? "block" : "none";
         }
 
-        // ── Robust init ──
+        // -- Robust init --
         function initMenu() {
             if (initMenu._done) return;
             initMenu._done = true;
@@ -2547,7 +2607,7 @@ MOBILE MENU FULL FIX
         if (document.readyState === "loading") {
             document.addEventListener("DOMContentLoaded", initMenu);
         } else {
-            // DOM already ready — run immediately
+            // DOM already ready � run immediately
             initMenu();
         }
     </script>
